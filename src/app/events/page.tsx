@@ -27,6 +27,14 @@ const pastEvents: EventItem[] = [
       'Live screen printing and expressive ink drawing during Oktoberfest—inviting passersby to co-create art and take home their own prints.',
   },
   {
+    id: 'p5',
+    title: 'Holiday Cards for Shady Grove Hospital (Since 2023)',
+    date: 'December 20, 2023',
+    image: '/images/events/event-5.JPG',
+    description:
+      'A holiday card‑making workshop where kids designed and illustrated heartfelt Christmas cards for patients at Shady Grove Hospital.',
+  },
+  {
     id: 'p4',
     title: 'Art Studio Sale',
     date: 'August 24, 2025',

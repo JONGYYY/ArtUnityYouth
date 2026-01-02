@@ -158,33 +158,25 @@ export default function GetInvolvedPage() {
           )}
 
           {active === 'donate' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              <div>
+            <div className="grid grid-cols-1 gap-10">
+              <div className="">
                 <h2 className="font-heading text-2xl text-secondary-dark mb-4">Donate</h2>
-                <p className="font-body text-secondary-dark/80 mb-6">
-                  Your gift sustains programs that bridge divides and uplift youth voices.
+                <p className="font-body text-secondary-dark/80 mb-4">
+                  Your gift sustains programs that bridge divides, nurture creativity, and uplift youth voices through art.
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-                  {['$25', '$50', '$100', '$250', '$500', 'Other'].map((amt) => (
-                    <Button key={amt} variant="outline">{amt}</Button>
-                  ))}
-                </div>
-                <Button>Proceed to Donate</Button>
-                <p className="font-body text-sm text-secondary-dark/60 mt-3">
-                  This is a demo. Hook up your donation processor here.
-                </p>
-              </div>
-              <div>
-                <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-soft">
+                <div className="flex justify-center">
                   <SmartImage
-                    src="/images/backgrounds/donate.jpg"
-                    alt="Hands and paint palette"
+                    src="/images/venmo/venmo.png"
+                    alt="Donate via Venmo"
                     placeholderText="Donate"
-                    className="object-cover"
-                    fill
-                    sizes="(max-width:768px) 100vw, 50vw"
+                    width={360}
+                    height={360}
+                    className="mx-auto"
                   />
                 </div>
+                <p className="font-body text-sm text-secondary-dark/70 mt-4">
+                  Disclaimer: ArtUnity Youth is a nonprofit organization. All donations are used exclusively to support our youth programs, supplies, and community art events.
+                </p>
               </div>
             </div>
           )}
