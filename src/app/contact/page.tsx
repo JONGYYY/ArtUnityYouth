@@ -88,19 +88,9 @@ export default function ContactPage() {
               <div className="space-y-4 font-body text-secondary-dark/80 mb-6">
                 <p className="flex items-center gap-2">
                   <EnvelopeIcon className="h-5 w-5 text-primary-coral" />
-                  contact@artunityyouth.org
+                  jshan7423@gmail.com
                 </p>
-                <p className="flex items-center gap-2">
-                  <MapPinIcon className="h-5 w-5 text-primary-teal" />
-                  123 Community Ave, Suite 100, Your City
-                </p>
-                <div className="flex gap-4">
-                  <a className="hover:text-primary-coral transition-colors" href="#" aria-label="Instagram">Instagram</a>
-                  <a className="hover:text-primary-coral transition-colors" href="#" aria-label="Facebook">Facebook</a>
-                  <a className="hover:text-primary-coral transition-colors" href="#" aria-label="Twitter">Twitter/X</a>
-                </div>
               </div>
-              {/* Map intentionally removed per request */}
             </div>
           </div>
         </div>

@@ -16,27 +16,38 @@ const fadeInUp = {
 const teamMembers = [
   {
     name: 'Jonathan Shan',
-    role: 'Team Member',
+    role: 'Founder and President',
     image: '/images/team/Jonathan.jpg',
-    bio: 'Passionate about empowering youth through art and community building.',
+    bio: 'Founder and President of ArtUnity Youth, Jonathan drives youth-led programs and partnerships that use art to unite communities. He leads strategy, fundraising, and on-the-ground initiatives that are hands-on, inclusive, and healing-centered.',
   },
   {
     name: 'Saranzul Boskov',
-    role: 'Team Member',
+    role: 'Vice President',
     image: '/images/team/sara.jpg',
-    bio: 'Advocates for inclusive, creative spaces that celebrate diversity.',
+    bio: 'Saranzul oversees programs and operations, ensuring every workshop is welcoming, accessible, and youth-centered. She coordinates volunteers and multilingual outreach so more families can participate and thrive.',
   },
   {
     name: 'Jierui Fang',
-    role: 'Team Member',
+    role: 'Advisor',
     image: '/images/team/Jierui.png',
-    bio: 'Committed to connecting communities and nurturing creative voices.',
+    bio: 'Strategic advisor focused on impact and equity. Jierui guides program design, measurement, and community partnerships so our initiatives remain meaningful, data-informed, and sustainable.',
+  },
+  {
+    name: 'Laura Leigh Palmer',
+    role: 'Advisor',
+    image: '/images/team/palmer.png',
+    bio: 'Curatorial advisor and arts educator who elevates youth storytelling. Laura helps shape our visual identity, exhibitions, and showcases that amplify young artists’ voices.',
+  },
+  {
+    name: 'Daveon Williams',
+    role: 'Vice President',
+    image: '/images/team/Daveon.png',
+    bio: 'Daveon leads community events and engagement, creating safe, joyful spaces for young people to explore creativity and leadership through mentorship and hands-on making.',
   },
 ];
 
 export default function About() {
   const [missionRef, missionInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [storyRef, storyInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [teamRef, teamInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
@@ -99,6 +110,10 @@ export default function About() {
                   art-based events for children.
                 </p>
                 <p>
+                  As a nonprofit 501(c)(3) youth charity organization, we rely on community support to
+                  sustain and expand our programs for the young people we serve.
+                </p>
+                <p>
                   Through our programs, we aim to bridge gaps between different racial, cultural,
                   and socioeconomic backgrounds, creating a more connected and empathetic
                   community.
@@ -109,57 +124,7 @@ export default function About() {
         </div>
       </motion.section>
 
-      {/* Story Section */}
-      <motion.section
-        ref={storyRef}
-        initial="hidden"
-        animate={storyInView ? "visible" : "hidden"}
-        variants={fadeInUp}
-        className="py-20 bg-secondary-light"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl text-secondary-dark mb-6">
-              How We Started
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                year: '2018',
-                title: 'The Beginning',
-                description: 'Started as a small after-school art program in local community centers.',
-              },
-              {
-                year: '2020',
-                title: 'Growing Impact',
-                description: 'Expanded to multiple locations and launched virtual art workshops.',
-              },
-              {
-                year: '2023',
-                title: 'Community Hub',
-                description: 'Established our main center and partnered with local schools.',
-              },
-            ].map((milestone) => (
-              <motion.div
-                key={milestone.year}
-                whileHover={{ y: -5 }}
-                className="bg-white p-8 rounded-2xl shadow-soft"
-              >
-                <div className="font-display text-3xl text-primary-coral mb-4">
-                  {milestone.year}
-                </div>
-                <h3 className="font-heading text-xl text-secondary-dark mb-2">
-                  {milestone.title}
-                </h3>
-                <p className="font-body text-secondary-dark/70">
-                  {milestone.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+      {/* Story Section removed per request */}
 
       {/* Team Section */}
       <motion.section

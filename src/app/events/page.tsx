@@ -9,7 +9,7 @@ type EventItem = {
   id: string;
   title: string;
   date: string;
-  location: string;
+  location?: string;
   image: string;
   description: string;
 };
@@ -24,25 +24,34 @@ const pastEvents: EventItem[] = [
     location: 'Eastside Community Center',
     image: '/images/events/event-1.jpg',
     description:
-      'Hands-on painting, collage, and storytelling for ages 7–14 with mentors.',
+      'Live screen printing and expressive ink drawing during Oktoberfest—inviting passersby to co-create art and take home their own prints.',
+  },
+  {
+    id: 'p4',
+    title: 'Art Studio Sale',
+    date: 'August 24, 2025',
+    location: '',
+    image: '/images/events/event-4.jpg',
+    description:
+      'Selling art pieces made by our art studio to support youth programs.',
   },
   {
     id: 'p2',
-    title: 'Art & Wellness Pop-up',
+    title: 'Face Painting Pop-up',
     date: 'August 31, 2024',
-    location: 'Greenwood Library',
+    location: 'Washington, DC',
     image: '/images/events/event-2.jpg',
     description:
-      'Mindfulness through art activities to build connection and reduce stress.',
+      'A joyful face painting station bringing color and smiles to families and neighbors throughout the day.',
   },
   {
     id: 'p3',
-    title: 'Murals for Unity Day',
+    title: 'Mural Paintings (Year-Round)',
     date: 'May 18, 2025',
     location: 'Downtown Arts Alley',
     image: '/images/events/event-3.jpg',
     description:
-      'Collaborative mural celebrating diversity and youth creativity. All supplies provided.',
+      'Collaborative mural sessions celebrating diversity and youth creativity—adding vibrant color to shared spaces.',
   },
 ];
 
@@ -115,7 +124,7 @@ export default function EventsPage() {
                       {ev.title}
                     </h3>
                     <div className="font-body text-sm text-secondary-dark/70 mb-3">
-                      {ev.date} • {ev.location}
+                      {[ev.date, ev.location].filter(Boolean).join(' • ')}
                     </div>
                     <p className="font-body text-secondary-dark/80 mb-4">
                       {ev.description}

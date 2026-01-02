@@ -170,7 +170,7 @@ export default function GetInvolvedPage() {
           )}
 
           {active === 'partner' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 gap-10">
               <div>
                 <h2 className="font-heading text-2xl text-secondary-dark mb-4">Partner With Us</h2>
                 <p className="font-body text-secondary-dark/80 mb-4">
@@ -182,18 +182,6 @@ export default function GetInvolvedPage() {
                   <li>• Sponsor an event or program</li>
                 </ul>
                 <Button href="/contact" variant="outline">Contact Us</Button>
-              </div>
-              <div>
-                <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-soft">
-                  <SmartImage
-                    src="/images/backgrounds/partner.jpg"
-                    alt="Community collaboration"
-                    placeholderText="Partner"
-                    className="object-cover"
-                    fill
-                    sizes="(max-width:768px) 100vw, 50vw"
-                  />
-                </div>
               </div>
             </div>
           )}

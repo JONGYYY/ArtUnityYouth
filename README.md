@@ -33,8 +33,8 @@ A modern, responsive website for ArtUnity Youth, a nonprofit organization empowe
    ```
 
 3. **Start the development server**
-   ```bash
-   npm run dev
+```bash
+npm run dev
    ```
 
 4. **Open your browser**
