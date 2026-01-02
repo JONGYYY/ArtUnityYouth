@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: fromEmail,
       to: [toEmail],
       subject,
@@ -58,7 +58,14 @@ export async function POST(request: Request) {
       html: htmlContent,
     });
 
-    return NextResponse.json({ ok: true });
+    if (error) {
+      // eslint-disable-next-line no-console
+      console.error('Resend volunteer error:', error);
+      return NextResponse.json({ error: 'Email send failed' }, { status: 500 });
+    }
+    // eslint-disable-next-line no-console
+    console.log('Resend volunteer sent id:', data?.id);
+    return NextResponse.json({ ok: true, id: data?.id });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }
