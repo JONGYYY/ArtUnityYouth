@@ -125,18 +125,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
             <div>
               <h4 className="font-heading text-lg mb-4">Connect With Us</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-white hover:text-primary-coral transition-colors"
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="mailto:artunityyouth@gmail.com"
+                    className="font-body text-sm hover:text-primary-coral transition-colors"
                   >
-                    <span className="sr-only">{item.name}</span>
-                    {/* Add social icons here */}
-                  </Link>
-                ))}
-              </div>
+                    artunityyouth@gmail.com
+                  </a>
+                </li>
+                <li className="flex gap-4">
+                  <a className="font-body text-sm hover:text-primary-coral transition-colors" href="#" aria-label="Instagram">Instagram</a>
+                  <a className="font-body text-sm hover:text-primary-coral transition-colors" href="#" aria-label="Facebook">Facebook</a>
+                  <a className="font-body text-sm hover:text-primary-coral transition-colors" href="#" aria-label="Twitter">Twitter/X</a>
+                </li>
+              </ul>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-700 text-center">

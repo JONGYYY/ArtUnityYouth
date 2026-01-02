@@ -19,10 +19,21 @@ export default function GetInvolvedPage() {
   const [active, setActive] = useState<'volunteer' | 'donate' | 'partner'>('volunteer');
   const { register, handleSubmit, reset, formState: { errors, isSubmitSuccessful } } = useForm<VolunteerForm>();
 
-  const onSubmit = (data: VolunteerForm) => {
-    // In a real app, POST to your API here
-    console.log('Volunteer form submitted', data);
-    reset();
+  const [submitState, setSubmitState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const onSubmit = async (data: VolunteerForm) => {
+    try {
+      setSubmitState('loading');
+      const res = await fetch('/api/volunteer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setSubmitState('success');
+      reset();
+    } catch (_e) {
+      setSubmitState('error');
+    }
   };
 
   const TabButton = ({ id, label, Icon }: { id: 'volunteer'|'donate'|'partner'; label: string; Icon: any }) => (
@@ -116,9 +127,18 @@ export default function GetInvolvedPage() {
                       {...register('message')}
                     />
                   </div>
-                  <Button type="submit">Submit</Button>
-                  {isSubmitSuccessful && (
-                    <p className="text-primary-teal font-body mt-2">Thanks! We’ll be in touch soon.</p>
+                  <Button type="submit" disabled={submitState === 'loading'}>
+                    {submitState === 'loading' ? 'Sending…' : 'Submit'}
+                  </Button>
+                  {submitState === 'success' && (
+                    <p className="text-primary-teal font-body mt-2">
+                      Thanks! We’ll be in touch soon.
+                    </p>
+                  )}
+                  {submitState === 'error' && (
+                    <p className="text-primary-coral font-body mt-2">
+                      Sorry—something went wrong. Please try again.
+                    </p>
                   )}
                 </form>
               </div>

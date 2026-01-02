@@ -14,10 +14,22 @@ type ContactForm = {
 };
 
 export default function ContactPage() {
-  const { register, handleSubmit, reset, formState: { errors, isSubmitSuccessful } } = useForm<ContactForm>();
-  const onSubmit = (data: ContactForm) => {
-    console.log('Contact form submitted', data);
-    reset();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactForm>();
+  const [submitState, setSubmitState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const onSubmit = async (data: ContactForm) => {
+    try {
+      setSubmitState('loading');
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setSubmitState('success');
+      reset();
+    } catch (_e) {
+      setSubmitState('error');
+    }
   };
 
   return (
@@ -76,9 +88,16 @@ export default function ContactPage() {
                   />
                   {errors.message && <p className="text-primary-coral text-sm mt-1">{errors.message.message}</p>}
                 </div>
-                <Button type="submit">Send</Button>
-                {isSubmitSuccessful && (
+                <Button type="submit" disabled={submitState === 'loading'}>
+                  {submitState === 'loading' ? 'Sending…' : 'Send'}
+                </Button>
+                {submitState === 'success' && (
                   <p className="text-primary-teal font-body mt-2">Thanks! We’ll reply soon.</p>
+                )}
+                {submitState === 'error' && (
+                  <p className="text-primary-coral font-body mt-2">
+                    Sorry—something went wrong. Please try again.
+                  </p>
                 )}
               </form>
             </div>
@@ -88,7 +107,7 @@ export default function ContactPage() {
               <div className="space-y-4 font-body text-secondary-dark/80 mb-6">
                 <p className="flex items-center gap-2">
                   <EnvelopeIcon className="h-5 w-5 text-primary-coral" />
-                  jshan7423@gmail.com
+                  artunityyouth@gmail.com
                 </p>
               </div>
             </div>
