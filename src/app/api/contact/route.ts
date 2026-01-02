@@ -18,7 +18,13 @@ export async function POST(request: Request) {
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
+    // Dev-friendly fallback: allow local testing without email provider
     if (!resendApiKey) {
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.log('DEV EMAIL (Contact):', { name, email, message });
+        return NextResponse.json({ ok: true, dev: true });
+      }
       return NextResponse.json({ error: 'Email provider not configured' }, { status: 500 });
     }
 

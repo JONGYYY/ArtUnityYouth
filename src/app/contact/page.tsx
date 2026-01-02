@@ -5,6 +5,7 @@ import Layout from '../../components/layout/Layout';
 import SmartImage from '../../components/common/SmartImage';
 import Button from '../../components/common/Button';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 
 type ContactForm = {
