@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Layout from '../../components/layout/Layout';
+import Link from 'next/link';
 import SmartImage from '../../components/common/SmartImage';
 import Button from '../../components/common/Button';
 
@@ -14,14 +15,24 @@ type EventItem = {
   description: string;
 };
 
-const upcomingEvents: EventItem[] = [];
+const upcomingEvents: EventItem[] = [
+  {
+    id: 'o1',
+    title: 'MLK Day Art Competition',
+    date: 'Deadline: Jan 31',
+    location: '',
+    image: '/images/events/MLK.png',
+    description:
+      'Ongoing art competition honoring Dr. Martin Luther King Jr. Create a piece that reflects service, equity, and hope. Submit your artwork by January 31.',
+  },
+];
 
 const pastEvents: EventItem[] = [
   {
     id: 'p1',
     title: 'Community Art Workshop',
     date: 'September 27, 2025',
-    location: 'Eastside Community Center',
+    location: 'Rockville Town Center',
     image: '/images/events/event-1.jpg',
     description:
       'Live screen printing and expressive ink drawing during Oktoberfest—inviting passersby to co-create art and take home their own prints.',
@@ -56,7 +67,7 @@ const pastEvents: EventItem[] = [
     id: 'p3',
     title: 'Mural Paintings (Year-Round)',
     date: 'May 18, 2025',
-    location: 'Downtown Arts Alley',
+    location: 'So What Else Food Pantry',
     image: '/images/events/event-3.jpg',
     description:
       'Collaborative mural sessions celebrating diversity and youth creativity—adding vibrant color to shared spaces.',
@@ -97,8 +108,8 @@ export default function EventsPage() {
             <h2 className="font-heading text-2xl sm:text-3xl text-secondary-dark">
               Upcoming Events
             </h2>
-            <Button variant="outline" href="#past">
-              See Past Events
+            <Button variant="outline" href="#key">
+              See Key Events
             </Button>
           </div>
 
@@ -117,30 +128,29 @@ export default function EventsPage() {
                   whileHover={{ y: -6 }}
                   className="bg-secondary-light rounded-2xl overflow-hidden shadow-soft"
                 >
-                  <div className="aspect-w-16 aspect-h-9">
-                    <SmartImage
-                      src={ev.image}
-                      alt={ev.title}
-                      placeholderText={ev.title}
-                      className="object-cover"
-                      fill
-                      sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-heading text-xl text-secondary-dark mb-1">
-                      {ev.title}
-                    </h3>
-                    <div className="font-body text-sm text-secondary-dark/70 mb-3">
-                      {[ev.date, ev.location].filter(Boolean).join(' • ')}
+                  <Link href={`/events/${ev.id}`} className="block focus-visible:focus">
+                    <div className="aspect-w-16 aspect-h-9">
+                      <SmartImage
+                        src={ev.image}
+                        alt={ev.title}
+                        placeholderText={ev.title}
+                        className="object-contain bg-white"
+                        fill
+                        sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+                      />
                     </div>
-                    <p className="font-body text-secondary-dark/80 mb-4">
-                      {ev.description}
-                    </p>
-                    <Button size="sm" fullWidth>
-                      Register
-                    </Button>
-                  </div>
+                    <div className="p-6">
+                      <h3 className="font-heading text-xl text-secondary-dark mb-1">
+                        {ev.title}
+                      </h3>
+                      <div className="font-body text-sm text-secondary-dark/70 mb-3">
+                        {[ev.date, ev.location].filter(Boolean).join(' • ')}
+                      </div>
+                      <p className="font-body text-secondary-dark/80">
+                        {ev.description}
+                      </p>
+                    </div>
+                  </Link>
                 </motion.article>
               ))}
             </div>
@@ -148,11 +158,11 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section id="past" className="py-12 bg-secondary-light">
+      <section id="key" className="py-12 bg-secondary-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="font-heading text-2xl sm:text-3xl text-secondary-dark">
-              Past Events
+              Key Events
             </h2>
           </div>
 
@@ -164,27 +174,29 @@ export default function EventsPage() {
                   whileHover={{ y: -6 }}
                   className="min-w-[280px] max-w-[320px] bg-white rounded-2xl overflow-hidden shadow-soft"
                 >
-                  <div className="aspect-w-16 aspect-h-9">
-                    <SmartImage
-                      src={ev.image}
-                      alt={ev.title}
-                      placeholderText={ev.title}
-                      className="object-cover"
-                      fill
-                      sizes="(max-width:768px) 80vw, 320px"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-heading text-lg text-secondary-dark mb-1">
-                      {ev.title}
-                    </h3>
-                    <div className="font-body text-sm text-secondary-dark/70 mb-2">
-                      {ev.date} • {ev.location}
+                  <Link href={`/events/${ev.id}`} className="block focus-visible:focus">
+                    <div className="aspect-w-16 aspect-h-9">
+                      <SmartImage
+                        src={ev.image}
+                        alt={ev.title}
+                        placeholderText={ev.title}
+                        className="object-cover"
+                        fill
+                        sizes="(max-width:768px) 80vw, 320px"
+                      />
                     </div>
-                    <p className="font-body text-sm text-secondary-dark/80">
-                      {ev.description}
-                    </p>
-                  </div>
+                    <div className="p-5">
+                      <h3 className="font-heading text-lg text-secondary-dark mb-1">
+                        {ev.title}
+                      </h3>
+                      <div className="font-body text-sm text-secondary-dark/70 mb-2">
+                        {[ev.date, ev.location].filter(Boolean).join(' • ')}
+                      </div>
+                      <p className="font-body text-sm text-secondary-dark/80">
+                        {ev.description}
+                      </p>
+                    </div>
+                  </Link>
                 </motion.article>
               ))}
             </div>
