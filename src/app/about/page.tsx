@@ -38,7 +38,7 @@ const coreMembers = [
   {
     name: 'Mingdi Chen',
     role: 'Junior Team Lead (Outreach & Youth Ambassador)',
-    image: '/images/team/mingdi.jpg',
+    image: '/images/team/didi.jpg',
     bio:
       'Mingdi Chen is a Junior Team Lead at ArtUnity Youth and a student at Cabin John Middle School. As the Junior Outreach & Youth Ambassador Lead, he helps connect ArtUnity with younger students by spreading the word about workshops, supporting youth‑focused outreach, and helping create creative promotional materials. Mingdi is also an award‑winning young artist and loves inspiring other students to grow through art.',
   },
@@ -58,6 +58,13 @@ const advisorMembers = [
     image: '/images/team/palmer.png',
     bio:
       'Curatorial advisor and arts educator who elevates youth storytelling. Laura helps shape our visual identity, exhibitions, and showcases that amplify young artists’ voices.',
+  },
+  {
+    name: 'Xiaojin Bao',
+    role: 'Art Advisor, Art Teacher',
+    image: '/images/team/bao.png',
+    bio:
+      'Ms. Bao is a UCLA graduate and an experienced concept artist, graphic designer, and animator in the entertainment industry, including interactive games and film. With over 20 years of teaching experience and a strong fine arts background, she brings both professional and classroom expertise to her work with students.',
   },
 ];
 
