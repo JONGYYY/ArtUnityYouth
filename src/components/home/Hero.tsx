@@ -64,7 +64,7 @@ const Hero = () => {
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center">
             {[
               { number: '1000+', label: 'People Impacted' },
-              { number: '50+', label: 'Art Events' },
+              { number: '25+', label: 'Art Events' },
             ].map((stat) => (
               <motion.div
                 key={stat.label}
