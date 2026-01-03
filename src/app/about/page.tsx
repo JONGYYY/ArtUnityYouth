@@ -50,21 +50,21 @@ const advisorMembers = [
     role: 'Advisor',
     image: '/images/team/Jierui.png',
     bio:
-      'Strategic advisor focused on impact and equity. Jierui guides program design, measurement, and community partnerships so our initiatives remain meaningful, data‑informed, and sustainable.',
+      'Ms. Fang is a multidisciplinary designer who focuses on living systems across human and environmental scales. She is an MIT graduate in art and design with minors in computer science and biomedical engineering, and a Stanford Product Design graduate. As an Advisor to ArtUnity Youth, she brings an impact-focused lens to our work, supporting program design, outcomes measurement, and community partnerships so our initiatives stay grounded, effective, and sustainable.',
   },
   {
     name: 'Laura Leigh Palmer',
     role: 'Advisor',
     image: '/images/team/palmer.png',
     bio:
-      'Curatorial advisor and arts educator who elevates youth storytelling. Laura helps shape our visual identity, exhibitions, and showcases that amplify young artists’ voices.',
+      'Ms. Palmer is a graphic and web designer and an adjunct professor at Montgomery College. As ArtUnity Youth’s Curatorial Advisor and arts educator, she helps shape our visual identity and guides exhibitions and showcases that elevate youth storytelling and amplify young artists’ voices. She also provides art direction and exhibition guidance for our year-round mural painting project, helping students strengthen concept, composition, and presentation from start to finish.',
   },
   {
     name: 'Xiaojin Bao',
     role: 'Art Advisor, Art Teacher',
     image: '/images/team/bao.png',
     bio:
-      'Ms. Bao is a UCLA graduate and an experienced concept artist, graphic designer, and animator in the entertainment industry, including interactive games and film. With over 20 years of teaching experience and a strong fine arts background, she brings both professional and classroom expertise to her work with students.',
+      'Ms. Bao is a UCLA graduate and an experienced concept artist, graphic designer, and animator in the entertainment industry, including interactive games and film. With over 20 years of teaching experience and an extensive fine arts background, she supports ArtUnity Youth as an arts educator and advisor, helping students strengthen their skills, creative confidence, and visual storytelling.',
   },
 ];
 
