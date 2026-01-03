@@ -63,8 +63,8 @@ const Hero = () => {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center">
             {[
-              { number: '500+', label: 'Youth Impacted' },
-              { number: '4', label: 'Art Events' },
+              { number: '1000+', label: 'Youth Impacted' },
+              { number: '50+', label: 'Art Events' },
             ].map((stat) => (
               <motion.div
                 key={stat.label}

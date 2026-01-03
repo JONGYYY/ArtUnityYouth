@@ -13,36 +13,51 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const teamMembers = [
+const coreMembers = [
   {
     name: 'Jonathan Shan',
     role: 'Founder and President',
     image: '/images/team/Jonathan.jpg',
-    bio: 'Founder and President of ArtUnity Youth, Jonathan drives youth-led programs and partnerships that use art to unite communities. He leads strategy, fundraising, and on-the-ground initiatives that are hands-on, inclusive, and healing-centered.',
+    bio:
+      'Jonathan is the Founder and President of ArtUnity Youth and a student at Poolesville High School. As the organization’s Executive Lead, he sets the vision and yearly goals for ArtUnity’s impact, leads team planning and decision‑making, and ensures programs meet high standards for quality, safety, and inclusion. He also drives fundraising and partnerships with schools, sponsors, and community organizations to expand youth‑led, hands‑on, healing‑centered art experiences. Outside of ArtUnity, Jonathan is an award‑winning artist and an app designer who has competed and placed in multiple national‑level app competitions.',
   },
   {
-    name: 'Saranzul Boskov',
+    name: 'Saranzul (Sara) Boskov',
     role: 'Vice President',
     image: '/images/team/sara.jpg',
-    bio: 'Saranzul oversees programs and operations, ensuring every workshop is welcoming, accessible, and youth-centered. She coordinates volunteers and multilingual outreach so more families can participate and thrive.',
-  },
-  {
-    name: 'Jierui Fang',
-    role: 'Advisor',
-    image: '/images/team/Jierui.png',
-    bio: 'Strategic advisor focused on impact and equity. Jierui guides program design, measurement, and community partnerships so our initiatives remain meaningful, data-informed, and sustainable.',
-  },
-  {
-    name: 'Laura Leigh Palmer',
-    role: 'Advisor',
-    image: '/images/team/palmer.png',
-    bio: 'Curatorial advisor and arts educator who elevates youth storytelling. Laura helps shape our visual identity, exhibitions, and showcases that amplify young artists’ voices.',
+    bio:
+      'Saranzul (Sara) Boskov is Vice President of ArtUnity Youth and a student at Richard Montgomery High School. As the Programs & Operations Lead, she designs and teaches workshops, plans materials and lesson flow, and manages event logistics from registration and staffing to day‑of coordination. She also supports volunteer onboarding and multilingual outreach to ensure every program is welcoming, accessible, and youth‑centered. Sara loves helping students build confidence through art and creativity.',
   },
   {
     name: 'Daveon Williams',
     role: 'Vice President',
     image: '/images/team/Daveon.png',
-    bio: 'Daveon leads community events and engagement, creating safe, joyful spaces for young people to explore creativity and leadership through mentorship and hands-on making.',
+    bio:
+      'Daveon Williams is Vice President of ArtUnity Youth and a student at Richard Montgomery High School. As the Community & Engagement Lead, he helps grow participation and builds a welcoming event environment through outreach, mentorship, and hands‑on creative activities. He’s passionate about creating safe spaces where youth feel supported, challenged, and inspired to lead. Daveon is also a dedicated boxer who values discipline and resilience.',
+  },
+  {
+    name: 'Mingdi Chen',
+    role: 'Junior Team Lead (Outreach & Youth Ambassador)',
+    image: '/images/team/mingdi.jpg',
+    bio:
+      'Mingdi Chen is a Junior Team Lead at ArtUnity Youth and a student at Cabin John Middle School. As the Junior Outreach & Youth Ambassador Lead, he helps connect ArtUnity with younger students by spreading the word about workshops, supporting youth‑focused outreach, and helping create creative promotional materials. Mingdi is also an award‑winning young artist and loves inspiring other students to grow through art.',
+  },
+];
+
+const advisorMembers = [
+  {
+    name: 'Jierui Fang',
+    role: 'Advisor',
+    image: '/images/team/Jierui.png',
+    bio:
+      'Strategic advisor focused on impact and equity. Jierui guides program design, measurement, and community partnerships so our initiatives remain meaningful, data‑informed, and sustainable.',
+  },
+  {
+    name: 'Laura Leigh Palmer',
+    role: 'Advisor',
+    image: '/images/team/palmer.png',
+    bio:
+      'Curatorial advisor and arts educator who elevates youth storytelling. Laura helps shape our visual identity, exhibitions, and showcases that amplify young artists’ voices.',
   },
 ];
 
@@ -143,8 +158,41 @@ export default function About() {
               Dedicated professionals passionate about art, education, and community building.
             </p>
           </div>
+          <h3 className="font-heading text-2xl text-secondary-dark mb-6 text-center">Leadership &amp; Team</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {coreMembers.map((member) => (
+              <motion.div
+                key={member.name}
+                whileHover={{ y: -5 }}
+                className="bg-secondary-light rounded-2xl overflow-hidden"
+              >
+                <div className="aspect-w-4 aspect-h-3">
+                  <SmartImage
+                    src={member.image}
+                    alt={member.name}
+                    placeholderText={member.name}
+                    className="object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading text-xl text-secondary-dark mb-1">
+                    {member.name}
+                  </h3>
+                  <div className="font-body text-primary-coral mb-3">
+                    {member.role}
+                  </div>
+                  <p className="font-body text-sm text-secondary-dark/70">
+                    {member.bio}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <h3 className="font-heading text-2xl text-secondary-dark mb-6 text-center">Advisors</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member) => (
+            {advisorMembers.map((member) => (
               <motion.div
                 key={member.name}
                 whileHover={{ y: -5 }}
