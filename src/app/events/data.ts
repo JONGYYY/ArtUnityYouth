@@ -11,7 +11,7 @@ export type EventItem = {
 const events: EventItem[] = [
   {
     id: 'o1',
-    title: 'Annual MLK Day Art Drive',
+    title: 'MLK Day Art Drive',
     date: '',
     location: '',
     image: '/images/events/MLK.png',
@@ -21,7 +21,7 @@ const events: EventItem[] = [
   },
   {
     id: 'p1',
-    title: 'Annual Community Art Workshop',
+    title: 'Community Art Workshop',
     date: '',
     location: 'Rockville Town Center',
     image: '/images/events/event-1.jpg',
@@ -40,7 +40,7 @@ const events: EventItem[] = [
   },
   {
     id: 'p4',
-    title: 'Annual Art Studio Sale',
+    title: 'Art Studio Sale',
     date: '',
     location: '',
     image: '/images/events/event-4.jpg',
@@ -50,7 +50,7 @@ const events: EventItem[] = [
   },
   {
     id: 'p2',
-    title: 'Annual Face Painting Pop-up',
+    title: 'Face Painting Pop-up',
     date: '',
     location: 'Washington, DC',
     image: '/images/events/event-2.jpg',
@@ -60,7 +60,7 @@ const events: EventItem[] = [
   },
   {
     id: 'p3',
-    title: 'Annual Mural Paintings (Year-Round)',
+    title: 'Mural Paintings (Year-Round)',
     date: '',
     location: 'So What Else Food Pantry',
     image: '/images/events/event-3.jpg',
