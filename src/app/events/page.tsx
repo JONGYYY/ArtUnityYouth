@@ -18,8 +18,8 @@ type EventItem = {
 const upcomingEvents: EventItem[] = [
   {
     id: 'o1',
-    title: 'MLK Day Art Competition',
-    date: 'Deadline: Jan 31',
+    title: 'Annual MLK Day Art Drive',
+    date: '',
     location: '',
     image: '/images/events/MLK.png',
     description:
@@ -30,8 +30,8 @@ const upcomingEvents: EventItem[] = [
 const pastEvents: EventItem[] = [
   {
     id: 'p1',
-    title: 'Community Art Workshop',
-    date: 'September 27, 2025',
+    title: 'Annual Community Art Workshop',
+    date: '',
     location: 'Rockville Town Center',
     image: '/images/events/event-1.jpg',
     description:
@@ -39,16 +39,16 @@ const pastEvents: EventItem[] = [
   },
   {
     id: 'p5',
-    title: 'Holiday Cards for Shady Grove Hospital (Since 2023)',
-    date: 'December 20, 2023',
+    title: 'Annual Holiday Cards for Hospitals',
+    date: '',
     image: '/images/events/event-5.JPG',
     description:
-      'A holiday card‑making workshop where kids designed and illustrated heartfelt Christmas cards for patients at Shady Grove Hospital.',
+      'A holiday card‑making workshop where kids designed and illustrated heartfelt Christmas cards for patients at Hospitals.',
   },
   {
     id: 'p4',
-    title: 'Art Studio Sale',
-    date: 'August 24, 2025',
+    title: 'Annual Art Studio Sale',
+    date: '',
     location: '',
     image: '/images/events/event-4.jpg',
     description:
@@ -56,8 +56,8 @@ const pastEvents: EventItem[] = [
   },
   {
     id: 'p2',
-    title: 'Face Painting Pop-up',
-    date: 'August 31, 2024',
+    title: 'Annual Face Painting Pop-up',
+    date: '',
     location: 'Washington, DC',
     image: '/images/events/event-2.jpg',
     description:
@@ -65,8 +65,8 @@ const pastEvents: EventItem[] = [
   },
   {
     id: 'p3',
-    title: 'Mural Paintings (Year-Round)',
-    date: 'May 18, 2025',
+    title: 'Annual Mural Paintings (Year-Round)',
+    date: '',
     location: 'So What Else Food Pantry',
     image: '/images/events/event-3.jpg',
     description:
@@ -143,9 +143,11 @@ export default function EventsPage() {
                       <h3 className="font-heading text-xl text-secondary-dark mb-1">
                         {ev.title}
                       </h3>
-                      <div className="font-body text-sm text-secondary-dark/70 mb-3">
-                        {[ev.date, ev.location].filter(Boolean).join(' • ')}
-                      </div>
+                      {ev.location ? (
+                        <div className="font-body text-sm text-secondary-dark/70 mb-3">
+                          {ev.location}
+                        </div>
+                      ) : null}
                       <p className="font-body text-secondary-dark/80">
                         {ev.description}
                       </p>
@@ -189,9 +191,11 @@ export default function EventsPage() {
                       <h3 className="font-heading text-lg text-secondary-dark mb-1">
                         {ev.title}
                       </h3>
-                      <div className="font-body text-sm text-secondary-dark/70 mb-2">
-                        {[ev.date, ev.location].filter(Boolean).join(' • ')}
-                      </div>
+                      {ev.location ? (
+                        <div className="font-body text-sm text-secondary-dark/70 mb-2">
+                          {ev.location}
+                        </div>
+                      ) : null}
                       <p className="font-body text-sm text-secondary-dark/80">
                         {ev.description}
                       </p>

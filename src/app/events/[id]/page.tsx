@@ -61,9 +61,11 @@ export default function EventDetail({ params }: { params: { id: string } }) {
               <h1 className="font-heading text-3xl md:text-4xl text-secondary-dark mb-4">
                 {event.title}
               </h1>
-              <div className="font-body text-secondary-dark/70 mb-4">
-                {[event.date, event.location].filter(Boolean).join(' • ')}
-              </div>
+              {event.location ? (
+                <div className="font-body text-secondary-dark/70 mb-4">
+                  {event.location}
+                </div>
+              ) : null}
               <p className="font-body text-secondary-dark/80 leading-relaxed">
                 {event.description}
               </p>

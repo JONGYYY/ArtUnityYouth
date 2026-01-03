@@ -11,8 +11,8 @@ export type EventItem = {
 const events: EventItem[] = [
   {
     id: 'o1',
-    title: 'MLK Day Art Drive',
-    date: 'Deadline: Jan 31',
+    title: 'Annual MLK Day Art Drive',
+    date: '',
     location: '',
     image: '/images/events/MLK.png',
     description:
@@ -21,8 +21,8 @@ const events: EventItem[] = [
   },
   {
     id: 'p1',
-    title: 'Community Art Workshop',
-    date: 'September 27, 2025',
+    title: 'Annual Community Art Workshop',
+    date: '',
     location: 'Rockville Town Center',
     image: '/images/events/event-1.jpg',
     description:
@@ -31,17 +31,17 @@ const events: EventItem[] = [
   },
   {
     id: 'p5',
-    title: 'Holiday Cards for Shady Grove Hospital (Since 2023)',
-    date: 'December 20, 2023',
+    title: 'Annual Holiday Cards for Hospitals',
+    date: '',
     image: '/images/events/event-5.JPG',
     description:
-      'A holiday card‑making workshop where kids designed and illustrated heartfelt Christmas cards for patients at Shady Grove Hospital.',
+      'A holiday card‑making workshop where kids designed and illustrated heartfelt Christmas cards for patients at Hospitals.',
     category: 'key',
   },
   {
     id: 'p4',
-    title: 'Art Studio Sale',
-    date: 'August 24, 2025',
+    title: 'Annual Art Studio Sale',
+    date: '',
     location: '',
     image: '/images/events/event-4.jpg',
     description:
@@ -50,8 +50,8 @@ const events: EventItem[] = [
   },
   {
     id: 'p2',
-    title: 'Face Painting Pop-up',
-    date: 'August 31, 2024',
+    title: 'Annual Face Painting Pop-up',
+    date: '',
     location: 'Washington, DC',
     image: '/images/events/event-2.jpg',
     description:
@@ -60,8 +60,8 @@ const events: EventItem[] = [
   },
   {
     id: 'p3',
-    title: 'Mural Paintings (Year-Round)',
-    date: 'May 18, 2025',
+    title: 'Annual Mural Paintings (Year-Round)',
+    date: '',
     location: 'So What Else Food Pantry',
     image: '/images/events/event-3.jpg',
     description:
