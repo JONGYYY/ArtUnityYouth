@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   isAnimated?: boolean;
@@ -20,47 +20,43 @@ const Button = ({
   href,
   ...props
 }: ButtonProps) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-full font-body transition-all';
-  
+  const base =
+    'inline-flex items-center justify-center gap-2 font-body font-semibold tracking-widest uppercase rounded-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rust';
+
   const variants = {
-    primary: 'bg-primary-coral text-white hover:shadow-glow',
-    secondary: 'bg-primary-teal text-white hover:shadow-glow',
-    outline: 'border-2 border-primary-coral text-primary-coral hover:bg-primary-coral hover:text-white',
+    primary:   'bg-rust text-cream hover:bg-ink',
+    secondary: 'bg-teal text-cream hover:bg-ink',
+    outline:   'border border-ink/30 text-ink hover:border-rust hover:text-rust',
+    ghost:     'text-rust hover:text-ink underline underline-offset-4',
   };
 
   const sizes = {
-    sm: 'px-4 py-1.5 text-sm',
-    md: 'px-6 py-2 text-base',
-    lg: 'px-8 py-3 text-lg',
+    sm: 'text-xs px-5 py-2',
+    md: 'text-sm px-6 py-3',
+    lg: 'text-sm px-8 py-4',
   };
 
-  const combinedClassName = `${baseStyles} ${variants[variant]} ${sizes[size]} ${
+  const combined = `${base} ${variants[variant]} ${sizes[size]} ${
     fullWidth ? 'w-full' : ''
   } ${className}`;
 
-  const content = href ? (
-    <Link href={href} className={combinedClassName}>
-      {children}
-    </Link>
+  const inner = href ? (
+    <Link href={href} className={combined}>{children}</Link>
   ) : (
-    <button className={combinedClassName} {...props}>
-      {children}
-    </button>
+    <button className={combined} {...props}>{children}</button>
   );
 
-  if (isAnimated) {
-    return (
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        className={fullWidth ? 'w-full' : 'inline-block'}
-      >
-        {content}
-      </motion.div>
-    );
-  }
+  if (!isAnimated) return inner;
 
-  return content;
+  return (
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.97 }}
+      className={fullWidth ? 'w-full' : 'inline-block'}
+    >
+      {inner}
+    </motion.div>
+  );
 };
 
-export default Button; 
+export default Button;

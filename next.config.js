@@ -4,7 +4,13 @@ const nextConfig = {
   swcMinify: true,
   transpilePackages: ['@heroicons/react'],
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'whqkkmxbmcwevbuffnps.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

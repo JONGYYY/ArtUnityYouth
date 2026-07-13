@@ -4,13 +4,16 @@ import { motion } from 'framer-motion';
 import Layout from '../../components/layout/Layout';
 import Button from '../../components/common/Button';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
-import PlaceholderImage from '../../components/common/PlaceholderImage';
 import SmartImage from '../../components/common/SmartImage';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const fadeUp = {
+  hidden:  { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const coreMembers = [
@@ -18,29 +21,25 @@ const coreMembers = [
     name: 'Jonathan Shan',
     role: 'Founder and President',
     image: '/images/team/Jonathan.jpg',
-    bio:
-      'Jonathan is the Founder and President of ArtUnity Youth and a student at Poolesville High School. As the organization’s Executive Lead, he sets the vision and yearly goals for ArtUnity’s impact, leads team planning and decision‑making, and ensures programs meet high standards for quality, safety, and inclusion. He also drives fundraising and partnerships with schools, sponsors, and community organizations to expand youth‑led, hands‑on, healing‑centered art experiences. Outside of ArtUnity, Jonathan is an award‑winning artist and an app designer who has competed and placed in multiple national‑level app competitions.',
+    bio: 'Jonathan is the Founder and President of ArtUnity Youth and a student at Poolesville High School. As the organization\u2019s Executive Lead, he sets the vision and yearly goals for ArtUnity\u2019s impact, leads team planning and decision\u2011making, and ensures programs meet high standards for quality, safety, and inclusion. He also drives fundraising and partnerships with schools, sponsors, and community organizations to expand youth\u2011led, hands\u2011on, healing\u2011centered art experiences. Outside of ArtUnity, Jonathan is an award\u2011winning artist and an app designer who has competed and placed in multiple national\u2011level app competitions.',
   },
   {
     name: 'Saranzul (Sara) Boskov',
     role: 'Vice President',
     image: '/images/team/sara.jpg',
-    bio:
-      'Saranzul (Sara) Boskov is Vice President of ArtUnity Youth and a student at Richard Montgomery High School. As the Programs & Operations Lead, she designs and teaches workshops, plans materials and lesson flow, and manages event logistics from registration and staffing to day‑of coordination. She also supports volunteer onboarding and multilingual outreach to ensure every program is welcoming, accessible, and youth‑centered. Sara loves helping students build confidence through art and creativity.',
+    bio: 'Saranzul (Sara) Boskov is Vice President of ArtUnity Youth and a student at Richard Montgomery High School. As the Programs & Operations Lead, she designs and teaches workshops, plans materials and lesson flow, and manages event logistics from registration and staffing to day\u2011of coordination. She also supports volunteer onboarding and multilingual outreach to ensure every program is welcoming, accessible, and youth\u2011centered. Sara loves helping students build confidence through art and creativity.',
   },
   {
     name: 'Daveon Williams',
     role: 'Vice President',
     image: '/images/team/Daveon.png',
-    bio:
-      'Daveon Williams is Vice President of ArtUnity Youth and a student at Richard Montgomery High School. As the Community & Engagement Lead, he helps grow participation and builds a welcoming event environment through outreach, mentorship, and hands‑on creative activities. He’s passionate about creating safe spaces where youth feel supported, challenged, and inspired to lead. Daveon is also a dedicated boxer who values discipline and resilience.',
+    bio: 'Daveon Williams is Vice President of ArtUnity Youth and a student at Richard Montgomery High School. As the Community & Engagement Lead, he helps grow participation and builds a welcoming event environment through outreach, mentorship, and hands\u2011on creative activities. He\u2019s passionate about creating safe spaces where youth feel supported, challenged, and inspired to lead. Daveon is also a dedicated boxer who values discipline and resilience.',
   },
   {
     name: 'Mingdi Chen',
     role: 'Junior Team Lead (Outreach & Youth Ambassador)',
     image: '/images/team/didi.jpg',
-    bio:
-      'Mingdi Chen is a Junior Team Lead at ArtUnity Youth and a student at Cabin John Middle School. As the Junior Outreach & Youth Ambassador Lead, he helps connect ArtUnity with younger students by spreading the word about workshops, supporting youth‑focused outreach, and helping create creative promotional materials. Mingdi is also an award‑winning young artist and loves inspiring other students to grow through art.',
+    bio: 'Mingdi Chen is a Junior Team Lead at ArtUnity Youth and a student at Cabin John Middle School. As the Junior Outreach & Youth Ambassador Lead, he helps connect ArtUnity with younger students by spreading the word about workshops, supporting youth\u2011focused outreach, and helping create creative promotional materials. Mingdi is also an award\u2011winning young artist and loves inspiring other students to grow through art.',
   },
 ];
 
@@ -49,203 +48,202 @@ const advisorMembers = [
     name: 'Jierui Fang',
     role: 'Advisor',
     image: '/images/team/Jierui.png',
-    bio:
-      'Ms. Fang is a multidisciplinary designer who focuses on living systems across human and environmental scales. She is an MIT graduate in art and design with minors in computer science and biomedical engineering, and a Stanford Product Design graduate. As an Advisor to ArtUnity Youth, she brings an impact-focused lens to our work, supporting program design, outcomes measurement, and community partnerships so our initiatives stay grounded, effective, and sustainable.',
+    bio: 'Ms. Fang is a multidisciplinary designer who focuses on living systems across human and environmental scales. She is an MIT graduate in art and design with minors in computer science and biomedical engineering, and a Stanford Product Design graduate. As an Advisor to ArtUnity Youth, she brings an impact-focused lens to our work, supporting program design, outcomes measurement, and community partnerships so our initiatives stay grounded, effective, and sustainable.',
   },
   {
     name: 'Laura Leigh Palmer',
     role: 'Advisor',
     image: '/images/team/palmer.png',
-    bio:
-      'Ms. Palmer is a graphic and web designer and an adjunct professor at Montgomery College. As ArtUnity Youth’s Curatorial Advisor and arts educator, she helps shape our visual identity and guides exhibitions and showcases that elevate youth storytelling and amplify young artists’ voices. She also provides art direction and exhibition guidance for our year-round mural painting project, helping students strengthen concept, composition, and presentation from start to finish.',
+    bio: 'Ms. Palmer is a graphic and web designer and an adjunct professor at Montgomery College. As ArtUnity Youth\u2019s Curatorial Advisor and arts educator, she helps shape our visual identity and guides exhibitions and showcases that elevate youth storytelling and amplify young artists\u2019 voices. She also provides art direction and exhibition guidance for our year-round mural painting project, helping students strengthen concept, composition, and presentation from start to finish.',
   },
   {
     name: 'Xiaojin Bao',
     role: 'Art Advisor, Art Teacher',
     image: '/images/team/bao.png',
-    bio:
-      'Ms. Bao is a UCLA graduate and an experienced concept artist, graphic designer, and animator in the entertainment industry, including interactive games and film. With over 20 years of teaching experience and an extensive fine arts background, she supports ArtUnity Youth as an arts educator and advisor, helping students strengthen their skills, creative confidence, and visual storytelling.',
+    bio: 'Ms. Bao is a UCLA graduate and an experienced concept artist, graphic designer, and animator in the entertainment industry, including interactive games and film. With over 20 years of teaching experience and an extensive fine arts background, she supports ArtUnity Youth as an arts educator and advisor, helping students strengthen their skills, creative confidence, and visual storytelling.',
   },
 ];
 
+function MemberCard({ member }: { member: typeof coreMembers[0] }) {
+  return (
+    /*
+     * CSS-only hover lift — no motion.div wrapping the image.
+     * This avoids framer-motion re-renders that cause next/image fill to flash.
+     */
+    <div className="group bg-cream border border-ink/8 rounded-sm overflow-hidden shadow-card
+                    transition-transform duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
+      {/* Image container: explicit relative + aspect-ratio so fill never collapses */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden bg-parch">
+        <SmartImage
+          src={member.image}
+          alt={member.name}
+          placeholderText={member.name}
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="font-heading text-xl text-ink mb-1">{member.name}</h3>
+        <div className="label-accent text-sm mb-3">{member.role}</div>
+        <p className="font-body text-sm text-ink/60 leading-relaxed">{member.bio}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function About() {
   const [missionRef, missionInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [teamRef, teamInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [teamRef,    teamInView]    = useInView({ triggerOnce: true, threshold: 0.05 });
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <div className="relative bg-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-lavender/20 via-primary-coral/10 to-primary-teal/20" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
+      {/* ── Hero ──────────────────────────────────────────────── */}
+      <section className="pt-36 pb-20 bg-cream texture-dots">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-2xl"
           >
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-secondary-dark mb-6">
-              Our Story
-            </h1>
-            <p className="font-body text-lg sm:text-xl text-secondary-dark/80 max-w-2xl mx-auto">
-              Building bridges through art, one brushstroke at a time
+            <span className="label-accent block mb-3">Who We Are</span>
+            <h1 className="font-display text-display-lg text-ink mb-5 leading-none">OUR STORY</h1>
+            <p className="font-body text-base text-ink/60 leading-relaxed">
+              Building bridges through art, one brushstroke at a time.
             </p>
           </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Mission Section */}
+      {/* ── Mission ───────────────────────────────────────────── */}
       <motion.section
         ref={missionRef}
+        variants={stagger}
         initial="hidden"
-        animate={missionInView ? "visible" : "hidden"}
-        variants={fadeInUp}
-        className="py-20 bg-white"
+        animate={missionInView ? 'visible' : 'hidden'}
+        className="py-24 bg-cream"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-soft">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <motion.div
+              variants={{
+                hidden:  { opacity: 0, x: -28, rotate: -2 },
+                visible: { opacity: 1, x: 0,   rotate: 0,
+                  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+              }}
+              className="relative"
+            >
+              <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden border border-ink/10 shadow-card">
                 <SmartImage
                   src="/images/about/mission.jpg"
-                  alt="Children working on an art project together"
-                  placeholderText="Mission Image"
+                  alt="Youth working on an art project together"
+                  placeholderText="Mission"
                   className="object-cover"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary-teal/10 rounded-full blur-2xl" />
-            </div>
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 border-b-2 border-r-2 border-rust/40" />
+            </motion.div>
+
             <div>
-              <h2 className="font-heading text-3xl sm:text-4xl text-secondary-dark mb-6">
-                Our Mission
-              </h2>
-              <div className="space-y-4 font-body text-lg text-secondary-dark/80">
-                <p>
+              <motion.span variants={fadeUp} className="label-accent block mb-3">Our Mission</motion.span>
+              <motion.h2 variants={fadeUp} className="font-heading text-4xl sm:text-5xl text-ink mb-6 leading-tight">
+                Art as a Bridge,<br /><em>Not a Wall</em>
+              </motion.h2>
+              <div className="space-y-4 font-body text-base text-ink/70 leading-relaxed max-w-prose">
+                <motion.p variants={fadeUp}>
                   At ArtUnity Youth, we believe in the transformative power of art to break down
                   barriers and build understanding across diverse communities.
-                </p>
-                <p>
+                </motion.p>
+                <motion.p variants={fadeUp}>
                   Our mission is to nurture young minds through art, fostering creativity,
                   celebrating diversity, and promoting inclusivity while organizing enriching
                   art-based events for children.
-                </p>
-                <p>
+                </motion.p>
+                <motion.p variants={fadeUp}>
                   As a nonprofit 501(c)(3) youth charity organization, we rely on community support to
                   sustain and expand our programs for the young people we serve.
-                </p>
-                <p>
+                </motion.p>
+                <motion.p variants={fadeUp}>
                   Through our programs, we aim to bridge gaps between different racial, cultural,
-                  and socioeconomic backgrounds, creating a more connected and empathetic
-                  community.
-                </p>
+                  and socioeconomic backgrounds, creating a more connected and empathetic community.
+                </motion.p>
               </div>
             </div>
           </div>
         </div>
       </motion.section>
 
-      {/* Story Section removed per request */}
+      {/* ── Team ──────────────────────────────────────────────── */}
+      <section ref={teamRef} className="py-24 bg-parch texture-dots">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-      {/* Team Section */}
-      <motion.section
-        ref={teamRef}
-        initial="hidden"
-        animate={teamInView ? "visible" : "hidden"}
-        variants={fadeInUp}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl text-secondary-dark mb-6">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate={teamInView ? 'visible' : 'hidden'}
+            className="text-center mb-16"
+          >
+            <motion.span variants={fadeUp} className="label-accent block mb-3">The People</motion.span>
+            <motion.h2 variants={fadeUp} className="font-heading text-4xl sm:text-5xl text-ink">
               Meet Our Team
-            </h2>
-            <p className="font-body text-lg text-secondary-dark/80 max-w-2xl mx-auto">
-              Dedicated professionals passionate about art, education, and community building.
-            </p>
-          </div>
-          <h3 className="font-heading text-2xl text-secondary-dark mb-6 text-center">Leadership &amp; Team</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {coreMembers.map((member) => (
-              <motion.div
-                key={member.name}
-                whileHover={{ y: -5 }}
-                className="bg-secondary-light rounded-2xl overflow-hidden"
-              >
-                <div className="aspect-w-4 aspect-h-3">
-                  <SmartImage
-                    src={member.image}
-                    alt={member.name}
-                    placeholderText={member.name}
-                    className="object-cover"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-heading text-xl text-secondary-dark mb-1">
-                    {member.name}
-                  </h3>
-                  <div className="font-body text-primary-coral mb-3">
-                    {member.role}
-                  </div>
-                  <p className="font-body text-sm text-secondary-dark/70">
-                    {member.bio}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <h3 className="font-heading text-2xl text-secondary-dark mb-6 text-center">Advisors</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {advisorMembers.map((member) => (
-              <motion.div
-                key={member.name}
-                whileHover={{ y: -5 }}
-                className="bg-secondary-light rounded-2xl overflow-hidden"
-              >
-                <div className="aspect-w-4 aspect-h-3">
-                  <SmartImage
-                    src={member.image}
-                    alt={member.name}
-                    placeholderText={member.name}
-                    className="object-cover"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-heading text-xl text-secondary-dark mb-1">
-                    {member.name}
-                  </h3>
-                  <div className="font-body text-primary-coral mb-3">
-                    {member.role}
-                  </div>
-                  <p className="font-body text-sm text-secondary-dark/70">
-                    {member.bio}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+            </motion.h2>
+          </motion.div>
 
-      {/* CTA Section */}
-      <section className="bg-primary-coral/10 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl text-secondary-dark mb-6">
-            Join Our Mission
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate={teamInView ? 'visible' : 'hidden'}
+          >
+            <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
+              Leadership &amp; Core Team
+            </motion.h3>
+            <motion.div
+              variants={stagger}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+            >
+              {coreMembers.map((member) => (
+                <motion.div key={member.name} variants={fadeUp}>
+                  <MemberCard member={member} />
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
+              Advisors
+            </motion.h3>
+            <motion.div
+              variants={stagger}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {advisorMembers.map((member) => (
+                <motion.div key={member.name} variants={fadeUp}>
+                  <MemberCard member={member} />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── CTA ───────────────────────────────────────────────── */}
+      <section className="bg-ink py-24">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <span className="label-accent text-rust block mb-4">Join the Movement</span>
+          <h2 className="font-heading text-4xl sm:text-5xl text-cream mb-6 leading-tight">
+            Help us create a more<br />
+            <em className="text-rust">inclusive community.</em>
           </h2>
-          <p className="font-body text-lg text-secondary-dark/80 max-w-2xl mx-auto mb-8">
-            Help us create a more inclusive and creative community for our youth.
+          <p className="font-body text-base text-cream/60 mb-10 max-w-xl mx-auto leading-relaxed">
+            Volunteer your time, donate to our programs, or reach out to partner with us.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" href="/get-involved">
-              Get Involved
-            </Button>
-            <Button size="lg" variant="outline" href="/contact">
+            <Button size="lg" href="/get-involved">Get Involved →</Button>
+            <Button size="lg" variant="outline" href="/contact"
+              className="border-cream/30 text-cream hover:border-rust hover:text-rust">
               Contact Us
             </Button>
           </div>
@@ -253,4 +251,4 @@ export default function About() {
       </section>
     </Layout>
   );
-} 
+}

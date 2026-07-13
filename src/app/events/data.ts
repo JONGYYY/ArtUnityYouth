@@ -4,11 +4,49 @@ export type EventItem = {
   date: string;
   location?: string;
   image: string;
+  images?: string[];
   description: string;
   category: 'ongoing' | 'key';
 };
 
 const events: EventItem[] = [
+  {
+    id: 'friday-cards',
+    title: 'Friday Card Sessions',
+    date: 'Ongoing — Every Friday',
+    location: 'Rockville Memorial Library',
+    image: '/images/events/friday-cards/friday-3.png',
+    images: [
+      '/images/events/friday-cards/friday-3.png',
+      '/images/events/friday-cards/friday-6.png',
+      '/images/events/friday-cards/friday-4.png',
+      '/images/events/friday-cards/friday-2.png',
+      '/images/events/friday-cards/friday-7.png',
+      '/images/events/friday-cards/friday-1.png',
+      '/images/events/friday-cards/friday-5.png',
+      '/images/events/friday-cards/friday-8.png',
+    ],
+    description:
+      'Every Friday, youth and community members gather at the Rockville Memorial Library to hand-illustrate get-well cards for hospital patients. Each session brings together volunteers of all ages to create heartfelt, one-of-a-kind cards filled with encouraging messages and colorful artwork — spreading joy to those who need it most.',
+    category: 'key',
+  },
+  {
+    id: 'pride-2026',
+    title: 'PRIDE 2026',
+    date: 'June 2026',
+    location: 'Rockville Town Center',
+    image: '/images/events/pride-2026/pride-4.png',
+    images: [
+      '/images/events/pride-2026/pride-4.png',
+      '/images/events/pride-2026/pride-5.png',
+      '/images/events/pride-2026/pride-3.png',
+      '/images/events/pride-2026/pride-2.png',
+      '/images/events/pride-2026/pride-1.png',
+    ],
+    description:
+      'ArtUnityYouth celebrated PRIDE 2026 in Rockville Town Center, hosting an interactive chalk mural where community members shared messages of love, identity, and belonging. Youth volunteers staffed a table in partnership with the City of Rockville to engage families and spread the spirit of unity through art.',
+    category: 'key',
+  },
   {
     id: 'o1',
     title: 'MLK Day Art Drive',
@@ -24,7 +62,11 @@ const events: EventItem[] = [
     title: 'Community Art Workshop',
     date: '',
     location: 'Rockville Town Center',
-    image: '/images/events/event-1.jpg',
+    image: '/images/events/screen-printing/sp-1.png',
+    images: [
+      '/images/events/screen-printing/sp-1.png',
+      '/images/events/screen-printing/sp-2.jpg',
+    ],
     description:
       'Live screen printing and expressive ink drawing during Oktoberfest—inviting passersby to co-create art and take home their own prints.',
     category: 'key',
@@ -63,9 +105,15 @@ const events: EventItem[] = [
     title: 'Mural Paintings (Year-Round)',
     date: '',
     location: 'So What Else Food Pantry',
-    image: '/images/events/event-3.jpg',
+    image: '/images/events/murals/mural-2.png',
+    images: [
+      '/images/events/murals/mural-2.png',
+      '/images/events/murals/mural-3.png',
+      '/images/events/murals/mural-1.png',
+      '/images/events/murals/mural-4.png',
+    ],
     description:
-      'Collaborative mural sessions celebrating diversity and youth creativity—adding vibrant color to shared spaces.',
+      'Collaborative mural sessions celebrating diversity and youth creativity—adding vibrant color to shared spaces. Youth volunteers paint large-scale murals with themes of unity, culture, and community at the So What Else Food Pantry.',
     category: 'key',
   },
 ];
