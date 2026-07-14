@@ -80,7 +80,7 @@ export default function NavAuth({
       </>
     ) : (
       <Link
-        href="/admin/login"
+        href="/login"
         onClick={onNavigate}
         className="block py-2.5 font-body text-base text-ink/80 hover:text-rust border-b border-ink/5 transition-colors"
       >
@@ -107,7 +107,7 @@ export default function NavAuth({
     </div>
   ) : (
     <Link
-      href="/admin/login"
+      href="/login"
       className="font-body text-sm font-medium text-ink/80 border border-ink/20 rounded-sm px-4 py-2 hover:border-rust hover:text-rust transition-colors"
     >
       Sign In

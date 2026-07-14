@@ -387,10 +387,10 @@ export default function FridaySessionsClient({
       {/* ── Past sessions log ────────────────────────────────── */}
       <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="mb-10 max-w-2xl">
-            <span className="label-accent block mb-2">Session log</span>
-            <h2 className="font-heading text-3xl text-ink mb-2">Past Fridays</h2>
-            <p className="font-body text-ink/60">
+          <div className="mb-10 max-w-3xl">
+            <span className="label-accent block mb-2 text-2xl md:text-3xl">Session log</span>
+            <h2 className="font-heading text-4xl md:text-5xl text-ink mb-3">Past Fridays</h2>
+            <p className="font-body text-lg text-ink/60">
               Pick a day to relive it — flip through the photos from each session.
             </p>
           </div>

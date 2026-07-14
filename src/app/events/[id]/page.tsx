@@ -6,13 +6,20 @@ import { getEventBySlug } from '../../../lib/content';
 
 export const dynamic = 'force-dynamic';
 
+// Guaranteed MLK submissions so the gallery renders even if the DB row
+// hasn't been seeded with the image list yet.
+const MLK_SUBMISSIONS = Array.from(
+  { length: 11 },
+  (_, i) => `/images/events/mlk/submission-${String(i + 1).padStart(2, '0')}.png`,
+);
+
 export default async function EventDetail({ params }: { params: { id: string } }) {
   const event = await getEventBySlug(params.id);
   if (!event) return notFound();
 
   // MLK event: hero image + a gallery of contest submissions.
   if (event.slug === 'o1') {
-    const submissions = event.images && event.images.length > 0 ? event.images : null;
+    const submissions = event.images && event.images.length > 0 ? event.images : MLK_SUBMISSIONS;
     return (
       <Layout>
         <section className="py-10">

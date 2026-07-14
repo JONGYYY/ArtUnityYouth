@@ -143,7 +143,7 @@ export default function GetInvolvedPage() {
                 </form>
               </div>
               <div className="order-1 lg:order-2">
-                <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-soft">
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-card border border-ink/10">
                   <SmartImage
                     src="/images/about/mission.jpg"
                     alt="Youth creating art together"

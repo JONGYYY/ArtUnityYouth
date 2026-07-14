@@ -6,6 +6,8 @@ import Hero from '../components/home/Hero';
 import Button from '../components/common/Button';
 import { useInView } from 'react-intersection-observer';
 import SmartImage from '../components/common/SmartImage';
+import MissionGallery from '../components/home/MissionGallery';
+import ScrollVibe from '../components/home/ScrollVibe';
 
 const stagger = {
   hidden: {},
@@ -22,21 +24,25 @@ const impactItems = [
     icon: '🎨',
     label: 'Art Programs',
     desc: 'Weekly workshops fostering creativity and personal expression in youth.',
+    image: '/images/events/screen-printing/sp-1.png',
   },
   {
     icon: '🤝',
     label: 'Community Events',
     desc: 'Monthly gatherings that bring diverse groups together through shared making.',
+    image: '/images/events/pride-2026/pride-4.png',
   },
   {
     icon: '🎓',
     label: 'Education',
     desc: 'Art-based learning programs partnered with local schools and libraries.',
+    image: '/images/events/friday-cards/jul-10-2026/candid-2.png',
   },
   {
     icon: '💫',
     label: 'Youth Leadership',
     desc: 'Mentorship programs developing the next generation of creative leaders.',
+    image: '/images/events/friday-cards/jul-10-2026/group-1.png',
   },
 ];
 
@@ -46,6 +52,7 @@ export default function Home() {
 
   return (
     <Layout>
+      <ScrollVibe />
       <Hero />
 
       {/* ── Mission ──────────────────────────────────────────── */}
@@ -54,38 +61,26 @@ export default function Home() {
         variants={stagger}
         initial="hidden"
         animate={missionInView ? 'visible' : 'hidden'}
-        className="py-28 bg-cream"
+        className="py-28"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            {/* Image */}
+            {/* Gallery */}
             <motion.div
               variants={{
                 hidden:  { opacity: 0, x: -32, rotate: -3 },
                 visible: { opacity: 1, x: 0,   rotate: 0,
                   transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
               }}
-              className="relative"
             >
-              <div className="aspect-[4/3] rounded-sm overflow-hidden border border-ink/10 shadow-card">
-                <SmartImage
-                  src="/images/about/mission.jpg"
-                  alt="Youth painting together"
-                  placeholderText="Mission"
-                  className="object-cover"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              {/* Decorative corner accent */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-rust/40" />
+              <MissionGallery />
             </motion.div>
 
             {/* Text */}
             <div>
               <motion.div variants={fadeUp} className="mb-2">
-                <span className="label-accent">Our Mission</span>
+                <span className="label-accent text-2xl md:text-3xl">Our Mission</span>
               </motion.div>
               <motion.h2
                 variants={fadeUp}
@@ -114,7 +109,7 @@ export default function Home() {
       {/* ── Impact ───────────────────────────────────────────── */}
       <section
         ref={impactRef}
-        className="py-28 bg-parch texture-dots"
+        className="py-28 bg-parch/70 texture-dots"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -124,7 +119,7 @@ export default function Home() {
             animate={impactInView ? 'visible' : 'hidden'}
             className="text-center mb-16"
           >
-            <motion.span variants={fadeUp} className="label-accent block mb-2">What We Do</motion.span>
+            <motion.span variants={fadeUp} className="label-accent block mb-2 text-2xl md:text-3xl">What We Do</motion.span>
             <motion.h2 variants={fadeUp} className="font-heading text-4xl sm:text-5xl text-ink">
               Our Impact
             </motion.h2>
@@ -145,11 +140,23 @@ export default function Home() {
                   rotate: i % 2 === 0 ? 1.2 : -1.2,
                   transition: { duration: 0.25 },
                 }}
-                className="bg-cream border border-ink/8 p-8 rounded-sm shadow-card hover:shadow-card-hover transition-shadow cursor-default"
+                className="bg-cream border border-ink/8 rounded-sm shadow-card hover:shadow-card-hover transition-shadow cursor-default overflow-hidden"
               >
-                <div className="text-3xl mb-5">{item.icon}</div>
-                <h3 className="font-heading text-xl text-ink mb-2">{item.label}</h3>
-                <p className="font-body text-sm text-ink/60 leading-relaxed">{item.desc}</p>
+                <div className="relative aspect-[4/3] bg-parch overflow-hidden">
+                  <SmartImage
+                    src={item.image}
+                    alt={item.label}
+                    placeholderText={item.label}
+                    className="object-cover"
+                    fill
+                    sizes="(max-width:768px) 100vw, 25vw"
+                  />
+                  <div className="absolute top-3 left-3 text-3xl drop-shadow-md">{item.icon}</div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading text-xl text-ink mb-2">{item.label}</h3>
+                  <p className="font-body text-sm text-ink/60 leading-relaxed">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen">
       {/* ── Navbar ──────────────────────────────────────────── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -37,10 +37,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="group flex items-center gap-2">
-            <span className="font-display text-2xl tracking-wide text-rust leading-none">
+            <span className="font-display text-3xl sm:text-4xl tracking-wide text-rust leading-none">
               ARTUNITY
             </span>
-            <span className="font-accent text-lg text-ink/70 leading-none mt-0.5">
+            <span className="font-accent text-xl sm:text-2xl text-ink/70 leading-none mt-0.5">
               Youth
             </span>
           </Link>
@@ -123,8 +123,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Brand */}
             <div>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="font-display text-3xl tracking-wide text-rust">ARTUNITY</span>
-                <span className="font-accent text-lg text-cream/60">Youth</span>
+                <span className="font-display text-4xl sm:text-5xl tracking-wide text-rust">ARTUNITY</span>
+                <span className="font-accent text-2xl sm:text-3xl text-cream/60">Youth</span>
               </div>
               <p className="font-body text-sm text-cream/60 max-w-xs leading-relaxed">
                 Uniting diverse youth through the transformative power of art.
@@ -164,18 +164,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   >
                     artunityyouth@gmail.com
                   </a>
-                </li>
-                <li className="flex gap-5 pt-1">
-                  {['Instagram', 'Facebook', 'Twitter/X'].map((s) => (
-                    <a
-                      key={s}
-                      href="#"
-                      className="font-body text-sm text-cream/70 hover:text-rust transition-colors"
-                      aria-label={s}
-                    >
-                      {s}
-                    </a>
-                  ))}
                 </li>
               </ul>
             </div>

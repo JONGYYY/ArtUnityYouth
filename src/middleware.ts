@@ -31,7 +31,7 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const { pathname } = request.nextUrl;
-  const isProtectedAdmin = pathname.startsWith('/admin') && pathname !== '/admin/login';
+  const isProtectedAdmin = pathname.startsWith('/admin');
 
   if (isProtectedAdmin) {
     const adminEmail = (process.env.ADMIN_EMAIL || '').toLowerCase();
@@ -40,7 +40,7 @@ export async function middleware(request: NextRequest) {
       Boolean(adminEmail) && user?.email && user.email.toLowerCase() === adminEmail && emailVerified;
     if (!isAdmin) {
       const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = '/admin/login';
+      redirectUrl.pathname = '/login';
       redirectUrl.searchParams.set('denied', user ? '1' : '0');
       return NextResponse.redirect(redirectUrl);
     }

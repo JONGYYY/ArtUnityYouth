@@ -58,7 +58,7 @@ Create a `.env.local` file in the project root (see `.env.example`).
 
 ## 🛠 Supabase & Admin Setup
 
-The site content (events, Friday sessions, RSVPs) lives in Supabase. A single admin (you) signs in with Google at `/admin` to add and edit everything. Regular visitors have no account — they just RSVP with a name + email.
+The site content (events, Friday sessions, RSVPs) lives in Supabase. A single admin (you) signs in with Google via the **Sign In** button in the navbar (route `/login`) to add and edit everything. Regular visitors have no account — they just RSVP with a name + email.
 
 ### 1. Create the database
 
@@ -68,7 +68,9 @@ In the Supabase dashboard → **SQL Editor** → New query, paste and run the co
 
 Dashboard → **Storage** → New bucket → name it `event-photos` → mark it **Public**. This is where admin photo uploads are stored.
 
-### 3. Enable Google sign-in (admin login)
+### 3. Enable Google sign-in
+
+> If you see `Unsupported provider: provider is not enabled` when clicking **Continue with Google**, this step hasn't been completed yet.
 
 1. Dashboard → **Authentication → Providers → Google** → enable it.
 2. In the [Google Cloud Console](https://console.cloud.google.com/apis/credentials): create an **OAuth 2.0 Client ID** (type: Web application). Under **Authorized redirect URIs**, add:

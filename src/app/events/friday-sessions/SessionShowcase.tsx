@@ -65,7 +65,7 @@ export default function SessionShowcase({ sessions }: { sessions: FridaySession[
               key={s.id}
               onClick={() => setDayIndex(i)}
               aria-pressed={active}
-              className={`group shrink-0 w-36 sm:w-44 text-left rounded-sm overflow-hidden border transition-all ${
+              className={`group shrink-0 w-56 sm:w-72 text-left rounded-sm overflow-hidden border transition-all ${
                 active ? 'border-rust ring-2 ring-rust/25' : 'border-ink/10 hover:border-ink/40'
               }`}
             >
@@ -78,14 +78,14 @@ export default function SessionShowcase({ sessions }: { sessions: FridaySession[
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="flex items-center justify-center h-full font-accent text-ink/30 text-sm">
+                  <div className="flex items-center justify-center h-full font-accent text-ink/30 text-base">
                     No photos yet
                   </div>
                 )}
               </div>
-              <div className="p-2.5 bg-white">
-                <div className="font-heading text-sm text-ink truncate">{s.label}</div>
-                <div className="font-body text-xs text-ink/50">
+              <div className="p-3.5 bg-white">
+                <div className="font-heading text-lg text-ink truncate">{s.label}</div>
+                <div className="font-body text-sm text-ink/50">
                   {count} photo{count === 1 ? '' : 's'}
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function SessionShowcase({ sessions }: { sessions: FridaySession[
                   key={`${src}-${i}`}
                   onClick={() => jumpTo(i)}
                   aria-label={`View photo ${i + 1}`}
-                  className={`relative shrink-0 w-20 h-16 rounded-sm overflow-hidden border-2 transition-all ${
+                  className={`relative shrink-0 w-28 h-20 rounded-sm overflow-hidden border-2 transition-all ${
                     i === photoIndex ? 'border-rust' : 'border-transparent opacity-60 hover:opacity-100'
                   }`}
                 >

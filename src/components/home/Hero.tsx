@@ -7,14 +7,23 @@ import Image from 'next/image';
 
 /* ── Carousel ─────────────────────────────────────────────────── */
 const carouselImages = [
-  { src: '/images/events/pride-2026/pride-4.png',          alt: 'ArtUnity Youth at PRIDE 2026' },
-  { src: '/images/events/screen-printing/sp-1.png',        alt: 'Screen printing at Oktoberfest' },
-  { src: '/images/events/murals/mural-2.png',              alt: 'Love One Another mural — So What Else' },
-  { src: '/images/events/friday-cards/friday-3.png',       alt: 'Friday Card Session — group with cards' },
-  { src: '/images/events/pride-2026/pride-5.png',          alt: 'ArtUnity team and community at PRIDE' },
-  { src: '/images/events/murals/mural-3.png',              alt: 'Youth painting the community mural' },
-  { src: '/images/events/friday-cards/friday-6.png',       alt: 'Youth showing their handmade cards' },
-  { src: '/images/events/pride-2026/pride-3.png',          alt: 'Youth volunteers at the chalk mural' },
+  { src: '/images/about/mission.jpg',                        alt: 'Youth creating art together' },
+  { src: '/images/events/pride-2026/pride-4.png',            alt: 'ArtUnity Youth at PRIDE 2026' },
+  { src: '/images/events/friday-cards/jul-10-2026/group-1.png', alt: 'Friday Drawing Session group photo' },
+  { src: '/images/events/screen-printing/sp-1.png',          alt: 'Screen printing at Oktoberfest' },
+  { src: '/images/events/murals/mural-2.png',                alt: 'Love One Another mural — So What Else' },
+  { src: '/images/events/friday-cards/jul-10-2026/candid-1.png', alt: 'Volunteers hand-illustrating get-well cards' },
+  { src: '/images/events/friday-cards/friday-3.png',         alt: 'Friday Card Session — group with cards' },
+  { src: '/images/events/pride-2026/pride-5.png',            alt: 'ArtUnity team and community at PRIDE' },
+  { src: '/images/events/friday-cards/jul-10-2026/candid-3.png', alt: 'A young artist drawing a card' },
+  { src: '/images/events/murals/mural-3.png',                alt: 'Youth painting the community mural' },
+  { src: '/images/events/friday-cards/jul-10-2026/candid-5.png', alt: 'Cards in progress at the table' },
+  { src: '/images/events/friday-cards/friday-6.png',         alt: 'Youth showing their handmade cards' },
+  { src: '/images/events/pride-2026/pride-1.png',            alt: 'Chalk mural messages of love and belonging' },
+  { src: '/images/events/murals/mural-1.png',                alt: 'Community mural celebrating unity' },
+  { src: '/images/events/pride-2026/pride-3.png',            alt: 'Youth volunteers at the chalk mural' },
+  { src: '/images/events/screen-printing/sp-2.jpg',          alt: 'Fresh screen prints drying' },
+  { src: '/images/events/mlk/submission-03.png',             alt: 'MLK art competition submission' },
 ];
 const INTERVAL_MS = 10000;
 
@@ -134,7 +143,7 @@ export default function Hero() {
 
             {/* CTAs */}
             <motion.div custom={1} initial="hidden" animate="visible" variants={fadeUp}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
+              className="flex flex-wrap gap-4 mb-5"
             >
               <Link href="/events"
                 className="group inline-flex items-center justify-center gap-2 font-body font-semibold text-sm tracking-widest uppercase bg-rust text-cream px-8 py-4 rounded-sm hover:bg-ink transition-colors duration-200"
@@ -146,6 +155,17 @@ export default function Hero() {
                 className="inline-flex items-center justify-center font-body font-semibold text-sm tracking-widest uppercase border border-ink/30 text-ink px-8 py-4 rounded-sm hover:border-rust hover:text-rust transition-colors duration-200"
               >
                 Volunteer With Us
+              </Link>
+            </motion.div>
+
+            {/* Friday sessions quick link */}
+            <motion.div custom={2} initial="hidden" animate="visible" variants={fadeUp} className="mb-12">
+              <Link href="/events/friday-sessions"
+                className="group inline-flex items-center gap-2 font-body font-semibold text-sm tracking-widest uppercase text-teal hover:text-rust transition-colors duration-200"
+              >
+                <span className="text-lg leading-none">✦</span>
+                Join our Weekly Friday Sessions
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </motion.div>
 

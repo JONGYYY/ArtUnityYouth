@@ -26,11 +26,11 @@ export async function GET(request: Request) {
       if (isAdmin) {
         return NextResponse.redirect(`${origin}/admin`);
       }
-      // Signed in with a non-admin account: sign back out and show a notice.
+      // Signed in with an unauthorized account: sign back out and show a notice.
       await supabase.auth.signOut();
-      return NextResponse.redirect(`${origin}/admin/login?denied=1`);
+      return NextResponse.redirect(`${origin}/login?denied=1`);
     }
   }
 
-  return NextResponse.redirect(`${origin}/admin/login?error=1`);
+  return NextResponse.redirect(`${origin}/login?error=1`);
 }

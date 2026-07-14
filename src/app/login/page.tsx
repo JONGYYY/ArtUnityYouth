@@ -2,9 +2,9 @@
 
 import { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { createSupabaseBrowserClient } from '../../../lib/supabase/browser';
+import { createSupabaseBrowserClient } from '../../lib/supabase/browser';
 
-function AdminLoginInner() {
+function SignInInner() {
   const params = useSearchParams();
   const denied = params.get('denied') === '1';
   const errored = params.get('error') === '1';
@@ -27,14 +27,14 @@ function AdminLoginInner() {
     <div className="min-h-screen flex items-center justify-center bg-cream texture-dots px-6">
       <div className="w-full max-w-md bg-white shadow-card-hover rounded-sm p-10 text-center">
         <span className="label-accent block mb-2">ArtUnity Youth</span>
-        <h1 className="font-display text-4xl tracking-wide text-ink mb-2">ADMIN</h1>
+        <h1 className="font-display text-4xl tracking-wide text-ink mb-2">SIGN IN</h1>
         <p className="font-body text-sm text-ink/60 mb-8">
-          Sign in to manage events, Friday sessions, and RSVPs.
+          Sign in to manage the ArtUnity Youth site.
         </p>
 
         {denied && (
           <p className="mb-5 rounded-sm border border-rust/30 bg-rust/5 px-4 py-3 font-body text-sm text-rust">
-            That Google account isn&apos;t authorized for admin access.
+            That Google account isn&apos;t authorized to manage this site.
           </p>
         )}
         {errored && (
@@ -65,10 +65,10 @@ function AdminLoginInner() {
   );
 }
 
-export default function AdminLoginPage() {
+export default function SignInPage() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-cream" />}>
-      <AdminLoginInner />
+      <SignInInner />
     </Suspense>
   );
 }

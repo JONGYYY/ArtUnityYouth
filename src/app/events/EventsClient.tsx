@@ -5,7 +5,20 @@ import Layout from '../../components/layout/Layout';
 import Link from 'next/link';
 import SmartImage from '../../components/common/SmartImage';
 import Button from '../../components/common/Button';
-import type { EventItem } from '../../lib/content';
+import type { EventItem, SessionInfo } from '../../lib/content';
+
+/** The upcoming Friday (today counts if it's Friday), formatted for display. */
+function nextFridayLabel(from: Date = new Date()): string {
+  const d = new Date(from);
+  const daysUntilFriday = (5 - d.getDay() + 7) % 7; // 5 = Friday
+  d.setDate(d.getDate() + daysUntilFriday);
+  return d.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
 
 const tilts = [1.5, -1.2, 1.8, -1.5, 1.1, -1.8, 1.4, -1.0];
 
@@ -25,10 +38,13 @@ const fadeIn = {
 export default function EventsClient({
   upcomingEvents,
   pastEvents,
+  sessionInfo,
 }: {
   upcomingEvents: EventItem[];
   pastEvents: EventItem[];
+  sessionInfo: SessionInfo;
 }) {
+  const fridayDate = nextFridayLabel();
   return (
     <Layout>
       {/* ── Page header ─────────────────────────────────────── */}
@@ -98,50 +114,76 @@ export default function EventsClient({
             </Button>
           </div>
 
-          {upcomingEvents.length === 0 ? (
-            <div className="border border-ink/10 bg-parch rounded-sm p-10 text-center">
-              <p className="font-body text-ink/60 mb-4">No upcoming events scheduled yet.</p>
-              <Button href="/get-involved" size="sm">Get Involved</Button>
-            </div>
-          ) : (
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={stagger}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {/* Always-present next Friday session (updates weekly) */}
+            <motion.article
+              variants={cardVariant}
+              whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
+              style={{ rotate: tilts[0] }}
+              className="polaroid cursor-pointer"
             >
-              {upcomingEvents.map((ev, i) => (
-                <motion.article
-                  key={ev.id}
-                  variants={cardVariant}
-                  whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
-                  style={{ rotate: tilts[i % tilts.length] }}
-                  className="polaroid cursor-pointer"
-                >
-                  <Link href={ev.href ?? `/events/${ev.slug}`} className="block focus-visible:outline-none">
-                    <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
-                      <SmartImage
-                        src={ev.coverImage}
-                        alt={ev.title}
-                        placeholderText={ev.title}
-                        className="object-contain bg-white"
-                        fill
-                        sizes="(max-width:768px) 100vw, 33vw"
-                      />
-                    </div>
-                    <div className="pt-4 pb-1 px-1">
-                      <h3 className="font-heading text-lg text-ink mb-1">{ev.title}</h3>
-                      {ev.date && <p className="font-accent text-sm text-rust mb-1">{ev.date}</p>}
-                      {ev.location && <p className="font-body text-xs text-ink/50 mb-2">{ev.location}</p>}
-                      <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
-                        {ev.description}
-                      </p>
-                    </div>
-                  </Link>
-                </motion.article>
-              ))}
-            </motion.div>
-          )}
+              <Link href="/events/friday-sessions" className="block focus-visible:outline-none">
+                <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
+                  <SmartImage
+                    src="/images/events/friday-cards/friday-3.png"
+                    alt="Weekly Friday Drawing Session"
+                    placeholderText="Friday Drawing Session"
+                    className="object-cover"
+                    fill
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                  <span className="absolute top-2 left-2 bg-rust text-cream font-body text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-sm">
+                    Next up
+                  </span>
+                </div>
+                <div className="pt-4 pb-1 px-1">
+                  <h3 className="font-heading text-lg text-ink mb-1">Weekly Friday Drawing Session</h3>
+                  <p className="font-accent text-sm text-rust mb-1">{fridayDate}</p>
+                  <p className="font-body text-xs text-ink/60 mb-0.5">🕓 {sessionInfo.time}</p>
+                  <p className="font-body text-xs text-ink/50 mb-2">📍 {sessionInfo.location}</p>
+                  <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
+                    Hand-draw get-well cards for kids in local hospitals. All ages and skill levels — supplies on us.
+                  </p>
+                </div>
+              </Link>
+            </motion.article>
+
+            {upcomingEvents.map((ev, i) => (
+              <motion.article
+                key={ev.id}
+                variants={cardVariant}
+                whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
+                style={{ rotate: tilts[(i + 1) % tilts.length] }}
+                className="polaroid cursor-pointer"
+              >
+                <Link href={ev.href ?? `/events/${ev.slug}`} className="block focus-visible:outline-none">
+                  <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
+                    <SmartImage
+                      src={ev.coverImage}
+                      alt={ev.title}
+                      placeholderText={ev.title}
+                      className="object-contain bg-white"
+                      fill
+                      sizes="(max-width:768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="pt-4 pb-1 px-1">
+                    <h3 className="font-heading text-lg text-ink mb-1">{ev.title}</h3>
+                    {ev.date && <p className="font-accent text-sm text-rust mb-1">{ev.date}</p>}
+                    {ev.location && <p className="font-body text-xs text-ink/50 mb-2">{ev.location}</p>}
+                    <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
+                      {ev.description}
+                    </p>
+                  </div>
+                </Link>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
       </section>
 
