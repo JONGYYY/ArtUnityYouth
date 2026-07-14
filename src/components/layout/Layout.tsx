@@ -174,9 +174,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <p className="font-body text-xs text-cream/40">
               © {new Date().getFullYear()} ArtUnity Youth. All rights reserved.
             </p>
-            <span className="label-accent text-sm opacity-60">
-              Art connects us all ✦
-            </span>
+            <div className="flex items-center gap-5">
+              <Link href="/privacy" className="font-body text-xs text-cream/50 hover:text-rust transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="font-body text-xs text-cream/50 hover:text-rust transition-colors">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
