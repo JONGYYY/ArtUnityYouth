@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import NavAuth from './NavAuth';
 
 const navItems = [
   { name: 'Home',        href: '/' },
@@ -55,6 +56,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {item.name}
               </Link>
             ))}
+            <NavAuth />
             <Link
               href="/get-involved#donate"
               className="ml-2 font-body text-sm font-semibold tracking-wider uppercase bg-rust text-cream px-5 py-2 rounded-sm hover:bg-ink transition-colors duration-200"
@@ -97,6 +99,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     {item.name}
                   </Link>
                 ))}
+                <NavAuth mobile onNavigate={() => setMobileOpen(false)} />
                 <Link
                   href="/get-involved#donate"
                   className="block mt-3 text-center font-body text-sm font-semibold tracking-wider uppercase bg-rust text-cream px-5 py-3 rounded-sm"

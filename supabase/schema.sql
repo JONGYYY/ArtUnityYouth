@@ -81,7 +81,7 @@ insert into session_info (id) values (1) on conflict (id) do nothing;
 insert into events (slug, title, date, location, description, category, cover_image, images, href, sort_order) values
   ('o1', 'MLK Day Art Competition', 'Submissions due January 31', '',
    'Ongoing art competition honoring Dr. Martin Luther King Jr. Create a piece that reflects service, equity, and hope.',
-   'key', '/images/events/MLK.png', '[]'::jsonb, null, 0),
+   'key', '/images/events/MLK.png', '["/images/events/mlk/submission-01.png","/images/events/mlk/submission-02.png","/images/events/mlk/submission-03.png","/images/events/mlk/submission-04.png","/images/events/mlk/submission-05.png","/images/events/mlk/submission-06.png","/images/events/mlk/submission-07.png","/images/events/mlk/submission-08.png","/images/events/mlk/submission-09.png","/images/events/mlk/submission-10.png","/images/events/mlk/submission-11.png"]'::jsonb, null, 0),
   ('friday-cards', 'Friday Card Sessions', 'Ongoing — Every Friday', 'Rockville Memorial Library',
    'Every Friday, youth and community members gather at the library to hand-illustrate get-well cards for hospital patients — spreading joy through art.',
    'key', '/images/events/friday-cards/friday-3.png', '[]'::jsonb, '/events/friday-sessions', 1),

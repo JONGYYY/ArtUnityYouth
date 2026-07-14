@@ -35,7 +35,9 @@ export async function middleware(request: NextRequest) {
 
   if (isProtectedAdmin) {
     const adminEmail = (process.env.ADMIN_EMAIL || '').toLowerCase();
-    const isAdmin = user?.email && user.email.toLowerCase() === adminEmail;
+    const emailVerified = user?.user_metadata?.email_verified !== false;
+    const isAdmin =
+      Boolean(adminEmail) && user?.email && user.email.toLowerCase() === adminEmail && emailVerified;
     if (!isAdmin) {
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = '/admin/login';

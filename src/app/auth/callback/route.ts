@@ -16,7 +16,12 @@ export async function GET(request: Request) {
         data: { user },
       } = await supabase.auth.getUser();
       const adminEmail = (process.env.ADMIN_EMAIL || '').toLowerCase();
-      const isAdmin = user?.email && user.email.toLowerCase() === adminEmail;
+      const emailVerified = user?.user_metadata?.email_verified !== false;
+      const isAdmin =
+        Boolean(adminEmail) &&
+        Boolean(user?.email) &&
+        user!.email!.toLowerCase() === adminEmail &&
+        emailVerified;
 
       if (isAdmin) {
         return NextResponse.redirect(`${origin}/admin`);

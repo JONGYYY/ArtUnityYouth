@@ -10,12 +10,13 @@ export default async function EventDetail({ params }: { params: { id: string } }
   const event = await getEventBySlug(params.id);
   if (!event) return notFound();
 
-  // Simple render for MLK event: just show the image plainly.
+  // MLK event: hero image + a gallery of contest submissions.
   if (event.slug === 'o1') {
+    const submissions = event.images && event.images.length > 0 ? event.images : null;
     return (
       <Layout>
         <section className="py-10">
-          <div className="max-w-4xl mx-auto px-4">
+          <div className="max-w-5xl mx-auto px-4">
             <div className="mb-4">
               <Link
                 href="/events"
@@ -24,11 +25,39 @@ export default async function EventDetail({ params }: { params: { id: string } }
                 Go Back
               </Link>
             </div>
+
             <img
               src={event.coverImage || '/images/events/MLK.png'}
               alt={event.title}
               className="w-full h-auto rounded-xl"
             />
+
+            {submissions ? (
+              <div className="mt-12">
+                <h2 className="font-heading text-2xl md:text-3xl text-secondary-dark mb-1">
+                  Contest Submissions
+                </h2>
+                <p className="font-body text-secondary-dark/70 mb-6">
+                  A gallery of the incredible artwork our young artists created in honor of Dr. Martin Luther King Jr.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {submissions.map((src, i) => (
+                    <div
+                      key={src}
+                      className="relative bg-white rounded-2xl shadow-soft overflow-hidden"
+                      style={{ minHeight: '320px' }}
+                    >
+                      <LightboxImage
+                        src={src}
+                        alt={`MLK contest submission ${i + 1}`}
+                        placeholderText={event.title}
+                        className="object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
         </section>
       </Layout>

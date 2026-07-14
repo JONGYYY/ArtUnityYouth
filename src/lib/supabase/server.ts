@@ -48,7 +48,10 @@ export async function getAdminUser() {
   } = await supabase.auth.getUser();
 
   const adminEmail = (process.env.ADMIN_EMAIL || '').toLowerCase();
-  if (user && user.email && user.email.toLowerCase() === adminEmail) {
+  // Require a configured allow-list, an exact (case-insensitive) email match,
+  // and a Google-verified email. This blocks anyone from impersonating the admin.
+  const emailVerified = user?.user_metadata?.email_verified !== false;
+  if (adminEmail && user?.email && user.email.toLowerCase() === adminEmail && emailVerified) {
     return user;
   }
   return null;

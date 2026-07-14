@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import Layout from '../../../components/layout/Layout';
 import Button from '../../../components/common/Button';
 import LightboxImage from '../../../components/common/LightboxImage';
+import SessionShowcase from './SessionShowcase';
 import type { FridaySession, SessionInfo } from '../../../lib/content';
 
 type SignupForm = {
@@ -24,6 +25,9 @@ const stagger = {
 };
 
 const tilts = [1.4, -1.2, 1.6, -1.5, 1.1, -1.7, 1.3, -1.0];
+
+const VOLUNTEER_SIGNUP_URL =
+  'https://montgomerycountymd.galaxydigital.com/need/detail/?need_id=1224085';
 
 function Gallery({
   photos,
@@ -157,8 +161,9 @@ export default function FridaySessionsClient({
     }
   };
 
-  const goingLabel =
-    count === null ? '—' : count === 1 ? '1 person going' : `${count} people going`;
+  // Only surface the RSVP count once it feels social-proof-worthy (10+).
+  const showGoing = typeof count === 'number' && count > 9;
+  const goingLabel = `${count} people going`;
 
   const cardPhotos = sessions.flatMap((s) => s.cardPhotos);
   const candidPhotos = sessions.flatMap((s) => s.candidPhotos);
@@ -185,7 +190,7 @@ export default function FridaySessionsClient({
               <Button size="lg" onClick={openAndScrollToForm}>
                 Sign Up to Join
               </Button>
-              <span className="font-accent text-xl text-rust">{goingLabel}</span>
+              {showGoing && <span className="font-accent text-xl text-rust">{goingLabel}</span>}
             </div>
           </motion.div>
         </div>
@@ -235,7 +240,7 @@ export default function FridaySessionsClient({
                   <Button size="lg" onClick={openAndScrollToForm}>
                     Save My Spot
                   </Button>
-                  <span className="font-accent text-xl text-ochre">{goingLabel}</span>
+                  {showGoing && <span className="font-accent text-xl text-ochre">{goingLabel}</span>}
                 </div>
               </div>
 
@@ -252,7 +257,15 @@ export default function FridaySessionsClient({
                         ? 'We already had your RSVP. Thanks for coming back!'
                         : "We'll be looking for you at the library. Feel free to bring a friend."}
                     </p>
-                    <p className="font-accent text-xl text-rust">{goingLabel}</p>
+                    {showGoing && <p className="font-accent text-xl text-rust">{goingLabel}</p>}
+                    <a
+                      href={VOLUNTEER_SIGNUP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-block font-body text-sm font-semibold text-rust hover:text-ink underline underline-offset-4 transition-colors"
+                    >
+                      Log it as volunteer hours ↗
+                    </a>
                   </div>
                 ) : (
                   <>
@@ -290,6 +303,20 @@ export default function FridaySessionsClient({
                         </p>
                       )}
                     </form>
+
+                    <div className="mt-6 pt-5 border-t border-ink/10 text-center">
+                      <p className="font-body text-sm text-ink/60 mb-2">
+                        Want it to count as official volunteer hours?
+                      </p>
+                      <a
+                        href={VOLUNTEER_SIGNUP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-sm font-semibold text-rust hover:text-ink underline underline-offset-4 transition-colors"
+                      >
+                        Register on our volunteer page ↗
+                      </a>
+                    </div>
                   </>
                 )}
               </div>
@@ -363,46 +390,12 @@ export default function FridaySessionsClient({
           <div className="mb-10 max-w-2xl">
             <span className="label-accent block mb-2">Session log</span>
             <h2 className="font-heading text-3xl text-ink mb-2">Past Fridays</h2>
-            <p className="font-body text-ink/60">A running journal of our weekly sessions.</p>
+            <p className="font-body text-ink/60">
+              Pick a day to relive it — flip through the photos from each session.
+            </p>
           </div>
 
-          <div className="space-y-12">
-            {sessions.map((session) => {
-              const allPhotos = [...session.groupPhotos, ...session.cardPhotos, ...session.candidPhotos];
-              return (
-                <motion.div
-                  key={session.id}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                  variants={fadeIn}
-                  className="border-l-2 border-rust/30 pl-6"
-                >
-                  <h3 className="font-heading text-2xl text-ink mb-1">{session.label}</h3>
-                  {session.note && (
-                    <p className="font-body text-ink/60 mb-5 max-w-2xl">{session.note}</p>
-                  )}
-                  {allPhotos.length > 0 && (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                      {allPhotos.map((src, i) => (
-                        <div
-                          key={`${src}-${i}`}
-                          className="relative aspect-square bg-parch rounded-sm overflow-hidden shadow-card"
-                        >
-                          <LightboxImage
-                            src={src}
-                            alt={`${session.label} photo ${i + 1}`}
-                            placeholderText={session.label}
-                            className="object-cover"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              );
-            })}
-          </div>
+          <SessionShowcase sessions={sessions} />
         </div>
       </section>
 
@@ -413,7 +406,7 @@ export default function FridaySessionsClient({
           <p className="font-body text-cream/70 mb-2">
             {info.day} · {info.time} · {info.location}
           </p>
-          <p className="font-accent text-2xl text-ochre mb-8">{goingLabel}</p>
+          {showGoing && <p className="font-accent text-2xl text-ochre mb-8">{goingLabel}</p>}
           <Button size="lg" onClick={openAndScrollToForm}>
             Sign Up to Join
           </Button>
@@ -434,7 +427,7 @@ export default function FridaySessionsClient({
               <div className="min-w-0">
                 <p className="font-display text-lg tracking-wide leading-none truncate">FRIDAY DRAWING SESSION</p>
                 <p className="font-body text-xs text-cream/80 truncate">
-                  {info.time} · {info.location} · {goingLabel}
+                  {info.time} · {info.location}{showGoing ? ` · ${goingLabel}` : ''}
                 </p>
               </div>
               <button
