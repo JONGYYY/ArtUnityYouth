@@ -5,13 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import LightboxImage from '../common/LightboxImage';
 
+// Curated to echo the mission copy — hands-on making, healing through art,
+// and finding common ground. Intentionally distinct from the hero carousel.
 const images = [
+  { src: '/images/events/screen-printing/workshop/workshop-12.png', alt: 'A young volunteer pulling a screen print' },
   { src: '/images/events/friday-cards/jul-10-2026/candid-2.png', alt: 'A young artist drawing a get-well card' },
-  { src: '/images/events/murals/mural-2.png', alt: 'Community mural celebrating unity' },
-  { src: '/images/events/pride-2026/pride-4.png', alt: 'ArtUnity Youth at PRIDE 2026' },
-  { src: '/images/events/screen-printing/sp-1.png', alt: 'Screen printing at Oktoberfest' },
-  { src: '/images/events/friday-cards/jul-10-2026/group-1.png', alt: 'Weekly Friday session group photo' },
-  { src: '/images/events/friday-cards/friday-6.png', alt: 'Youth showing their handmade cards' },
+  { src: '/images/events/murals/mural-4.png', alt: 'Youth painting a community mural together' },
+  { src: '/images/events/screen-printing/workshop/workshop-17.png', alt: 'A child inking their own print' },
+  { src: '/images/events/friday-cards/friday-1.png', alt: 'Volunteers illustrating cards side by side' },
+  { src: '/images/events/pride-2026/pride-2.png', alt: 'Chalk messages of love and belonging' },
+  { src: '/images/events/screen-printing/workshop/workshop-08.png', alt: 'Youth working the print press together' },
+  { src: '/images/events/friday-cards/jul-10-2026/candid-4.png', alt: 'Hands at work on get-well cards' },
+  { src: '/images/events/mlk/submission-05.png', alt: 'A student artwork honoring Dr. King' },
+  { src: '/images/events/screen-printing/workshop/workshop-19.png', alt: 'Finishing a hand-printed tote' },
+  { src: '/images/events/friday-cards/friday-4.png', alt: 'Smiling volunteers with finished cards' },
+  { src: '/images/events/screen-printing/workshop/workshop-06.png', alt: 'A mixed group learning to screen print' },
+  { src: '/images/events/friday-cards/jul-10-2026/candid-6.png', alt: 'Creating cards for children in hospitals' },
+  { src: '/images/events/screen-printing/workshop/workshop-14.png', alt: 'A young maker at the press' },
+  { src: '/images/events/friday-cards/friday-2.png', alt: 'A full table of young artists at work' },
+  { src: '/images/events/mlk/submission-08.png', alt: 'Expressive youth artwork on display' },
 ];
 
 const INTERVAL_MS = 4500;
@@ -73,18 +85,23 @@ export default function MissionGallery() {
       {/* Decorative corner accent */}
       <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-rust/40 pointer-events-none" />
 
-      {/* Dots */}
-      <div className="mt-3 flex items-center gap-2">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setIndex(i)}
-            aria-label={`Photo ${i + 1}`}
-            className={`transition-all duration-300 rounded-full ${
-              i === index ? 'w-6 h-2 bg-rust' : 'w-2 h-2 bg-ink/20 hover:bg-ink/40'
-            }`}
-          />
-        ))}
+      {/* Dots + counter */}
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-1.5">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`Photo ${i + 1}`}
+              className={`transition-all duration-300 rounded-full ${
+                i === index ? 'w-6 h-2 bg-rust' : 'w-2 h-2 bg-ink/20 hover:bg-ink/40'
+              }`}
+            />
+          ))}
+        </div>
+        <span className="font-body text-xs text-ink/40 tabular-nums shrink-0">
+          {index + 1} / {images.length}
+        </span>
       </div>
     </div>
   );

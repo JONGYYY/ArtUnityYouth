@@ -24,7 +24,7 @@ const impactItems = [
     icon: '🎨',
     label: 'Art Programs',
     desc: 'Weekly workshops fostering creativity and personal expression in youth.',
-    image: '/images/events/screen-printing/sp-1.png',
+    image: '/images/events/screen-printing/workshop/workshop-12.png',
   },
   {
     icon: '🤝',
