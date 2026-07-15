@@ -7,6 +7,7 @@ import Layout from '../../../components/layout/Layout';
 import Button from '../../../components/common/Button';
 import LightboxImage from '../../../components/common/LightboxImage';
 import SessionShowcase from './SessionShowcase';
+import { getUpcomingFriday, formatFridayShort } from '../../../lib/friday';
 import type { FridaySession, SessionInfo } from '../../../lib/content';
 
 type SignupForm = {
@@ -96,6 +97,7 @@ export default function FridaySessionsClient({
   info: SessionInfo;
 }) {
   const [count, setCount] = useState<number | null>(null);
+  const [fridayDate, setFridayDate] = useState<string>('');
   const [formOpen, setFormOpen] = useState(false);
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [submitState, setSubmitState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -110,6 +112,11 @@ export default function FridaySessionsClient({
     reset,
     formState: { errors },
   } = useForm<SignupForm>();
+
+  // Computed on the client to avoid SSR/CSR hydration mismatches around midnight.
+  useEffect(() => {
+    setFridayDate(formatFridayShort(getUpcomingFriday()));
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -164,6 +171,7 @@ export default function FridaySessionsClient({
   // Only surface the RSVP count once it feels social-proof-worthy (10+).
   const showGoing = typeof count === 'number' && count > 9;
   const goingLabel = `${count} people going`;
+  const whenLabel = fridayDate ? `${fridayDate} · ${info.time}` : `${info.day} · ${info.time}`;
 
   const cardPhotos = sessions.flatMap((s) => s.cardPhotos);
   const candidPhotos = sessions.flatMap((s) => s.candidPhotos);
@@ -214,7 +222,7 @@ export default function FridaySessionsClient({
                 <ul className="space-y-4 font-body text-cream/85 mb-8">
                   <li className="flex items-baseline gap-3">
                     <span className="font-display text-ochre text-sm tracking-widest uppercase w-20 shrink-0">When</span>
-                    <span>{info.day} · {info.time}</span>
+                    <span>{whenLabel}</span>
                   </li>
                   <li className="flex items-baseline gap-3">
                     <span className="font-display text-ochre text-sm tracking-widest uppercase w-20 shrink-0">Where</span>
@@ -404,7 +412,7 @@ export default function FridaySessionsClient({
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="font-display text-4xl md:text-5xl tracking-wide mb-4">DRAW WITH US THIS FRIDAY</h2>
           <p className="font-body text-cream/70 mb-2">
-            {info.day} · {info.time} · {info.location}
+            {whenLabel} · {info.location}
           </p>
           {showGoing && <p className="font-accent text-2xl text-ochre mb-8">{goingLabel}</p>}
           <Button size="lg" onClick={openAndScrollToForm}>
@@ -427,7 +435,7 @@ export default function FridaySessionsClient({
               <div className="min-w-0">
                 <p className="font-display text-lg tracking-wide leading-none truncate">FRIDAY DRAWING SESSION</p>
                 <p className="font-body text-xs text-cream/80 truncate">
-                  {info.time} · {info.location}{showGoing ? ` · ${goingLabel}` : ''}
+                  {fridayDate ? `${fridayDate} · ` : ''}{info.time} · {info.location}{showGoing ? ` · ${goingLabel}` : ''}
                 </p>
               </div>
               <button

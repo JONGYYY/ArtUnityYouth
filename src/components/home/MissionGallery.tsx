@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import LightboxImage from '../common/LightboxImage';
 
 const images = [
@@ -18,6 +19,8 @@ const INTERVAL_MS = 4500;
 export default function MissionGallery() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+
+  const go = (dir: number) => setIndex((i) => (i + dir + images.length) % images.length);
 
   useEffect(() => {
     if (paused) return;
@@ -48,6 +51,23 @@ export default function MissionGallery() {
             />
           </motion.div>
         </AnimatePresence>
+
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); go(-1); }}
+          aria-label="Previous photo"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-cream/85 text-ink shadow-card backdrop-blur-sm hover:bg-cream transition-colors"
+        >
+          <ChevronLeftIcon className="w-5 h-5" />
+        </button>
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); go(1); }}
+          aria-label="Next photo"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-cream/85 text-ink shadow-card backdrop-blur-sm hover:bg-cream transition-colors"
+        >
+          <ChevronRightIcon className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Decorative corner accent */}

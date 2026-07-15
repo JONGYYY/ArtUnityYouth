@@ -5,20 +5,8 @@ import Layout from '../../components/layout/Layout';
 import Link from 'next/link';
 import SmartImage from '../../components/common/SmartImage';
 import Button from '../../components/common/Button';
+import { getUpcomingFriday, formatFridayLong } from '../../lib/friday';
 import type { EventItem, SessionInfo } from '../../lib/content';
-
-/** The upcoming Friday (today counts if it's Friday), formatted for display. */
-function nextFridayLabel(from: Date = new Date()): string {
-  const d = new Date(from);
-  const daysUntilFriday = (5 - d.getDay() + 7) % 7; // 5 = Friday
-  d.setDate(d.getDate() + daysUntilFriday);
-  return d.toLocaleDateString('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-}
 
 const tilts = [1.5, -1.2, 1.8, -1.5, 1.1, -1.8, 1.4, -1.0];
 
@@ -44,7 +32,7 @@ export default function EventsClient({
   pastEvents: EventItem[];
   sessionInfo: SessionInfo;
 }) {
-  const fridayDate = nextFridayLabel();
+  const fridayDate = formatFridayLong(getUpcomingFriday());
   return (
     <Layout>
       {/* ── Page header ─────────────────────────────────────── */}

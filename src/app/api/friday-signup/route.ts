@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getServiceClient } from '../../../lib/supabase/admin';
+import { getUpcomingFriday, toISODate } from '../../../lib/friday';
 
 export const dynamic = 'force-dynamic';
 
 const TABLE = 'friday_signups';
 
-// In-memory fallback count so local dev without Supabase still behaves sensibly.
-let devCount = 0;
+// In-memory fallback counts (dev only), keyed by session date so they reset weekly.
+const devCounts: Record<string, number> = {};
 
 function isValidEmail(email: string): boolean {
   return /\S+@\S+\.\S+/.test(email);
@@ -45,23 +46,25 @@ async function sendNotification(name: string, email: string) {
 }
 
 export async function GET() {
+  const sessionDate = toISODate(getUpcomingFriday());
   const supabase = getServiceClient();
 
   if (!supabase) {
-    return NextResponse.json({ count: devCount, dev: true });
+    return NextResponse.json({ count: devCounts[sessionDate] ?? 0, sessionDate, dev: true });
   }
 
   const { count, error } = await supabase
     .from(TABLE)
-    .select('*', { count: 'exact', head: true });
+    .select('*', { count: 'exact', head: true })
+    .eq('session_date', sessionDate);
 
   if (error) {
     // eslint-disable-next-line no-console
     console.error('Supabase count error:', error.message);
-    return NextResponse.json({ count: 0 });
+    return NextResponse.json({ count: 0, sessionDate });
   }
 
-  return NextResponse.json({ count: count ?? 0 });
+  return NextResponse.json({ count: count ?? 0, sessionDate });
 }
 
 export async function POST(request: Request) {
@@ -77,20 +80,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
 
+    const sessionDate = toISODate(getUpcomingFriday());
     const supabase = getServiceClient();
 
     // Dev fallback: no Supabase configured.
     if (!supabase) {
-      devCount += 1;
+      devCounts[sessionDate] = (devCounts[sessionDate] ?? 0) + 1;
       await sendNotification(name, email);
-      return NextResponse.json({ ok: true, dev: true, count: devCount });
+      return NextResponse.json({ ok: true, dev: true, count: devCounts[sessionDate], sessionDate });
     }
 
     const { error: insertError } = await supabase
       .from(TABLE)
-      .insert({ name, email });
+      .insert({ name, email, session_date: sessionDate });
 
-    // 23505 = unique_violation (already signed up). Treat as success.
+    // 23505 = unique_violation (already signed up for this Friday). Treat as success.
     const alreadySignedUp = insertError?.code === '23505';
     if (insertError && !alreadySignedUp) {
       // eslint-disable-next-line no-console
@@ -109,12 +113,14 @@ export async function POST(request: Request) {
 
     const { count } = await supabase
       .from(TABLE)
-      .select('*', { count: 'exact', head: true });
+      .select('*', { count: 'exact', head: true })
+      .eq('session_date', sessionDate);
 
     return NextResponse.json({
       ok: true,
       alreadySignedUp,
       count: count ?? 0,
+      sessionDate,
     });
   } catch (_error) {
     return NextResponse.json({ error: 'Failed to process sign-up' }, { status: 500 });

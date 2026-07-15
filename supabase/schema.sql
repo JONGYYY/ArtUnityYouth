@@ -43,11 +43,22 @@ create table if not exists session_info (
 );
 
 create table if not exists friday_signups (
-  id         uuid primary key default gen_random_uuid(),
-  name       text not null,
-  email      text not null unique,
-  created_at timestamptz not null default now()
+  id           uuid primary key default gen_random_uuid(),
+  name         text not null,
+  email        text not null,
+  -- The Friday this RSVP is for. Counts filter on this so stats reset weekly.
+  session_date date not null default (current_date + ((5 - extract(dow from current_date)::int + 7) % 7)),
+  created_at   timestamptz not null default now()
 );
+
+-- Migration for databases created before session_date existed:
+alter table friday_signups add column if not exists session_date date;
+update friday_signups set session_date = current_date where session_date is null;
+alter table friday_signups alter column session_date set not null;
+-- RSVPs are unique per (session_date, email) so the same person can join each week.
+alter table friday_signups drop constraint if exists friday_signups_email_key;
+create unique index if not exists friday_signups_session_email_idx
+  on friday_signups (session_date, email);
 
 -- ────────────────────────────────────────────────────────────
 -- Row Level Security
@@ -93,7 +104,7 @@ insert into events (slug, title, date, location, description, category, cover_im
   ('p1', 'Community Art Workshop', '', 'Rockville Town Center',
    'Live screen printing and expressive ink drawing during Oktoberfest—inviting passersby to co-create art and take home their own prints.',
    'key', '/images/events/screen-printing/sp-1.png',
-   '["/images/events/screen-printing/sp-1.png","/images/events/screen-printing/sp-2.jpg"]'::jsonb,
+   '["/images/events/screen-printing/sp-1.png","/images/events/screen-printing/sp-2.jpg","/images/events/screen-printing/workshop/workshop-01.png","/images/events/screen-printing/workshop/workshop-02.png","/images/events/screen-printing/workshop/workshop-03.png","/images/events/screen-printing/workshop/workshop-04.png","/images/events/screen-printing/workshop/workshop-05.png","/images/events/screen-printing/workshop/workshop-06.png","/images/events/screen-printing/workshop/workshop-07.png","/images/events/screen-printing/workshop/workshop-08.png","/images/events/screen-printing/workshop/workshop-09.png","/images/events/screen-printing/workshop/workshop-10.png","/images/events/screen-printing/workshop/workshop-11.png","/images/events/screen-printing/workshop/workshop-12.png","/images/events/screen-printing/workshop/workshop-13.png","/images/events/screen-printing/workshop/workshop-14.png","/images/events/screen-printing/workshop/workshop-15.png","/images/events/screen-printing/workshop/workshop-16.png","/images/events/screen-printing/workshop/workshop-17.png","/images/events/screen-printing/workshop/workshop-18.png","/images/events/screen-printing/workshop/workshop-19.png"]'::jsonb,
    null, 3),
   ('p5', 'Annual Holiday Cards for Hospitals', '', '',
    'A holiday card-making workshop where kids designed and illustrated heartfelt Christmas cards for patients at Hospitals.',
@@ -110,6 +121,11 @@ insert into events (slug, title, date, location, description, category, cover_im
    '["/images/events/murals/mural-2.png","/images/events/murals/mural-3.png","/images/events/murals/mural-1.png","/images/events/murals/mural-4.png"]'::jsonb,
    null, 7)
 on conflict (slug) do nothing;
+
+-- Keep the Community Art Workshop (p1) gallery in sync even if the row already exists.
+update events set images =
+  '["/images/events/screen-printing/sp-1.png","/images/events/screen-printing/sp-2.jpg","/images/events/screen-printing/workshop/workshop-01.png","/images/events/screen-printing/workshop/workshop-02.png","/images/events/screen-printing/workshop/workshop-03.png","/images/events/screen-printing/workshop/workshop-04.png","/images/events/screen-printing/workshop/workshop-05.png","/images/events/screen-printing/workshop/workshop-06.png","/images/events/screen-printing/workshop/workshop-07.png","/images/events/screen-printing/workshop/workshop-08.png","/images/events/screen-printing/workshop/workshop-09.png","/images/events/screen-printing/workshop/workshop-10.png","/images/events/screen-printing/workshop/workshop-11.png","/images/events/screen-printing/workshop/workshop-12.png","/images/events/screen-printing/workshop/workshop-13.png","/images/events/screen-printing/workshop/workshop-14.png","/images/events/screen-printing/workshop/workshop-15.png","/images/events/screen-printing/workshop/workshop-16.png","/images/events/screen-printing/workshop/workshop-17.png","/images/events/screen-printing/workshop/workshop-18.png","/images/events/screen-printing/workshop/workshop-19.png"]'::jsonb
+where slug = 'p1';
 
 insert into friday_sessions (label, note, card_photos, candid_photos, group_photos, sort_order) values
   ('July 10, 2026',
