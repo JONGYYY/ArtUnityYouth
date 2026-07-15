@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Layout from '../../../components/layout/Layout';
 import LightboxImage from '../../../components/common/LightboxImage';
+import EventGallery from '../../../components/events/EventGallery';
 import Link from 'next/link';
 import { getEventBySlug } from '../../../lib/content';
 
@@ -100,24 +101,7 @@ export default async function EventDetail({ params }: { params: { id: string } }
 
           {/* Photo gallery */}
           {gallery ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {gallery.map((src, i) => (
-                <div
-                  key={src}
-                  className={`relative bg-white rounded-2xl shadow-soft overflow-hidden ${
-                    i === 0 ? 'sm:col-span-2 lg:col-span-2' : ''
-                  }`}
-                  style={{ minHeight: '280px' }}
-                >
-                  <LightboxImage
-                    src={src}
-                    alt={`${event.title} photo ${i + 1}`}
-                    placeholderText={event.title}
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+            <EventGallery images={gallery} title={event.title} />
           ) : (
             <div className="relative w-full bg-white rounded-2xl shadow-soft p-4" style={{ minHeight: '360px' }}>
               <LightboxImage
