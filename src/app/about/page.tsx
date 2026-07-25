@@ -16,7 +16,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const coreMembers = [
+const officerMembers = [
   {
     name: 'Jonathan Shan',
     role: 'Founder and President',
@@ -35,11 +35,35 @@ const coreMembers = [
     image: '/images/team/Daveon.png',
     bio: 'Daveon Williams is Vice President of ArtUnity Youth and a student at Richard Montgomery High School. As the Community & Engagement Lead, he helps grow participation and builds a welcoming event environment through outreach, mentorship, and hands\u2011on creative activities. He\u2019s passionate about creating safe spaces where youth feel supported, challenged, and inspired to lead. Daveon is also a dedicated boxer who values discipline and resilience.',
   },
+];
+
+const eventLeadMembers = [
+  {
+    name: 'Samia Guled',
+    role: 'Event Lead',
+    image: '/images/team/samia.png',
+    bio: 'Samia Guled is a ninth-grade student at Magruder High School. She enjoys meeting new people, making friends, and helping others. Samia loves drawing, creating art, and making DIY projects. In her free time, she enjoys listening to music, playing games with family and friends, and watching web series. She is excited to bring her creativity, positive energy, and collaborative spirit to the team.',
+  },
+  {
+    name: 'Savannah Charles',
+    role: 'Event Lead',
+    image: '/images/team/savannah.png',
+    bio: 'Savannah Charles is a ninth-grade student at Walter Johnson High School. She is passionate about learning, staying active, and encouraging others to reach their full potential. Outside of school, she enjoys playing tennis and volleyball. Savannah has held several leadership roles and takes pride in approaching each responsibility with care and dedication. She looks forward to continuing to learn, grow, and use her leadership skills to make a positive impact in her community.',
+  },
+];
+
+const ambassadorMembers = [
   {
     name: 'Mingdi Chen',
-    role: 'Junior Team Lead (Outreach & Youth Ambassador)',
+    role: 'Outreach & Youth Ambassador',
     image: '/images/team/didi.jpg',
-    bio: 'Mingdi Chen is a Junior Team Lead at ArtUnity Youth and a student at Cabin John Middle School. As the Junior Outreach & Youth Ambassador Lead, he helps connect ArtUnity with younger students by spreading the word about workshops, supporting youth\u2011focused outreach, and helping create creative promotional materials. Mingdi is also an award\u2011winning young artist and loves inspiring other students to grow through art.',
+    bio: 'Mingdi Chen is a student at Cabin John Middle School. As an Outreach & Youth Ambassador, he helps connect ArtUnity with younger students by spreading the word about workshops, supporting youth\u2011focused outreach, and helping create creative promotional materials. Mingdi is also an award\u2011winning young artist and loves inspiring other students to grow through art.',
+  },
+  {
+    name: 'Nadia Guled',
+    role: 'Outreach & Youth Ambassador',
+    image: '/images/team/nadia.png',
+    bio: 'Nadia Guled is a sixth-grade student at Shady Grove Middle School. She enjoys helping others and creating art independently, with friends, and with her siblings. Nadia is excited to collaborate with the team, use her creativity to support the community, and continue learning and growing in her role as an Outreach & Youth Ambassador.',
   },
 ];
 
@@ -64,7 +88,7 @@ const advisorMembers = [
   },
 ];
 
-function MemberCard({ member }: { member: typeof coreMembers[0] }) {
+function MemberCard({ member }: { member: { name: string; role: string; image: string; bio: string } }) {
   return (
     /*
      * CSS-only hover lift — no motion.div wrapping the image.
@@ -199,13 +223,41 @@ export default function About() {
             animate={teamInView ? 'visible' : 'hidden'}
           >
             <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
-              Leadership &amp; Core Team
+              Officers
             </motion.h3>
             <motion.div
               variants={stagger}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
             >
-              {coreMembers.map((member) => (
+              {officerMembers.map((member) => (
+                <motion.div key={member.name} variants={fadeUp}>
+                  <MemberCard member={member} />
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
+              Event Leads
+            </motion.h3>
+            <motion.div
+              variants={stagger}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+            >
+              {eventLeadMembers.map((member) => (
+                <motion.div key={member.name} variants={fadeUp}>
+                  <MemberCard member={member} />
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
+              Youth Ambassadors
+            </motion.h3>
+            <motion.div
+              variants={stagger}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+            >
+              {ambassadorMembers.map((member) => (
                 <motion.div key={member.name} variants={fadeUp}>
                   <MemberCard member={member} />
                 </motion.div>
