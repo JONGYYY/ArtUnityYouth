@@ -187,12 +187,13 @@ export default function FridaySessionsClient({
             <h1 className="font-display text-display-lg text-ink mb-5 leading-none">
               WEEKLY FRIDAY
               <br />
-              DRAWING SESSIONS
+              ART &amp; KINDNESS SESSIONS
             </h1>
             <p className="font-body text-lg text-ink/70 leading-relaxed mb-8 max-w-2xl">
-              Every Friday, youth and neighbors gather to hand-illustrate get-well cards for
-              children in local hospitals. No experience needed — just bring yourself and a little
-              heart. Come make art that reaches someone who needs it.
+              Every Friday, youth and neighbors gather to hand-illustrate encouragement cards for
+              children, families, seniors, and community members. No experience is needed, just
+              bring yourself and a little heart. Come create art that shares kindness and brightens
+              someone&apos;s day.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Button size="lg" onClick={openAndScrollToForm}>
@@ -338,13 +339,17 @@ export default function FridaySessionsClient({
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}>
             <span className="label-accent block mb-3">What we do</span>
-            <h2 className="font-heading text-3xl md:text-4xl text-ink mb-5">Small cards, big comfort</h2>
+            <h2 className="font-heading text-3xl md:text-4xl text-ink mb-5">Small Cards, Big Kindness</h2>
+            <p className="font-body text-lg text-ink/70 leading-relaxed mb-6">
+              A handmade card can bring comfort, encouragement, and a moment of joy. Each Friday,
+              ArtUnity Youth volunteers come together to create colorful cards filled with uplifting
+              artwork and thoughtful messages for children, families, seniors, and others who could
+              use extra kindness.
+            </p>
             <p className="font-body text-lg text-ink/70 leading-relaxed">
-              Being in the hospital is hard — especially for a kid. Each Friday we sit down together
-              and hand-draw colorful, encouraging get-well cards that are delivered to young
-              patients. Every card is one of a kind, filled with bright artwork and a message of hope
-              from someone who cares. It&apos;s a simple act, but for a child in a hospital bed, a
-              handmade card can be a bright spot in a tough day.
+              Every card is one of a kind and carefully reviewed before being donated through
+              nonprofit, healthcare, and community organizations. It may be a simple gesture, but a
+              message created with care can make someone&apos;s day feel a little brighter.
             </p>
           </motion.div>
         </div>
@@ -410,7 +415,7 @@ export default function FridaySessionsClient({
       {/* ── Closing CTA ──────────────────────────────────────── */}
       <section className="py-20 bg-ink text-cream texture-diag">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="font-display text-4xl md:text-5xl tracking-wide mb-4">DRAW WITH US THIS FRIDAY</h2>
+          <h2 className="font-display text-4xl md:text-5xl tracking-wide mb-4">JOIN US THIS FRIDAY</h2>
           <p className="font-body text-cream/70 mb-2">
             {whenLabel} · {info.location}
           </p>
@@ -433,7 +438,7 @@ export default function FridaySessionsClient({
           >
             <div className="max-w-7xl mx-auto px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
               <div className="min-w-0">
-                <p className="font-display text-lg tracking-wide leading-none truncate">FRIDAY DRAWING SESSION</p>
+                <p className="font-display text-lg tracking-wide leading-none truncate">FRIDAY ART &amp; KINDNESS SESSION</p>
                 <p className="font-body text-xs text-cream/80 truncate">
                   {fridayDate ? `${fridayDate} · ` : ''}{info.time} · {info.location}{showGoing ? ` · ${goingLabel}` : ''}
                 </p>

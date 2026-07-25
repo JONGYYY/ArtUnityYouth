@@ -42,7 +42,7 @@ const impactItems = [
     icon: '💫',
     label: 'Youth Leadership',
     desc: 'Mentorship programs developing the next generation of creative leaders.',
-    image: '/images/events/friday-cards/jul-10-2026/group-1.png',
+    image: '/images/events/friday-cards/group-photo.png',
   },
 ];
 

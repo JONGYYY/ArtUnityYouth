@@ -62,7 +62,7 @@ export default function EventsClient({
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative min-h-[240px] lg:min-h-full">
                   <SmartImage
-                    src="/images/events/friday-cards/friday-3.png"
+                    src="/images/events/friday-cards/group-photo.png"
                     alt="Friday Drawing Sessions"
                     placeholderText="Friday Drawing Sessions"
                     className="object-cover"
@@ -118,7 +118,7 @@ export default function EventsClient({
               <Link href="/events/friday-sessions" className="block focus-visible:outline-none">
                 <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
                   <SmartImage
-                    src="/images/events/friday-cards/friday-3.png"
+                    src="/images/events/friday-cards/group-photo.png"
                     alt="Weekly Friday Drawing Session"
                     placeholderText="Friday Drawing Session"
                     className="object-cover"
