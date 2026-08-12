@@ -50,6 +50,12 @@ const eventLeadMembers = [
     image: '/images/team/savannah.png',
     bio: 'Savannah Charles is a ninth-grade student at Walter Johnson High School. She is passionate about learning, staying active, and encouraging others to reach their full potential. Outside of school, she enjoys playing tennis and volleyball. Savannah has held several leadership roles and takes pride in approaching each responsibility with care and dedication. She looks forward to continuing to learn, grow, and use her leadership skills to make a positive impact in her community.',
   },
+  {
+    name: 'Adya Karthik Bharadwaaj',
+    role: 'Youth Event Lead',
+    image: '/images/team/adya.png',
+    bio: 'Hi! I\u2019m Adya Karthik Bharadwaaj, a sophomore at Wootton High School who enjoys sketching, dancing, reading, and connecting with others. Teaching my younger sister how to draw, dance, and solve puzzles helped me discover how much I enjoy supporting children as they learn and grow. ArtUnity Youth has given me a wonderful opportunity to combine my love of art with my passion for mentoring young people. As a Youth Event Lead, I help guide young artists, build their confidence, and create a welcoming environment where everyone feels comfortable exploring their creativity. I\u2019m excited to continue developing as a leader while showing how art can spread kindness, encouragement, and meaningful connections.',
+  },
 ];
 
 const ambassadorMembers = [
@@ -97,12 +103,12 @@ function MemberCard({ member }: { member: { name: string; role: string; image: s
     <div className="group bg-cream border border-ink/8 rounded-sm overflow-hidden shadow-card
                     transition-transform duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
       {/* Image container: explicit relative + aspect-ratio so fill never collapses */}
-      <div className="relative w-full aspect-[4/3] overflow-hidden bg-parch">
+      <div className="relative w-full aspect-[4/5] overflow-hidden bg-parch">
         <SmartImage
           src={member.image}
           alt={member.name}
           placeholderText={member.name}
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
