@@ -159,7 +159,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Friday sessions quick link */}
-            <motion.div custom={2} initial="hidden" animate="visible" variants={fadeUp} className="mb-12">
+            <motion.div custom={2} initial="hidden" animate="visible" variants={fadeUp}>
               <Link href="/events/friday-sessions"
                 className="group inline-flex items-center gap-2 font-body font-semibold text-sm tracking-widest uppercase text-teal hover:text-rust transition-colors duration-200"
               >
@@ -167,18 +167,6 @@ export default function Hero() {
                 Join our Weekly Friday Sessions
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div custom={2} initial="hidden" animate="visible" variants={fadeUp}
-              className="flex flex-col sm:flex-row gap-0 divide-y sm:divide-y-0 sm:divide-x divide-ink/10 border border-ink/10 rounded-sm max-w-xs"
-            >
-              {[{ number: '1,000+', label: 'People Impacted' }, { number: '50+', label: 'Art Events' }].map(s => (
-                <div key={s.label} className="flex-1 px-7 py-5">
-                  <div className="font-display text-3xl text-rust mb-0.5">{s.number}</div>
-                  <div className="font-body text-xs text-ink/50 tracking-wide uppercase">{s.label}</div>
-                </div>
-              ))}
             </motion.div>
           </div>
 
@@ -191,6 +179,20 @@ export default function Hero() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
+            {/* Stats — 3 boxes above the carousel */}
+            <div className="grid grid-cols-3 gap-0 divide-x divide-ink/10 border border-ink/10 rounded-sm mb-8">
+              {[
+                { number: '2,000+', label: 'People Impacted' },
+                { number: '70+',    label: 'Art Events' },
+                { number: '120+',   label: 'Volunteers' },
+              ].map(s => (
+                <div key={s.label} className="px-5 py-6 text-center">
+                  <div className="font-display text-5xl sm:text-6xl text-rust mb-1 leading-none">{s.number}</div>
+                  <div className="font-body text-xs text-ink/50 tracking-wide uppercase">{s.label}</div>
+                </div>
+              ))}
+            </div>
+
             {/* Image frame */}
             <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden shadow-card-hover border border-ink/10">
               <AnimatePresence mode="sync">
