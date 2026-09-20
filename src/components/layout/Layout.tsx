@@ -37,10 +37,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="group flex items-center gap-2">
-            <span className="font-display text-3xl sm:text-4xl tracking-wide text-rust leading-none">
+            <span className="font-display text-4xl sm:text-5xl tracking-wide text-rust leading-none">
               ARTUNITY
             </span>
-            <span className="font-accent text-xl sm:text-2xl text-ink/70 leading-none mt-0.5">
+            <span className="font-accent text-2xl sm:text-3xl text-ink/70 leading-none mt-0.5">
               Youth
             </span>
           </Link>

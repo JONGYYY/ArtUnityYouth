@@ -146,31 +146,13 @@ export default function About() {
 
   return (
     <Layout>
-      {/* ── Hero ──────────────────────────────────────────────── */}
-      <section className="pt-36 pb-20 bg-cream texture-dots">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl"
-          >
-            <span className="label-accent block mb-3">Who We Are</span>
-            <h1 className="font-display text-display-lg text-ink mb-5 leading-none">OUR STORY</h1>
-            <p className="font-body text-base text-ink/60 leading-relaxed">
-              Building bridges through art, one brushstroke at a time.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ── Mission ───────────────────────────────────────────── */}
       <motion.section
         ref={missionRef}
         variants={stagger}
         initial="hidden"
         animate={missionInView ? 'visible' : 'hidden'}
-        className="py-24 bg-cream"
+        className="pt-36 pb-24 bg-cream texture-dots"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -197,7 +179,7 @@ export default function About() {
             </motion.div>
 
             <div>
-              <motion.span variants={fadeUp} className="label-accent block mb-3 text-2xl sm:text-3xl">Our Mission</motion.span>
+              <motion.span variants={fadeUp} className="label-accent block mb-3 text-3xl sm:text-4xl">Our Mission</motion.span>
               <motion.h2 variants={fadeUp} className="font-heading text-4xl sm:text-5xl text-ink mb-6 leading-tight">
                 Art as a Bridge,<br /><em>Not a Wall</em>
               </motion.h2>
