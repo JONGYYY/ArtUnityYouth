@@ -71,6 +71,24 @@ const ambassadorMembers = [
     image: '/images/team/nadia.png',
     bio: 'Nadia Guled is a sixth-grade student at Shady Grove Middle School. She enjoys helping others and creating art independently, with friends, and with her siblings. Nadia is excited to collaborate with the team, use her creativity to support the community, and continue learning and growing in her role as an Outreach & Youth Ambassador.',
   },
+  {
+    name: 'Jenna Yang',
+    role: 'Youth Ambassador',
+    image: '/images/team/jenna.png',
+    bio: 'Jenna Yang is a student at Robert Frost Middle School who enjoys drawing, painting, sports, games, and trying new things. Art is one of her favorite ways to express herself and share her ideas. As an Art Unity Youth Ambassador, Jenna hopes to use creativity to connect with others and bring people in her community together.',
+  },
+  {
+    name: 'Melissa Shen',
+    role: 'Outreach & Youth Ambassador',
+    image: '/images/team/melissa.png',
+    bio: 'Melissa Shen is a student at Cabin John Middle School with a love for art, crafts, and hands-on creativity. She enjoys meeting new people and finding ways to contribute to her community. As an Outreach & Youth Ambassador for Art Unity, Melissa hopes to help more young people get involved and create welcoming opportunities for others to connect through art.',
+  },
+  {
+    name: 'Abnezer Fekadu',
+    role: 'Outreach & Youth Ambassador',
+    image: '/images/team/abnezer.png',
+    bio: 'Abnezer Fekadu is a student at Parkland Middle School. He enjoys playing soccer, reading fiction, and visiting Ethiopia, where his parents are from. Those trips are always some of his favorite vacations. As an Outreach & Youth Ambassador for Art Unity, Abnezer enjoys meeting other volunteers during weekly card-making sessions, making new friends, and learning and laughing together. He hopes to bring more young people together to create art for the community.',
+  },
 ];
 
 const advisorMembers = [
