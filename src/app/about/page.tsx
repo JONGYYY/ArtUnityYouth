@@ -197,13 +197,13 @@ export default function About() {
             </motion.div>
 
             <div>
-              <motion.span variants={fadeUp} className="label-accent block mb-3">Our Mission</motion.span>
+              <motion.span variants={fadeUp} className="label-accent block mb-3 text-2xl sm:text-3xl">Our Mission</motion.span>
               <motion.h2 variants={fadeUp} className="font-heading text-4xl sm:text-5xl text-ink mb-6 leading-tight">
                 Art as a Bridge,<br /><em>Not a Wall</em>
               </motion.h2>
               <div className="space-y-4 font-body text-base text-ink/70 leading-relaxed max-w-prose">
                 <motion.p variants={fadeUp}>
-                  At ArtUnity Youth, we believe in the transformative power of art to break down
+                  Founded in 2023, ArtUnity Youth believes in the transformative power of art to break down
                   barriers and build understanding across diverse communities.
                 </motion.p>
                 <motion.p variants={fadeUp}>
