@@ -89,6 +89,18 @@ const ambassadorMembers = [
     image: '/images/team/abnezer.png',
     bio: 'Abnezer Fekadu is a student at Parkland Middle School. He enjoys playing soccer, reading fiction, and visiting Ethiopia, where his parents are from. Those trips are always some of his favorite vacations. As an Outreach & Youth Ambassador for Art Unity, Abnezer enjoys meeting other volunteers during weekly card-making sessions, making new friends, and learning and laughing together. He hopes to bring more young people together to create art for the community.',
   },
+  {
+    name: 'Matthew Le',
+    role: 'Youth Ambassador',
+    image: '/images/team/matthew.jpg',
+    bio: 'Matthew Le is a tenth-grade student at Bethesda-Chevy Chase High School. He enjoys creating artwork, exploring different art styles, and sharing his creativity with the community. He has also pursued his interest in art and design at the Maryland Institute College of Art (MICA). In his free time, he enjoys watching cartoons, especially SpongeBob SquarePants, his favorite animated character. He is excited to bring his imagination, creativity, and enthusiasm to the team.',
+  },
+  {
+    name: 'Richard Le',
+    role: 'Youth Ambassador',
+    image: '/images/team/richard.png',
+    bio: 'Richard Le is a ninth-grade student at Bethesda-Chevy Chase High School. He enjoys playing sports, especially basketball with his brother. Richard loves helping others and sharing his passion for art by teaching and encouraging people to explore their creativity. He finds it especially rewarding to see the cards and artwork created by the team delivered to people in need throughout the community. He is excited to bring his kindness, enthusiasm, and love for helping others to the team.',
+  },
 ];
 
 const advisorMembers = [
