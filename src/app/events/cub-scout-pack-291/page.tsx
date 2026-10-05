@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '../../../components/layout/Layout';
+import EventSignupForm from '../../../components/events/EventSignupForm';
 
 const stagger = {
   hidden: {},
@@ -103,12 +104,7 @@ export default function CubScoutPack291() {
                 </motion.div>
 
                 <motion.div variants={fadeUp}>
-                  <Link
-                    href="/get-involved"
-                    className="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm tracking-widest uppercase bg-rust text-cream px-8 py-4 rounded-sm hover:bg-ink transition-colors duration-200"
-                  >
-                    Volunteer With Us →
-                  </Link>
+                  <EventSignupForm event="Card-Making Event with Cub Scout Pack 291 (Sunday, Nov 15)" />
                 </motion.div>
               </div>
             </div>
