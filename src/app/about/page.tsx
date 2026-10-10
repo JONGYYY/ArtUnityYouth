@@ -21,7 +21,7 @@ const officerMembers = [
     name: 'Jonathan Shan',
     role: 'Founder and President',
     image: '/images/team/Jonathan.jpg',
-    bio: 'Jonathan is the Founder and President of ArtUnity Youth and a student at Poolesville High School. As the organization\u2019s Executive Lead, he sets the vision and yearly goals for ArtUnity\u2019s impact, leads team planning and decision\u2011making, and ensures programs meet high standards for quality, safety, and inclusion. He also drives fundraising and partnerships with schools, sponsors, and community organizations to expand youth\u2011led, hands\u2011on, healing\u2011centered art experiences. Outside of ArtUnity, Jonathan is an award\u2011winning artist and an app designer who has competed and placed in multiple national\u2011level app competitions.',
+    bio: 'Jonathan is the Founder and President of ArtUnity Youth and a student at Poolesville High School. He founded ArtUnity Youth with the belief that art can bring people together, spark joy, and make communities feel more connected. As President, he guides the organization\u2019s vision, leads a growing team of student volunteers, and builds partnerships with schools, senior centers, and local organizations to bring creative experiences to more people. He is especially passionate about making art accessible to everyone, regardless of age, background, or artistic experience. Through hands-on projects and community events, Jonathan hopes to give young people opportunities to lead, share their creativity, and make a positive difference in the lives of others.',
   },
   {
     name: 'Saranzul (Sara) Boskov',
