@@ -101,6 +101,12 @@ const ambassadorMembers = [
     image: '/images/team/abnezer.png',
     bio: 'Abnezer Fekadu is a student at Parkland Middle School. He enjoys playing soccer, reading fiction, and visiting Ethiopia, where his parents are from. Those trips are always some of his favorite vacations. As an Outreach & Youth Ambassador for Art Unity, Abnezer enjoys meeting other volunteers during weekly card-making sessions, making new friends, and learning and laughing together. He hopes to bring more young people together to create art for the community.',
   },
+  {
+    name: 'Chris Lara',
+    role: 'Youth Ambassador',
+    image: '/images/team/chris.jpg',
+    bio: 'Chris Lara is a student at Earl B. Wood Middle School. He loves drawing cartoon characters, especially coming up with funny characters and bringing his own stories to life through illustrations. He also enjoys playing video games, especially Minecraft, and history is his favorite subject. As a Youth Ambassador at ArtUnity Youth, Chris is excited to share his imagination, make new friends, and help bring joy to his community through art.',
+  },
 ];
 
 const advisorMembers = [
