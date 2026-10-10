@@ -144,7 +144,7 @@ function MemberCard({ member }: { member: { name: string; role: string; image: s
           src={member.image}
           alt={member.name}
           placeholderText={member.name}
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
