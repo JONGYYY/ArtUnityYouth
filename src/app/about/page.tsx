@@ -139,7 +139,7 @@ function MemberCard({ member }: { member: { name: string; role: string; image: s
     <div className="group bg-cream border border-ink/8 rounded-sm overflow-hidden shadow-card
                     transition-transform duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
       {/* Image container: explicit relative + aspect-ratio so fill never collapses */}
-      <div className="relative w-full aspect-[4/5] overflow-hidden bg-parch">
+      <div className="relative w-full aspect-square overflow-hidden bg-parch">
         <SmartImage
           src={member.image}
           alt={member.name}
