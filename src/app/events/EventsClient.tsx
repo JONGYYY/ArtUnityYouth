@@ -173,6 +173,38 @@ export default function EventsClient({
               </Link>
             </motion.article>
 
+            {/* Card-Making with Senior Residents */}
+            <motion.article
+              variants={cardVariant}
+              whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
+              style={{ rotate: tilts[2] }}
+              className="polaroid cursor-pointer"
+            >
+              <Link href="/events/senior-card-making" className="block focus-visible:outline-none">
+                <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
+                  <SmartImage
+                    src="/images/events/senior-cards/flyer.jpg"
+                    alt="Card-Making Event with Senior Residents"
+                    placeholderText="Card-Making with Senior Residents"
+                    className="object-cover object-top"
+                    fill
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                  <span className="absolute top-2 left-2 bg-teal text-cream font-body text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-sm">
+                    Nov 6 &amp; 20
+                  </span>
+                </div>
+                <div className="pt-4 pb-1 px-1">
+                  <h3 className="font-heading text-lg text-ink mb-1">Card-Making with Senior Residents</h3>
+                  <p className="font-accent text-sm text-rust mb-1">Fri, Nov 6 &amp; Nov 20 · 4:00–6:00 PM</p>
+                  <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
+                    Make Thanksgiving cards with senior residents at The Gardens of Traville, share
+                    stories, and brighten their day.
+                  </p>
+                </div>
+              </Link>
+            </motion.article>
+
             {upcomingEvents.map((ev, i) => (
               <motion.article
                 key={ev.id}
