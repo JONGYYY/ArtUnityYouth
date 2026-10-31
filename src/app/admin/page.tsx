@@ -12,16 +12,18 @@ async function count(table: string): Promise<number | null> {
 }
 
 export default async function AdminOverview() {
-  const [events, sessions, rsvps] = await Promise.all([
+  const [events, sessions, rsvps, slides] = await Promise.all([
     count('events'),
     count('friday_sessions'),
     count('friday_signups'),
+    count('carousel_slides'),
   ]);
 
   const cards = [
     { label: 'Events', value: events, href: '/admin/events', cta: 'Manage events' },
     { label: 'Friday Sessions', value: sessions, href: '/admin/friday-sessions', cta: 'Manage sessions' },
     { label: 'Friday RSVPs', value: rsvps, href: '/admin/rsvps', cta: 'View sign-ups' },
+    { label: 'Homepage Carousel', value: slides, href: '/admin/carousel', cta: 'Manage photos' },
   ];
 
   const notConfigured = events === null && sessions === null && rsvps === null;
@@ -38,7 +40,14 @@ export default async function AdminOverview() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      {!notConfigured && slides === null && (
+        <div className="mb-8 rounded-sm border border-ochre/40 bg-ochre/10 px-5 py-4 font-body text-sm text-ink/80">
+          The Homepage Carousel table isn&apos;t set up yet. Run <code>supabase/homepage-carousel.sql</code> in your
+          Supabase SQL editor to start managing carousel photos.
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cards.map((c) => (
           <Link
             key={c.label}

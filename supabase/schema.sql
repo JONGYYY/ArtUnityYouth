@@ -149,6 +149,11 @@ insert into friday_sessions (label, note, card_photos, candid_photos, group_phot
 on conflict do nothing;
 
 -- ────────────────────────────────────────────────────────────
+-- Homepage Carousel: the carousel_slides table lives in supabase/homepage-carousel.sql.
+-- Run that file once too (it is safe to run on its own against an existing database).
+-- ────────────────────────────────────────────────────────────
+
+-- ────────────────────────────────────────────────────────────
 -- Storage: create a PUBLIC bucket named "event-photos" for admin uploads.
 -- Easiest via Dashboard -> Storage -> New bucket -> name "event-photos" -> Public.
 -- Or uncomment the line below to create it via SQL:

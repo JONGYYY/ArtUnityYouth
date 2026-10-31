@@ -9,6 +9,7 @@ const navItems = [
   { name: 'Events', href: '/admin/events' },
   { name: 'Friday Sessions', href: '/admin/friday-sessions' },
   { name: 'RSVPs', href: '/admin/rsvps' },
+  { name: 'Homepage Carousel', href: '/admin/carousel' },
 ];
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
