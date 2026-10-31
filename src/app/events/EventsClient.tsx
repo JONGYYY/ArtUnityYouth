@@ -48,8 +48,56 @@ export default function EventsClient({
         </div>
       </section>
 
+      {/* ── Past / Key Events ─────────────────────────────────── */}
+      <section id="past" className="py-20 bg-parch texture-dots">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="mb-10">
+            <h2 className="font-heading text-3xl text-ink">Key Events</h2>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={stagger}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          >
+            {pastEvents.map((ev, i) => (
+              <motion.article
+                key={ev.id}
+                variants={cardVariant}
+                whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
+                style={{ rotate: tilts[i % tilts.length] }}
+                className="polaroid cursor-pointer"
+              >
+                <Link href={ev.href ?? `/events/${ev.slug}`} className="block focus-visible:outline-none">
+                  <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
+                    <SmartImage
+                      src={ev.coverImage}
+                      alt={ev.title}
+                      placeholderText={ev.title}
+                      className="object-cover"
+                      fill
+                      sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
+                    />
+                  </div>
+                  <div className="pt-4 pb-1 px-1">
+                    <h3 className="font-heading text-base text-ink mb-0.5">{ev.title}</h3>
+                    {ev.date && <p className="font-accent text-sm text-rust mb-0.5">{ev.date}</p>}
+                    {ev.location && <p className="font-body text-xs text-ink/50 mb-1">{ev.location}</p>}
+                    <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
+                      {ev.description}
+                    </p>
+                  </div>
+                </Link>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Featured: Friday Drawing Sessions ────────────────── */}
-      <section className="pb-8 bg-cream">
+      <section className="pt-20 pb-8 bg-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Link href="/events/friday-sessions" className="block group focus-visible:outline-none">
             <motion.div
@@ -260,54 +308,6 @@ export default function EventsClient({
                     <h3 className="font-heading text-lg text-ink mb-1">{ev.title}</h3>
                     {ev.date && <p className="font-accent text-sm text-rust mb-1">{ev.date}</p>}
                     {ev.location && <p className="font-body text-xs text-ink/50 mb-2">{ev.location}</p>}
-                    <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
-                      {ev.description}
-                    </p>
-                  </div>
-                </Link>
-              </motion.article>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Past / Key Events ─────────────────────────────────── */}
-      <section id="past" className="py-20 bg-parch texture-dots">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="mb-10">
-            <h2 className="font-heading text-3xl text-ink">Key Events</h2>
-          </div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={stagger}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-          >
-            {pastEvents.map((ev, i) => (
-              <motion.article
-                key={ev.id}
-                variants={cardVariant}
-                whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
-                style={{ rotate: tilts[i % tilts.length] }}
-                className="polaroid cursor-pointer"
-              >
-                <Link href={ev.href ?? `/events/${ev.slug}`} className="block focus-visible:outline-none">
-                  <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
-                    <SmartImage
-                      src={ev.coverImage}
-                      alt={ev.title}
-                      placeholderText={ev.title}
-                      className="object-cover"
-                      fill
-                      sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
-                    />
-                  </div>
-                  <div className="pt-4 pb-1 px-1">
-                    <h3 className="font-heading text-base text-ink mb-0.5">{ev.title}</h3>
-                    {ev.date && <p className="font-accent text-sm text-rust mb-0.5">{ev.date}</p>}
-                    {ev.location && <p className="font-body text-xs text-ink/50 mb-1">{ev.location}</p>}
                     <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
                       {ev.description}
                     </p>
