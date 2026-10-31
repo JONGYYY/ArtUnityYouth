@@ -71,8 +71,13 @@ export default function Hero({ slides }: { slides: CarouselSlide[] }) {
           <div className="relative z-10 overflow-visible">
 
             {/* Eyebrow */}
-            <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp} className="mb-5">
-              <span className="label-accent">✦ Youth-led · Nonprofit · Rockville, MD</span>
+            <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp} className="mb-6 sm:mb-7">
+              {/* "!" because the unlayered .label-accent font-size otherwise beats Tailwind's text-* utilities */}
+              <span className="label-accent block !text-[1.375rem] sm:!text-3xl leading-snug">
+                <span className="inline-block mr-1.5 text-[1.15em] leading-none">✦</span>
+                <span className="whitespace-nowrap">Youth-led · Nonprofit ·</span>{' '}
+                <span className="whitespace-nowrap">Rockville, MD</span>
+              </span>
             </motion.div>
 
             {/* UNITING — clipped slide-up */}
