@@ -26,6 +26,8 @@ const carouselImages = [
   { src: '/images/events/mlk/submission-03.png',             alt: 'MLK art competition submission' },
 ];
 const INTERVAL_MS = 10000;
+// Above this many slides, show a "5 / N" counter instead of one dot per photo.
+const MAX_DOTS = 12;
 
 /* ── Variants ─────────────────────────────────────────────────── */
 const wordReveal = {
@@ -53,17 +55,17 @@ const slideVariants = {
 export default function Hero() {
   const [index, setIndex]   = useState(0);
   const [paused, setPaused] = useState(false);
-  // Start with the curated set, then merge in Friday-session uploads from the DB.
+  // Start with the curated set, then merge in event and Friday-session photos from the DB.
   const [images, setImages] = useState(carouselImages);
 
   const next = useCallback(() => setIndex(i => (i + 1) % images.length), [images.length]);
   const prev = useCallback(() => setIndex(i => (i - 1 + images.length) % images.length), [images.length]);
 
-  // Pull the photos uploaded for the weekly Friday sessions and append any
-  // that aren't already in the curated carousel.
+  // Pull event cover/gallery photos and Friday-session uploads, and append
+  // any that aren't already in the curated carousel.
   useEffect(() => {
     let cancelled = false;
-    fetch('/api/friday-photos')
+    fetch('/api/carousel-photos')
       .then(r => r.json())
       .then((d) => {
         if (cancelled || !Array.isArray(d?.photos)) return;
@@ -250,13 +252,19 @@ export default function Hero() {
 
             {/* Dots + progress */}
             <div className="mt-3 flex flex-wrap items-center gap-3">
-              {images.map((_, i) => (
-                <button key={i} onClick={() => setIndex(i)} aria-label={`Photo ${i + 1}`}
-                  className={`transition-all duration-300 rounded-full ${
-                    i === index ? 'w-6 h-2 bg-rust' : 'w-2 h-2 bg-ink/20 hover:bg-ink/40'
-                  }`}
-                />
-              ))}
+              {images.length > MAX_DOTS ? (
+                <span className="font-body text-xs text-ink/60 tracking-widest tabular-nums" aria-live="polite">
+                  {index + 1} / {images.length}
+                </span>
+              ) : (
+                images.map((_, i) => (
+                  <button key={i} onClick={() => setIndex(i)} aria-label={`Photo ${i + 1}`}
+                    className={`transition-all duration-300 rounded-full ${
+                      i === index ? 'w-6 h-2 bg-rust' : 'w-2 h-2 bg-ink/20 hover:bg-ink/40'
+                    }`}
+                  />
+                ))
+              )}
               {!paused && (
                 <div className="flex-1 h-px bg-ink/10 overflow-hidden rounded-full ml-2">
                   <motion.div
