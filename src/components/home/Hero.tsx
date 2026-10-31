@@ -53,9 +53,31 @@ const slideVariants = {
 export default function Hero() {
   const [index, setIndex]   = useState(0);
   const [paused, setPaused] = useState(false);
+  // Start with the curated set, then merge in Friday-session uploads from the DB.
+  const [images, setImages] = useState(carouselImages);
 
-  const next = useCallback(() => setIndex(i => (i + 1) % carouselImages.length), []);
-  const prev = useCallback(() => setIndex(i => (i - 1 + carouselImages.length) % carouselImages.length), []);
+  const next = useCallback(() => setIndex(i => (i + 1) % images.length), [images.length]);
+  const prev = useCallback(() => setIndex(i => (i - 1 + images.length) % images.length), [images.length]);
+
+  // Pull the photos uploaded for the weekly Friday sessions and append any
+  // that aren't already in the curated carousel.
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/friday-photos')
+      .then(r => r.json())
+      .then((d) => {
+        if (cancelled || !Array.isArray(d?.photos)) return;
+        setImages((current) => {
+          const existing = new Set(current.map((img) => img.src));
+          const additions = d.photos.filter(
+            (p: { src: string; alt: string }) => p?.src && !existing.has(p.src),
+          );
+          return additions.length ? [...current, ...additions] : current;
+        });
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
     if (paused) return;
@@ -184,7 +206,7 @@ export default function Hero() {
               {[
                 { number: '2,000+', label: 'People Impacted' },
                 { number: '70+',    label: 'Art Events' },
-                { number: '120+',   label: 'Volunteers' },
+                { number: '150+',   label: 'Volunteer Hours' },
               ].map(s => (
                 <div key={s.label} className="px-5 py-6 text-center">
                   <div className="font-display text-5xl sm:text-6xl text-rust mb-1 leading-none">{s.number}</div>
@@ -203,8 +225,8 @@ export default function Hero() {
                   className="absolute inset-0"
                 >
                   <Image
-                    src={carouselImages[index].src}
-                    alt={carouselImages[index].alt}
+                    src={images[index].src}
+                    alt={images[index].alt}
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -222,13 +244,13 @@ export default function Hero() {
                 className="absolute left-14 bottom-4 z-10 w-9 h-9 flex items-center justify-center bg-cream/20 hover:bg-cream/40 backdrop-blur-sm text-cream border border-cream/30 rounded-sm transition-colors"
               >→</button>
               <p className="absolute right-3 bottom-4 z-10 font-accent text-xs text-cream/70">
-                {carouselImages[index].alt}
+                {images[index].alt}
               </p>
             </div>
 
             {/* Dots + progress */}
-            <div className="mt-3 flex items-center gap-3">
-              {carouselImages.map((_, i) => (
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              {images.map((_, i) => (
                 <button key={i} onClick={() => setIndex(i)} aria-label={`Photo ${i + 1}`}
                   className={`transition-all duration-300 rounded-full ${
                     i === index ? 'w-6 h-2 bg-rust' : 'w-2 h-2 bg-ink/20 hover:bg-ink/40'
