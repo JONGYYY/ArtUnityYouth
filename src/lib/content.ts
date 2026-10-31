@@ -3,6 +3,9 @@ import {
   SESSION_INFO as SEED_SESSION_INFO,
   fridaySessions as SEED_FRIDAY_SESSIONS,
 } from '../app/events/friday-sessions/data';
+import { FALLBACK_SLIDES, toCarouselSlide, type CarouselSlide } from './carousel-slides';
+
+export type { CarouselSlide };
 
 export type EventItem = {
   id: string;
@@ -118,6 +121,22 @@ export async function getFridaySessions(): Promise<FridaySession[]> {
     }));
   } catch {
     return FALLBACK_SESSIONS;
+  }
+}
+
+export async function getCarouselSlides(): Promise<CarouselSlide[]> {
+  try {
+    const supabase = createSupabaseServerClient();
+    const { data, error } = await supabase
+      .from('carousel_slides')
+      .select('*')
+      .order('sort_order', { ascending: true })
+      .order('created_at', { ascending: true });
+    if (error || !data || data.length === 0) return FALLBACK_SLIDES;
+    const slides = data.map(toCarouselSlide).filter((s) => s.imageUrl);
+    return slides.length ? slides : FALLBACK_SLIDES;
+  } catch {
+    return FALLBACK_SLIDES;
   }
 }
 

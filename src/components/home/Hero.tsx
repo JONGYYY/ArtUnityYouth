@@ -4,28 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import { FALLBACK_SLIDES, type CarouselSlide } from '../../lib/carousel-slides';
 
 /* ── Carousel ─────────────────────────────────────────────────── */
-const carouselImages = [
-  { src: '/images/about/mission.jpg',                        alt: 'Youth creating art together' },
-  { src: '/images/events/pride-2026/pride-4.png',            alt: 'ArtUnity Youth at PRIDE 2026' },
-  { src: '/images/events/friday-cards/jul-10-2026/group-1.png', alt: 'Friday Drawing Session group photo' },
-  { src: '/images/events/screen-printing/sp-1.png',          alt: 'Screen printing at Oktoberfest' },
-  { src: '/images/events/murals/mural-2.png',                alt: 'Love One Another mural — So What Else' },
-  { src: '/images/events/friday-cards/jul-10-2026/candid-1.png', alt: 'Volunteers hand-illustrating get-well cards' },
-  { src: '/images/events/friday-cards/friday-3.png',         alt: 'Friday Card Session — group with cards' },
-  { src: '/images/events/pride-2026/pride-5.png',            alt: 'ArtUnity team and community at PRIDE' },
-  { src: '/images/events/friday-cards/jul-10-2026/candid-3.png', alt: 'A young artist drawing a card' },
-  { src: '/images/events/murals/mural-3.png',                alt: 'Youth painting the community mural' },
-  { src: '/images/events/friday-cards/jul-10-2026/candid-5.png', alt: 'Cards in progress at the table' },
-  { src: '/images/events/friday-cards/friday-6.png',         alt: 'Youth showing their handmade cards' },
-  { src: '/images/events/pride-2026/pride-1.png',            alt: 'Chalk mural messages of love and belonging' },
-  { src: '/images/events/murals/mural-1.png',                alt: 'Community mural celebrating unity' },
-  { src: '/images/events/pride-2026/pride-3.png',            alt: 'Youth volunteers at the chalk mural' },
-  { src: '/images/events/screen-printing/sp-2.jpg',          alt: 'Fresh screen prints drying' },
-  { src: '/images/events/mlk/submission-03.png',             alt: 'MLK art competition submission' },
-];
 const INTERVAL_MS = 10000;
+// Above this many slides, show a "5 / N" counter instead of one dot per photo.
+const MAX_DOTS = 12;
 
 /* ── Variants ─────────────────────────────────────────────────── */
 const wordReveal = {
@@ -50,34 +34,16 @@ const slideVariants = {
   exit:   { opacity: 0, scale: 0.97, transition: { duration: 0.8, ease: 'easeIn' } },
 };
 
-export default function Hero() {
+// Slides come from the Homepage Carousel admin section (carousel_slides),
+// or the built-in fallback list when that table is empty or unreachable.
+export default function Hero({ slides }: { slides: CarouselSlide[] }) {
   const [index, setIndex]   = useState(0);
   const [paused, setPaused] = useState(false);
-  // Start with the curated set, then merge in Friday-session uploads from the DB.
-  const [images, setImages] = useState(carouselImages);
+  const images = slides.length ? slides : FALLBACK_SLIDES;
+  const current = images[index % images.length];
 
   const next = useCallback(() => setIndex(i => (i + 1) % images.length), [images.length]);
   const prev = useCallback(() => setIndex(i => (i - 1 + images.length) % images.length), [images.length]);
-
-  // Pull the photos uploaded for the weekly Friday sessions and append any
-  // that aren't already in the curated carousel.
-  useEffect(() => {
-    let cancelled = false;
-    fetch('/api/friday-photos')
-      .then(r => r.json())
-      .then((d) => {
-        if (cancelled || !Array.isArray(d?.photos)) return;
-        setImages((current) => {
-          const existing = new Set(current.map((img) => img.src));
-          const additions = d.photos.filter(
-            (p: { src: string; alt: string }) => p?.src && !existing.has(p.src),
-          );
-          return additions.length ? [...current, ...additions] : current;
-        });
-      })
-      .catch(() => {});
-    return () => { cancelled = true; };
-  }, []);
 
   useEffect(() => {
     if (paused) return;
@@ -219,14 +185,14 @@ export default function Hero() {
             <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden shadow-card-hover border border-ink/10">
               <AnimatePresence mode="sync">
                 <motion.div
-                  key={index}
+                  key={current.id}
                   variants={slideVariants}
                   initial="enter" animate="center" exit="exit"
                   className="absolute inset-0"
                 >
                   <Image
-                    src={images[index].src}
-                    alt={images[index].alt}
+                    src={current.imageUrl}
+                    alt={current.caption}
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -244,19 +210,25 @@ export default function Hero() {
                 className="absolute left-14 bottom-4 z-10 w-9 h-9 flex items-center justify-center bg-cream/20 hover:bg-cream/40 backdrop-blur-sm text-cream border border-cream/30 rounded-sm transition-colors"
               >→</button>
               <p className="absolute right-3 bottom-4 z-10 font-accent text-xs text-cream/70">
-                {images[index].alt}
+                {current.caption}
               </p>
             </div>
 
             {/* Dots + progress */}
             <div className="mt-3 flex flex-wrap items-center gap-3">
-              {images.map((_, i) => (
-                <button key={i} onClick={() => setIndex(i)} aria-label={`Photo ${i + 1}`}
-                  className={`transition-all duration-300 rounded-full ${
-                    i === index ? 'w-6 h-2 bg-rust' : 'w-2 h-2 bg-ink/20 hover:bg-ink/40'
-                  }`}
-                />
-              ))}
+              {images.length > MAX_DOTS ? (
+                <span className="font-body text-xs text-ink/60 tracking-widest tabular-nums" aria-live="polite">
+                  {(index % images.length) + 1} / {images.length}
+                </span>
+              ) : (
+                images.map((slide, i) => (
+                  <button key={slide.id} onClick={() => setIndex(i)} aria-label={`Photo ${i + 1}`}
+                    className={`transition-all duration-300 rounded-full ${
+                      i === index ? 'w-6 h-2 bg-rust' : 'w-2 h-2 bg-ink/20 hover:bg-ink/40'
+                    }`}
+                  />
+                ))
+              )}
               {!paused && (
                 <div className="flex-1 h-px bg-ink/10 overflow-hidden rounded-full ml-2">
                   <motion.div

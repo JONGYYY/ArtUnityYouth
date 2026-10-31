@@ -64,6 +64,8 @@ The site content (events, Friday sessions, RSVPs) lives in Supabase. A single ad
 
 In the Supabase dashboard → **SQL Editor** → New query, paste and run the contents of [`supabase/schema.sql`](supabase/schema.sql). This creates the `events`, `friday_sessions`, `session_info`, and `friday_signups` tables, sets up row-level security (public read, no public writes to content), and seeds the current content.
 
+Then run [`supabase/homepage-carousel.sql`](supabase/homepage-carousel.sql) the same way. It creates the `carousel_slides` table behind **Homepage Carousel** and seeds it with the current homepage photos. It's safe to run on a database that already has the other tables, and running it twice won't duplicate the photos.
+
 ### 2. Create the storage bucket
 
 Dashboard → **Storage** → New bucket → name it `event-photos` → mark it **Public**. This is where admin photo uploads are stored.
@@ -91,6 +93,7 @@ If your Supabase secret / service role key was ever shared (chat, screenshots, c
 - `/admin/events` — add/edit/delete events, upload cover + gallery photos
 - `/admin/friday-sessions` — add/edit dated sessions with categorized photos, and edit the "Next Session" schedule
 - `/admin/rsvps` — read-only list of Friday RSVP sign-ups
+- `/admin/carousel` — upload, caption, reorder (drag or ↑ ↓) and delete the homepage hero photos. The homepage shows exactly these, in order. If the table is empty or unreachable, it shows the built-in default photos (`FALLBACK_SLIDES` in `src/lib/carousel-slides.ts`)
 
 ## 📄 Pages
 
