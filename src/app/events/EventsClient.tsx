@@ -96,50 +96,6 @@ export default function EventsClient({
         </div>
       </section>
 
-      {/* ── Featured: Friday Drawing Sessions ────────────────── */}
-      <section className="pt-20 pb-8 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Link href="/events/friday-sessions" className="block group focus-visible:outline-none">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeIn}
-              className="relative overflow-hidden rounded-sm bg-ink text-cream shadow-card-hover"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="relative min-h-[240px] lg:min-h-full">
-                  <SmartImage
-                    src="/images/events/friday-cards/group-photo.png"
-                    alt="Friday Drawing Sessions"
-                    placeholderText="Friday Drawing Sessions"
-                    className="object-cover"
-                    fill
-                    sizes="(max-width:1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent lg:bg-gradient-to-r" />
-                </div>
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <span className="label-accent block mb-3 text-ochre">Every Friday · Join us</span>
-                  <h2 className="font-display text-4xl lg:text-5xl tracking-wide mb-4 leading-none">
-                    WEEKLY FRIDAY
-                    <br />
-                    DRAWING SESSIONS
-                  </h2>
-                  <p className="font-body text-cream/75 leading-relaxed mb-6 max-w-md">
-                    Hand-draw get-well cards for kids in local hospitals. All ages, all skill levels,
-                    supplies on us. Come make art that brightens someone&apos;s day.
-                  </p>
-                  <span className="inline-flex items-center gap-2 font-body text-sm font-semibold tracking-widest uppercase text-ochre group-hover:gap-3 transition-all">
-                    Join a Friday Session →
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
-        </div>
-      </section>
-
       {/* ── Upcoming ─────────────────────────────────────────── */}
       <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -316,6 +272,50 @@ export default function EventsClient({
               </motion.article>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── Featured: Friday Drawing Sessions ────────────────── */}
+      <section className="pb-20 bg-cream">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <Link href="/events/friday-sessions" className="block group focus-visible:outline-none">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeIn}
+              className="relative overflow-hidden rounded-sm bg-ink text-cream shadow-card-hover"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="relative min-h-[240px] lg:min-h-full">
+                  <SmartImage
+                    src="/images/events/friday-cards/group-photo.png"
+                    alt="Friday Drawing Sessions"
+                    placeholderText="Friday Drawing Sessions"
+                    className="object-cover"
+                    fill
+                    sizes="(max-width:1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent lg:bg-gradient-to-r" />
+                </div>
+                <div className="p-8 lg:p-12 flex flex-col justify-center">
+                  <span className="label-accent block mb-3 text-ochre">Every Friday · Join us</span>
+                  <h2 className="font-display text-4xl lg:text-5xl tracking-wide mb-4 leading-none">
+                    WEEKLY FRIDAY
+                    <br />
+                    DRAWING SESSIONS
+                  </h2>
+                  <p className="font-body text-cream/75 leading-relaxed mb-6 max-w-md">
+                    Hand-draw get-well cards for kids in local hospitals. All ages, all skill levels,
+                    supplies on us. Come make art that brightens someone&apos;s day.
+                  </p>
+                  <span className="inline-flex items-center gap-2 font-body text-sm font-semibold tracking-widest uppercase text-ochre group-hover:gap-3 transition-all">
+                    Join a Friday Session →
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </Link>
         </div>
       </section>
     </Layout>
