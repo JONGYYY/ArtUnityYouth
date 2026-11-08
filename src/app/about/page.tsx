@@ -249,10 +249,10 @@ export default function About() {
         variants={stagger}
         initial="hidden"
         animate={missionInView ? 'visible' : 'hidden'}
-        className="pt-36 pb-24 bg-cream texture-dots"
+        className="pt-28 pb-8 bg-cream texture-dots"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-10">
 
             <motion.div
               variants={{
@@ -260,27 +260,27 @@ export default function About() {
                 visible: { opacity: 1, x: 0,   rotate: 0,
                   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
               }}
-              className="relative"
+              className="relative w-full max-w-[16rem]"
             >
-              <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden border border-ink/10 shadow-card">
+              <div className="relative aspect-square w-full overflow-hidden rounded-sm border border-ink/10 shadow-card">
                 <SmartImage
                   src="/images/about/mission.jpg"
                   alt="Youth working on an art project together"
                   placeholderText="Mission"
                   className="object-cover"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="256px"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 border-b-2 border-r-2 border-rust/40" />
+              <div className="absolute -bottom-3 -right-3 w-14 h-14 border-b-2 border-r-2 border-rust/40" />
             </motion.div>
 
             <div>
-              <motion.span variants={fadeUp} className="label-accent block mb-3 text-3xl sm:text-4xl">Our Mission</motion.span>
-              <motion.h2 variants={fadeUp} className="font-heading text-4xl sm:text-5xl text-ink mb-6 leading-tight">
+              <motion.span variants={fadeUp} className="label-accent block mb-1 !text-2xl sm:!text-3xl">Our Mission</motion.span>
+              <motion.h2 variants={fadeUp} className="font-heading text-3xl sm:text-4xl text-ink mb-3 leading-tight">
                 Art as a Bridge,<br /><em>Not a Wall</em>
               </motion.h2>
-              <div className="space-y-4 font-body text-base text-ink/70 leading-relaxed max-w-prose">
+              <div className="max-w-prose space-y-2 font-body text-sm leading-snug text-ink/70">
                 <motion.p variants={fadeUp}>
                   Founded in 2023, ArtUnity Youth believes in the transformative power of art to break down
                   barriers and build understanding across diverse communities.
@@ -305,14 +305,14 @@ export default function About() {
       </motion.section>
 
       {/* ── Team ──────────────────────────────────────────────── */}
-      <section ref={teamRef} className="py-24 bg-parch texture-dots">
+      <section ref={teamRef} className="bg-parch py-10 texture-dots md:py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
           <motion.div
             variants={stagger}
             initial="hidden"
             animate={teamInView ? 'visible' : 'hidden'}
-            className="text-center mb-16"
+            className="mb-8 text-center"
           >
             <motion.span variants={fadeUp} className="label-accent block mb-3">The People</motion.span>
             <motion.h2 variants={fadeUp} className="font-heading text-4xl sm:text-5xl text-ink">
