@@ -193,13 +193,25 @@ export default function Hero({ slides }: { slides: CarouselSlide[] }) {
                   key={current.id}
                   variants={slideVariants}
                   initial="enter" animate="center" exit="exit"
-                  className="absolute inset-0"
+                  className="absolute inset-0 bg-parch"
                 >
+                  {/* Show the whole photo so faces near the edges of portrait and wide shots
+                      aren't cropped; a blurred copy fills the frame around non-4:3 photos. */}
+                  <Image
+                    src={current.imageUrl}
+                    alt=""
+                    aria-hidden
+                    fill
+                    className="object-cover scale-125 blur-2xl opacity-80"
+                    sizes="64px"
+                    quality={40}
+                    priority={index === 0}
+                  />
                   <Image
                     src={current.imageUrl}
                     alt={current.caption}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={index === 0}
                   />
