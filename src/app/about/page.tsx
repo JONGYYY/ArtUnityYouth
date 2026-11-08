@@ -108,6 +108,24 @@ const ambassadorMembers = [
     image: '/images/team/chris.jpg',
     bio: 'Chris Lara is a student at Earl B. Wood Middle School. He loves drawing cartoon characters, especially coming up with funny characters and bringing his own stories to life through illustrations. He also enjoys playing video games, especially Minecraft, and history is his favorite subject. As a Youth Ambassador at ArtUnity Youth, Chris is excited to share his imagination, make new friends, and help bring joy to his community through art.',
   },
+  {
+    name: 'Caitlyn Epstein',
+    role: 'Youth Ambassador',
+    image: '/images/team/caitlyn-epstein.jpg',
+    bio: 'Caitlyn is a student at Silver Creek Middle School. She enjoys playing soccer and basketball, swimming, and spending time with friends. She loves being creative and using art to bring happiness to others. As an ArtUnity Youth Ambassador, she enjoys helping her community through art projects, meeting new people, and encouraging other kids to get involved.',
+  },
+  {
+    name: 'Sonee Hailu Robi',
+    role: 'Youth Ambassador',
+    image: '/images/team/sonee-hailu-robi.jpg',
+    bio: 'Sonee is a student at Silver Creek Middle School. She enjoys figure skating, playing tennis, and spending time with friends. She especially loves making and sending handmade cards to people in the community and seeing how much they appreciate the artwork. Through ArtUnity, she enjoys reconnecting with old friends, making new ones, and inviting others to participate in community art events. She hopes to continue spreading joy through art and encouraging more people to get involved.',
+  },
+  {
+    name: 'Dharshith Dasari',
+    role: 'Youth Ambassador',
+    image: '/images/team/dharshith-dasari.jpg',
+    bio: 'Dharshith is a student at Robert Frost Middle School. Besides art, he enjoys reading and conducting science research, especially in biology, his favorite subject. He hopes to become a biological research scientist when he grows up. Dharshith also enjoys public speaking and dreams of one day presenting his own research findings to an audience. As an ArtUnity Youth Ambassador, he looks forward to sharing his creativity and encouraging other young people to get involved in community art activities.',
+  },
 ];
 
 const advisorMembers = [
