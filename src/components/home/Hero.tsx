@@ -177,7 +177,7 @@ export default function Hero({ slides }: { slides: CarouselSlide[] }) {
               {[
                 { number: '2,000+', label: 'People Impacted' },
                 { number: '70+',    label: 'Art Events' },
-                { number: '150+',   label: 'Volunteer Hours' },
+                { number: '150+',   label: 'Volunteers' },
               ].map(s => (
                 <div key={s.label} className="px-5 py-6 text-center">
                   <div className="font-display text-5xl sm:text-6xl text-rust mb-1 leading-none">{s.number}</div>
