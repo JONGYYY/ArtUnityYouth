@@ -119,3 +119,19 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   display: inline-block;
 }
+
+/* ─── Pencil cursor (see components/common/PencilCursor.tsx) ─── */
+/* Only applied while the effect is active (fine pointer, motion allowed). */
+html.pencil-cursor,
+html.pencil-cursor * {
+  cursor: none !important;
+}
+html.pencil-cursor input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),
+html.pencil-cursor textarea,
+html.pencil-cursor [contenteditable=""],
+html.pencil-cursor [contenteditable="true"] {
+  cursor: text !important;
+}
+html.pencil-cursor select {
+  cursor: default !important;
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Bebas_Neue, Cormorant_Garamond, DM_Sans, Caveat } from 'next/font/google';
 import '../styles/globals.css';
+import PencilCursor from '../components/common/PencilCursor';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -54,6 +55,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen font-body text-ink bg-cream antialiased">
         {children}
+        <PencilCursor />
       </body>
     </html>
   );
