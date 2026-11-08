@@ -5,6 +5,7 @@ import Layout from '../../components/layout/Layout';
 import Button from '../../components/common/Button';
 import { useInView } from 'react-intersection-observer';
 import SmartImage from '../../components/common/SmartImage';
+import { useEffect, useRef, useState } from 'react';
 
 const stagger = {
   hidden: {},
@@ -130,14 +131,32 @@ const advisorMembers = [
   },
 ];
 
-function MemberCard({ member }: { member: { name: string; role: string; image: string; bio: string } }) {
+type Member = { name: string; role: string; image: string; bio: string };
+
+function MemberCard({ member, expanded, onToggle }: { member: Member; expanded: boolean; onToggle: () => void }) {
+  const bioRef = useRef<HTMLParagraphElement>(null);
+  const [overflows, setOverflows] = useState(false);
+
+  // Only offer "Read more" when the clamped bio is actually cut off at the current card width.
+  useEffect(() => {
+    const el = bioRef.current;
+    if (!el) return;
+    const check = () => {
+      if (!expanded) setOverflows(el.scrollHeight > el.clientHeight + 1);
+    };
+    check();
+    const observer = new ResizeObserver(check);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [expanded]);
+
   return (
     /*
      * CSS-only hover lift — no motion.div wrapping the image.
      * This avoids framer-motion re-renders that cause next/image fill to flash.
      */
-    <div className="group bg-cream border border-ink/8 rounded-sm overflow-hidden shadow-card
-                    transition-transform duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
+    <div className="group h-full flex flex-col bg-cream border border-ink/8 rounded-sm overflow-hidden shadow-card
+                    transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover">
       {/* Image container: explicit relative + aspect-ratio so fill never collapses */}
       <div className="relative w-full aspect-square overflow-hidden bg-parch">
         <SmartImage
@@ -146,15 +165,57 @@ function MemberCard({ member }: { member: { name: string; role: string; image: s
           placeholderText={member.name}
           className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 240px"
         />
       </div>
-      <div className="p-6">
-        <h3 className="font-heading text-xl text-ink mb-1">{member.name}</h3>
-        <div className="label-accent text-sm mb-3">{member.role}</div>
-        <p className="font-body text-sm text-ink/60 leading-relaxed">{member.bio}</p>
+      <div className="flex flex-1 flex-col p-4">
+        <h3 className="font-heading text-lg text-ink leading-snug mb-0.5">{member.name}</h3>
+        <div className="label-accent text-sm leading-snug mb-2">{member.role}</div>
+        <p
+          ref={bioRef}
+          id={`bio-${member.name.replace(/\W+/g, '-')}`}
+          className={`font-body text-[13px] text-ink/60 leading-relaxed ${expanded ? '' : 'line-clamp-5'}`}
+        >
+          {member.bio}
+        </p>
+        {(overflows || expanded) && (
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-expanded={expanded}
+            aria-controls={`bio-${member.name.replace(/\W+/g, '-')}`}
+            className="mt-auto pt-2 self-start font-body text-xs font-semibold uppercase tracking-widest text-rust hover:text-ink transition-colors"
+          >
+            {expanded ? 'Show less' : 'Read more'}
+          </button>
+        )}
       </div>
     </div>
+  );
+}
+
+// Cards stretch to equal heights per row; while a bio is expanded the grid switches to
+// items-start so neighbours keep their own height instead of stretching to match it.
+function TeamGrid({ members, className = '' }: { members: Member[]; className?: string }) {
+  const [expandedName, setExpandedName] = useState<string | null>(null);
+
+  return (
+    <motion.div
+      variants={stagger}
+      className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 ${
+        expandedName ? 'items-start' : 'items-stretch'
+      } ${className}`}
+    >
+      {members.map((member) => (
+        <motion.div key={member.name} variants={fadeUp} className={expandedName ? '' : 'h-full'}>
+          <MemberCard
+            member={member}
+            expanded={expandedName === member.name}
+            onToggle={() => setExpandedName((n) => (n === member.name ? null : member.name))}
+          />
+        </motion.div>
+      ))}
+    </motion.div>
   );
 }
 
@@ -249,58 +310,22 @@ export default function About() {
             <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
               Officers
             </motion.h3>
-            <motion.div
-              variants={stagger}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-            >
-              {officerMembers.map((member) => (
-                <motion.div key={member.name} variants={fadeUp}>
-                  <MemberCard member={member} />
-                </motion.div>
-              ))}
-            </motion.div>
+            <TeamGrid members={officerMembers} className="mb-16" />
 
             <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
               Event Leads
             </motion.h3>
-            <motion.div
-              variants={stagger}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-            >
-              {eventLeadMembers.map((member) => (
-                <motion.div key={member.name} variants={fadeUp}>
-                  <MemberCard member={member} />
-                </motion.div>
-              ))}
-            </motion.div>
+            <TeamGrid members={eventLeadMembers} className="mb-16" />
 
             <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
               Youth Ambassadors
             </motion.h3>
-            <motion.div
-              variants={stagger}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-            >
-              {ambassadorMembers.map((member) => (
-                <motion.div key={member.name} variants={fadeUp}>
-                  <MemberCard member={member} />
-                </motion.div>
-              ))}
-            </motion.div>
+            <TeamGrid members={ambassadorMembers} className="mb-16" />
 
             <motion.h3 variants={fadeUp} className="font-display text-2xl tracking-widest text-ink/40 uppercase mb-8">
               Advisors
             </motion.h3>
-            <motion.div
-              variants={stagger}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {advisorMembers.map((member) => (
-                <motion.div key={member.name} variants={fadeUp}>
-                  <MemberCard member={member} />
-                </motion.div>
-              ))}
-            </motion.div>
+            <TeamGrid members={advisorMembers} />
           </motion.div>
         </div>
       </section>
