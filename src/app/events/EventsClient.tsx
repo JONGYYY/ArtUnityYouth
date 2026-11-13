@@ -209,11 +209,43 @@ export default function EventsClient({
               </Link>
             </motion.article>
 
-            {/* Monthly Card Drop-Off at Ronald McDonald House */}
+            {/* Winter Card-Making with Senior Residents at Raphael House */}
             <motion.article
               variants={cardVariant}
               whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
               style={{ rotate: tilts[3] }}
+              className="polaroid cursor-pointer"
+            >
+              <Link href="/events/winter-card-making" className="block focus-visible:outline-none">
+                <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
+                  <SmartImage
+                    src="/images/events/winter-cards/flyer.jpg"
+                    alt="Volunteer Winter Card-Making Event with Senior Residents"
+                    placeholderText="Winter Card-Making with Senior Residents"
+                    className="object-cover object-top"
+                    fill
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                  <span className="absolute top-2 left-2 bg-teal text-cream font-body text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-sm">
+                    Dec 4
+                  </span>
+                </div>
+                <div className="pt-4 pb-1 px-1">
+                  <h3 className="font-heading text-lg text-ink mb-1">Winter Card-Making with Senior Residents</h3>
+                  <p className="font-accent text-sm text-rust mb-1">Fri, Dec 4 · 4:00–6:00 PM</p>
+                  <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
+                    Create winter greeting cards with residents at Raphael House Assisted Living.
+                    Limited to 10 experienced ArtUnity volunteers.
+                  </p>
+                </div>
+              </Link>
+            </motion.article>
+
+            {/* Monthly Card Drop-Off at Ronald McDonald House */}
+            <motion.article
+              variants={cardVariant}
+              whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
+              style={{ rotate: tilts[4] }}
               className="polaroid cursor-pointer"
             >
               <Link href="/events/ronald-mcdonald-card-dropoff" className="block focus-visible:outline-none">
