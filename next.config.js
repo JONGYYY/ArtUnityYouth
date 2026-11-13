@@ -3,6 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   transpilePackages: ['@heroicons/react'],
+  async redirects() {
+    return [
+      { source: '/events/winter-card-making', destination: '/events/raphael-house-card-making', permanent: true },
+    ];
+  },
   images: {
     remotePatterns: [
       {

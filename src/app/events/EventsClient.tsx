@@ -209,19 +209,19 @@ export default function EventsClient({
               </Link>
             </motion.article>
 
-            {/* Winter Card-Making with Senior Residents at Raphael House */}
+            {/* Volunteer Card-Making at Raphael House */}
             <motion.article
               variants={cardVariant}
               whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
               style={{ rotate: tilts[3] }}
               className="polaroid cursor-pointer"
             >
-              <Link href="/events/winter-card-making" className="block focus-visible:outline-none">
+              <Link href="/events/raphael-house-card-making" className="block focus-visible:outline-none">
                 <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
                   <SmartImage
-                    src="/images/events/winter-cards/flyer.jpg"
-                    alt="Volunteer Winter Card-Making Event with Senior Residents"
-                    placeholderText="Winter Card-Making with Senior Residents"
+                    src="/images/events/raphael-house/flyer.jpg"
+                    alt="Volunteer Card-Making Event at Raphael House"
+                    placeholderText="Card-Making at Raphael House"
                     className="object-cover object-top"
                     fill
                     sizes="(max-width:768px) 100vw, 33vw"
@@ -231,11 +231,11 @@ export default function EventsClient({
                   </span>
                 </div>
                 <div className="pt-4 pb-1 px-1">
-                  <h3 className="font-heading text-lg text-ink mb-1">Winter Card-Making with Senior Residents</h3>
-                  <p className="font-accent text-sm text-rust mb-1">Fri, Dec 4 · 4:00–6:00 PM</p>
+                  <h3 className="font-heading text-lg text-ink mb-1">Volunteer Card-Making Event at Raphael House</h3>
+                  <p className="font-accent text-sm text-rust mb-1">December 4, 2026 · 4:00–5:30 PM</p>
                   <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
-                    Create winter greeting cards with residents at Raphael House Assisted Living.
-                    Limited to 10 experienced ArtUnity volunteers.
+                    Experienced ArtUnity Volunteers, join us at Raphael House Assisted Living to create
+                    greeting cards together with the residents!
                   </p>
                 </div>
               </Link>
