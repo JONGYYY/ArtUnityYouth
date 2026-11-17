@@ -17,12 +17,12 @@ const fadeUp = {
 
 const roles = [
   { icon: '🚗', text: 'Drive or ride along with student volunteers' },
-  { icon: '💌', text: 'Help with the monthly card drop-off' },
-  { icon: '🤝', text: 'Support positive interactions between students and children' },
+  { icon: '💌', text: 'Help deliver handmade greeting cards' },
+  { icon: '🤝', text: 'Spend time with children and families' },
   { icon: '💛', text: 'Be part of a meaningful community service effort' },
 ];
 
-export default function RonaldMcDonaldCardDropoff() {
+export default function RonaldMcDonaldCardDelivery() {
   return (
     <Layout>
       <section className="pt-36 pb-24 bg-cream texture-dots">
@@ -44,10 +44,10 @@ export default function RonaldMcDonaldCardDropoff() {
                 className="relative w-full rounded-sm overflow-hidden shadow-card-hover border border-ink/10 lg:sticky lg:top-28"
               >
                 <Image
-                  src="/images/events/rmh-cards/flyer.jpg"
-                  alt="Monthly Card Drop-Off Volunteers Needed — Ronald McDonald House flyer"
-                  width={792}
-                  height={1024}
+                  src="/images/events/rmh-cards/monthly-delivery-flyer.jpg"
+                  alt="Monthly Card Delivery & Visits, Volunteers Needed: Ronald McDonald House flyer"
+                  width={1189}
+                  height={1323}
                   className="w-full h-auto"
                   priority
                 />
@@ -62,21 +62,20 @@ export default function RonaldMcDonaldCardDropoff() {
                   variants={fadeUp}
                   className="font-display text-4xl sm:text-5xl text-ink mb-5 leading-none tracking-wide"
                 >
-                  MONTHLY CARD DROP-OFF
+                  MONTHLY CARD DELIVERY &amp; VISITS
                   <br />
                   AT RONALD MCDONALD HOUSE
                 </motion.h1>
 
                 <motion.p variants={fadeUp} className="font-body text-base text-ink/70 leading-relaxed mb-4">
-                  ArtUnity Youth is looking for volunteers to help deliver handmade greeting cards each
-                  month to <strong className="text-ink">Ronald McDonald House</strong>. These visits help
-                  share encouragement with children and families, while also giving our student
-                  volunteers a chance to connect with the kids in person.
+                  Volunteers needed! Help deliver handmade greeting cards to{' '}
+                  <strong className="text-ink">Ronald McDonald House</strong> and spend time interacting
+                  with children and families.
                 </motion.p>
                 <motion.p variants={fadeUp} className="font-body text-base text-ink/70 leading-relaxed mb-6">
-                  These monthly visits do more than deliver cards — they create moments of
-                  encouragement, connection, and kindness for families going through difficult times,
-                  while helping students build empathy and engage directly with the community.
+                  Share smiles, kindness, and the joy of giving. These monthly visits create moments of
+                  encouragement and connection for families going through difficult times, while helping
+                  students build empathy and engage directly with the community.
                 </motion.p>
 
                 <motion.div
@@ -84,8 +83,8 @@ export default function RonaldMcDonaldCardDropoff() {
                   className="bg-ochre/10 border border-ochre/30 rounded-sm px-5 py-3 mb-6"
                 >
                   <p className="font-body text-sm text-ink/80">
-                    <strong className="text-ink">Adult volunteers are especially needed</strong> to drive
-                    and ride with our students!
+                    Youth volunteers welcome —{' '}
+                    <strong className="text-ink">adult drivers especially needed!</strong>
                   </p>
                 </motion.div>
 
@@ -93,8 +92,8 @@ export default function RonaldMcDonaldCardDropoff() {
                 <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   <div className="bg-parch/60 border border-ink/10 rounded-sm px-5 py-4">
                     <div className="text-xs tracking-widest uppercase text-ink/40 mb-1">When</div>
-                    <div className="font-accent text-lg text-rust leading-tight">Once a month</div>
-                    <div className="font-body text-sm text-ink/60">Drop-off and a short visit with the kids</div>
+                    <div className="font-accent text-lg text-rust leading-tight">Last Tuesday of every month</div>
+                    <div className="font-body text-sm text-ink/60">Card delivery and a visit with the kids</div>
                   </div>
                   <div className="bg-parch/60 border border-ink/10 rounded-sm px-5 py-4">
                     <div className="text-xs tracking-widest uppercase text-ink/40 mb-1">Where</div>
@@ -118,7 +117,9 @@ export default function RonaldMcDonaldCardDropoff() {
                 </motion.div>
 
                 <motion.div variants={fadeUp}>
-                  <EventSignupForm event="Monthly Card Drop-Off — Ronald McDonald House Northern Virginia" />
+                  <EventSignupForm event="Monthly Card Delivery & Visits — Ronald McDonald House (last Tuesday of every month)">
+                    <p>Youth volunteers welcome — adult drivers especially needed!</p>
+                  </EventSignupForm>
                 </motion.div>
               </div>
             </div>

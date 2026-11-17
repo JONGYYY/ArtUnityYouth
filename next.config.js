@@ -6,6 +6,7 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/events/winter-card-making', destination: '/events/raphael-house-card-making', permanent: true },
+      { source: '/events/ronald-mcdonald-card-dropoff', destination: '/events/ronald-mcdonald-card-delivery', permanent: true },
     ];
   },
   images: {
