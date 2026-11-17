@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 
-export default function EventSignupForm({ event }: { event: string }) {
+export default function EventSignupForm({ event, children }: { event: string; children?: ReactNode }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [note, setNote] = useState('');
@@ -91,6 +91,7 @@ export default function EventSignupForm({ event }: { event: string }) {
         {state === 'loading' ? 'Signing you up…' : 'Count Me In →'}
       </button>
       {state === 'error' && <p className="text-rust font-body text-sm">{errorMsg}</p>}
+      {children && <div className="font-body text-xs text-ink/50 leading-relaxed space-y-2 pt-1">{children}</div>}
     </form>
   );
 }
