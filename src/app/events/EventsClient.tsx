@@ -145,43 +145,11 @@ export default function EventsClient({
               </Link>
             </motion.article>
 
-            {/* Cub Scout Pack 291 card-making event */}
-            <motion.article
-              variants={cardVariant}
-              whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
-              style={{ rotate: tilts[1] }}
-              className="polaroid cursor-pointer"
-            >
-              <Link href="/events/cub-scout-pack-291" className="block focus-visible:outline-none">
-                <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
-                  <SmartImage
-                    src="/images/events/cub-scouts/flyer.jpg"
-                    alt="Card-Making Event with Cub Scout Pack 291"
-                    placeholderText="Cub Scout Pack 291"
-                    className="object-cover"
-                    fill
-                    sizes="(max-width:768px) 100vw, 33vw"
-                  />
-                  <span className="absolute top-2 left-2 bg-teal text-cream font-body text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-sm">
-                    Nov 15
-                  </span>
-                </div>
-                <div className="pt-4 pb-1 px-1">
-                  <h3 className="font-heading text-lg text-ink mb-1">Card-Making with Cub Scout Pack 291</h3>
-                  <p className="font-accent text-sm text-rust mb-1">Sunday, November 15 · 4:30–5:00 PM</p>
-                  <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
-                    Partner with Cub Scout Pack 291 to help ~25 K–5 scouts make handmade cards for
-                    senior centers and hospitals. A great leadership opportunity.
-                  </p>
-                </div>
-              </Link>
-            </motion.article>
-
             {/* Card-Making with Senior Residents */}
             <motion.article
               variants={cardVariant}
               whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
-              style={{ rotate: tilts[2] }}
+              style={{ rotate: tilts[1] }}
               className="polaroid cursor-pointer"
             >
               <Link href="/events/senior-card-making" className="block focus-visible:outline-none">
@@ -213,7 +181,7 @@ export default function EventsClient({
             <motion.article
               variants={cardVariant}
               whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
-              style={{ rotate: tilts[3] }}
+              style={{ rotate: tilts[2] }}
               className="polaroid cursor-pointer"
             >
               <Link href="/events/raphael-house-card-making" className="block focus-visible:outline-none">
@@ -236,6 +204,38 @@ export default function EventsClient({
                   <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
                     Experienced ArtUnity Volunteers, join us at Raphael House Assisted Living to create
                     greeting cards together with the residents!
+                  </p>
+                </div>
+              </Link>
+            </motion.article>
+
+            {/* Cub Scout Pack 291 holiday card-making event */}
+            <motion.article
+              variants={cardVariant}
+              whileHover={{ y: -8, rotate: 0, transition: { duration: 0.25 } }}
+              style={{ rotate: tilts[3] }}
+              className="polaroid cursor-pointer"
+            >
+              <Link href="/events/cub-scout-pack-291" className="block focus-visible:outline-none">
+                <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
+                  <SmartImage
+                    src="/images/events/cub-scouts/flyer-dec-18.jpg"
+                    alt="Holiday Card-Making Event with Cub Scout Pack 291"
+                    placeholderText="Cub Scout Pack 291"
+                    className="object-cover"
+                    fill
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                  <span className="absolute top-2 left-2 bg-teal text-cream font-body text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-sm">
+                    Dec 18
+                  </span>
+                </div>
+                <div className="pt-4 pb-1 px-1">
+                  <h3 className="font-heading text-lg text-ink mb-1">Holiday Card-Making with Cub Scout Pack 291</h3>
+                  <p className="font-accent text-sm text-rust mb-1">Friday, December 18 · 4:30–5:00 PM</p>
+                  <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
+                    Partner with Cub Scout Pack 291 to help ~25 K–5 scouts make handmade holiday cards
+                    for senior centers and hospitals. A great leadership opportunity.
                   </p>
                 </div>
               </Link>

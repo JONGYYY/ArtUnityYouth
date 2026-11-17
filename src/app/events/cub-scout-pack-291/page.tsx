@@ -44,8 +44,8 @@ export default function CubScoutPack291() {
                 className="relative w-full rounded-sm overflow-hidden shadow-card-hover border border-ink/10"
               >
                 <Image
-                  src="/images/events/cub-scouts/flyer.jpg"
-                  alt="Card-Making Event with Cub Scout Pack 291 flyer"
+                  src="/images/events/cub-scouts/flyer-dec-18.jpg"
+                  alt="Holiday Card-Making Event with Cub Scout Pack 291 flyer"
                   width={1024}
                   height={683}
                   className="w-full h-auto"
@@ -62,7 +62,7 @@ export default function CubScoutPack291() {
                   variants={fadeUp}
                   className="font-display text-4xl sm:text-5xl text-ink mb-5 leading-none tracking-wide"
                 >
-                  CARD-MAKING EVENT
+                  HOLIDAY CARD-MAKING
                   <br />
                   WITH CUB SCOUT PACK 291
                 </motion.h1>
@@ -73,15 +73,15 @@ export default function CubScoutPack291() {
                 >
                   <div>
                     <div className="text-xs tracking-widest uppercase text-ink/40 mb-0.5">When</div>
-                    <div className="font-accent text-xl text-rust">Sunday, November 15</div>
+                    <div className="font-accent text-xl text-rust">Friday, December 18, 2026</div>
                     <div className="text-sm text-ink/60">4:30 – 5:00 PM</div>
                   </div>
                 </motion.div>
 
                 <motion.p variants={fadeUp} className="font-body text-base text-ink/70 leading-relaxed mb-5">
                   Art Unity Youth is partnering with <strong className="text-ink">Cub Scout Pack 291</strong>{' '}
-                  for a special volunteer card-making event! We&apos;ll be working with about 25 K–5 scouts
-                  to create handmade cards for senior centers and hospitals.
+                  for a special volunteer holiday card-making event! We&apos;ll be working with about 25 K–5
+                  scouts to create handmade holiday cards for senior centers and hospitals.
                 </motion.p>
                 <motion.p variants={fadeUp} className="font-body text-base text-ink/70 leading-relaxed mb-8">
                   We&apos;re looking for volunteers to help guide the scouts, make cards together, and
@@ -104,7 +104,7 @@ export default function CubScoutPack291() {
                 </motion.div>
 
                 <motion.div variants={fadeUp}>
-                  <EventSignupForm event="Card-Making Event with Cub Scout Pack 291 (Sunday, Nov 15)" />
+                  <EventSignupForm event="Holiday Card-Making Event with Cub Scout Pack 291 (Friday, Dec 18, 2026)" />
                 </motion.div>
               </div>
             </div>
