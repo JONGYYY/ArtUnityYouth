@@ -28,7 +28,7 @@ const stagger = {
 const tilts = [1.4, -1.2, 1.6, -1.5, 1.1, -1.7, 1.3, -1.0];
 
 const VOLUNTEER_SIGNUP_URL =
-  'https://montgomerycountymd.galaxydigital.com/need/detail/?need_id=1224085';
+  'https://montgomerycountymd.galaxydigital.com/need/?agency_id=156198';
 
 function Gallery({
   photos,
@@ -323,7 +323,7 @@ export default function FridaySessionsClient({
                         rel="noopener noreferrer"
                         className="font-body text-sm font-semibold text-rust hover:text-ink underline underline-offset-4 transition-colors"
                       >
-                        Register on our volunteer page ↗
+                        Register on Montgomery County&apos;s Volunteer Center ↗
                       </a>
                     </div>
                   </>
