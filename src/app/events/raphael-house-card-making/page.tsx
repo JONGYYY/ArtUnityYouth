@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '../../../components/layout/Layout';
+import EventSignupForm from '../../../components/events/EventSignupForm';
 
 const stagger = {
   hidden: {},
@@ -13,11 +14,6 @@ const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as any } },
 };
-
-const SIGNUP_EMAIL = 'ArtUnityYouth@gmail.com';
-const signupHref = `mailto:${SIGNUP_EMAIL}?subject=${encodeURIComponent(
-  'Volunteer sign-up: Card-Making at Raphael House (December 4, 2026)',
-)}`;
 
 export default function RaphaelHouseCardMaking() {
   return (
@@ -93,31 +89,17 @@ export default function RaphaelHouseCardMaking() {
                 </motion.div>
 
                 {/* Sign-up */}
-                <motion.div
-                  variants={fadeUp}
-                  className="bg-cream border border-ink/10 rounded-sm p-6 sm:p-8 shadow-card"
-                >
-                  <h2 className="font-heading text-2xl text-ink mb-2">Sign Up to Volunteer</h2>
-                  <p className="font-body text-sm text-ink/70 leading-relaxed mb-5">
-                    Please email{' '}
-                    <a href={signupHref} className="font-semibold text-rust hover:text-ink transition-colors break-all">
-                      {SIGNUP_EMAIL}
-                    </a>{' '}
-                    to reserve a spot. This event is for experienced ArtUnity volunteers only.
-                  </p>
-                  <a
-                    href={signupHref}
-                    className="inline-flex items-center justify-center gap-2 font-body font-semibold text-sm tracking-widest uppercase bg-rust text-cream px-8 py-4 rounded-sm hover:bg-ink transition-colors duration-200"
-                  >
-                    Email to Sign Up →
-                  </a>
-                  <p className="font-body text-xs text-ink/50 leading-relaxed mt-5">
-                    First time with ArtUnity? Please sign up for our{' '}
-                    <Link href="/events/friday-sessions" className="underline hover:text-rust transition-colors">
-                      weekly card-making sessions at the Rockville Library
-                    </Link>{' '}
-                    to get started.
-                  </p>
+                <motion.div variants={fadeUp}>
+                  <EventSignupForm event="Volunteer Card-Making Event at Raphael House (December 4, 2026)">
+                    <p>This event is for experienced ArtUnity volunteers only (up to 10 spots).</p>
+                    <p>
+                      First time with ArtUnity? Please sign up for our{' '}
+                      <Link href="/events/friday-sessions" className="underline hover:text-rust transition-colors">
+                        weekly card-making sessions at the Rockville Library
+                      </Link>{' '}
+                      to get started.
+                    </p>
+                  </EventSignupForm>
                 </motion.div>
               </div>
             </div>
