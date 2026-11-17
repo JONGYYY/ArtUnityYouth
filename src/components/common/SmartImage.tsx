@@ -13,11 +13,12 @@ interface SmartImageProps extends Omit<ImageProps, 'src' | 'alt'> {
 export default function SmartImage({ src, alt, placeholderText, className, ...rest }: SmartImageProps) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  if (failed || !src) {
     return (
       <PlaceholderImage
         text={placeholderText || alt || 'Image'}
         className={`w-full h-full ${className || ''}`}
+        style={{ width: '100%', height: '100%' }}
       />
     );
   }
