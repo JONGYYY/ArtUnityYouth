@@ -172,16 +172,17 @@ export default function Hero({ slides }: { slides: CarouselSlide[] }) {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            {/* Stats — 3 boxes above the carousel */}
-            <div className="grid grid-cols-3 gap-0 divide-x divide-ink/10 border border-ink/10 rounded-sm mb-8">
+            {/* Stats — 2x2 on small screens, 4 across from sm up */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 border border-ink/10 rounded-sm mb-8">
               {[
-                { number: '2,000+', label: 'People Impacted' },
-                { number: '70+',    label: 'Art Events' },
-                { number: '150+',   label: 'Volunteers' },
+                { number: '2,000+', label: 'People Impacted',    border: 'border-r border-b sm:border-b-0' },
+                { number: '70+',    label: 'Art Events',         border: 'border-b sm:border-b-0 sm:border-r' },
+                { number: '150+',   label: 'Volunteers',         border: 'border-r' },
+                { number: '50+',    label: 'Community Partners', border: '' },
               ].map(s => (
-                <div key={s.label} className="px-5 py-6 text-center">
-                  <div className="font-display text-5xl sm:text-6xl text-rust mb-1 leading-none">{s.number}</div>
-                  <div className="font-body text-xs text-ink/50 tracking-wide uppercase">{s.label}</div>
+                <div key={s.label} className={`px-2 lg:px-1 py-6 text-center border-ink/10 ${s.border}`}>
+                  <div className="font-display text-5xl lg:text-[2.6rem] xl:text-[3.25rem] text-rust mb-1 leading-none">{s.number}</div>
+                  <div className="font-body text-[11px] sm:text-[10px] xl:text-[11px] text-ink/50 tracking-wide xl:tracking-normal uppercase leading-tight text-balance">{s.label}</div>
                 </div>
               ))}
             </div>
