@@ -126,6 +126,12 @@ const ambassadorMembers = [
     image: '/images/team/dharshith-dasari.jpg',
     bio: 'Dharshith is a student at Robert Frost Middle School. Besides art, he enjoys reading and conducting science research, especially in biology, his favorite subject. He hopes to become a biological research scientist when he grows up. Dharshith also enjoys public speaking and dreams of one day presenting his own research findings to an audience. As an ArtUnity Youth Ambassador, he looks forward to sharing his creativity and encouraging other young people to get involved in community art activities.',
   },
+  {
+    name: 'Nischita Bhaaradwaaj',
+    role: 'Youth Ambassador',
+    image: '',
+    bio: "Nischita is a student at Robert Frost Middle School. She loves Indian dance and enjoys putting puzzles together, with 1,000-piece puzzles becoming her newest hobby. Art is her favorite subject, and she enjoys drawing something every day, which helps her relax and get a good night's sleep. As an ArtUnity Youth Ambassador, Nischita loves spreading the word about ArtUnity Youth and inviting her friends to join her in making handmade cards. She hopes to inspire more young people to share their creativity and bring joy to others through art.",
+  },
 ];
 
 const advisorMembers = [
