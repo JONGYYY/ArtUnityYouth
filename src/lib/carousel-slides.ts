@@ -10,6 +10,9 @@ export type CarouselSlide = {
 // Keep in sync with the seed in supabase/homepage-carousel.sql.
 export const FALLBACK_SLIDES: CarouselSlide[] = [
   { imageUrl: '/images/about/mission.jpg',                                caption: 'Youth creating art together' },
+  { imageUrl: '/images/carousel/senior-residents-group.jpg',              caption: 'Card-making with senior residents' },
+  { imageUrl: '/images/carousel/senior-resident-sharing-card.jpg',        caption: 'Sharing a handmade card with a senior resident' },
+  { imageUrl: '/images/carousel/senior-residents-card-table.jpg',         caption: 'Handmade cards at the senior residents event' },
   { imageUrl: '/images/events/pride-2026/pride-4.png',                    caption: 'ArtUnity Youth at PRIDE 2026' },
   { imageUrl: '/images/events/screen-printing/sp-1.png',                  caption: 'Screen printing at Oktoberfest' },
   { imageUrl: '/images/events/murals/mural-2.png',                        caption: 'Love One Another mural — So What Else' },
