@@ -283,7 +283,7 @@ export default function EventsClient({
               <Link href="/events/ronald-mcdonald-card-delivery" className="block focus-visible:outline-none">
                 <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
                   <SmartImage
-                    src="/images/events/rmh-cards/monthly-delivery-flyer.jpg"
+                    src="/images/events/rmh-cards/monthly-delivery-flyer-nov24.jpg"
                     alt="Monthly Card Delivery & Visits at Ronald McDonald House"
                     placeholderText="Ronald McDonald House Card Delivery"
                     className="object-cover object-top"

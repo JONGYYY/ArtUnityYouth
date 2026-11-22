@@ -44,7 +44,7 @@ export default function RonaldMcDonaldCardDelivery() {
                 className="relative w-full rounded-sm overflow-hidden shadow-card-hover border border-ink/10 lg:sticky lg:top-28"
               >
                 <Image
-                  src="/images/events/rmh-cards/monthly-delivery-flyer.jpg"
+                  src="/images/events/rmh-cards/monthly-delivery-flyer-nov24.jpg"
                   alt="Monthly Card Delivery & Visits, Volunteers Needed: Ronald McDonald House flyer"
                   width={1189}
                   height={1323}
