@@ -144,6 +144,12 @@ const ambassadorMembers = [
     image: '/images/team/melika-nejad.jpg',
     bio: 'Melika Nejad is a student at Parkland Middle School who has loved drawing for as long as she can remember. She especially enjoys creating animated characters and imagining stories about their lives, bringing each character to life through her artwork. Now, as an ArtUnity Youth Ambassador, Melika is bringing her favorite characters onto greeting cards to spread smiles and cheer throughout the community.',
   },
+  {
+    name: 'Wendy Tran',
+    role: 'Youth Ambassador',
+    image: '/images/team/wendy-tran.jpg',
+    bio: 'Wendy Tran is a student at Julius West Middle School who carries her colored pencil box almost everywhere she goes. If you ever need a colorful note or a handmade card, just ask Wendy! Besides art, she loves outdoor activities and volunteering for community projects that help protect nature. As an ArtUnity Youth Ambassador, Wendy hopes to let her artwork speak for her, sharing her creativity and care for the community through artwork she makes.',
+  },
 ];
 
 const advisorMembers = [
