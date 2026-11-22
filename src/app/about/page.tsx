@@ -138,6 +138,12 @@ const ambassadorMembers = [
     image: '/images/team/emily-guo.jpg',
     bio: 'Emily Guo is a student at Tilden Middle School who loves art and enjoys expressing her creativity through drawing. Besides art, her favorite subject is math. She is also learning to play the violin. As an ArtUnity Youth Ambassador, Emily looks forward to sharing her love for art and encouraging other young people to get creative and participate in community art activities.',
   },
+  {
+    name: 'Melika Nejad',
+    role: 'Youth Ambassador',
+    image: '/images/team/melika-nejad.jpg',
+    bio: 'Melika Nejad is a student at Parkland Middle School who has loved drawing for as long as she can remember. She especially enjoys creating animated characters and imagining stories about their lives, bringing each character to life through her artwork. Now, as an ArtUnity Youth Ambassador, Melika is bringing her favorite characters onto greeting cards to spread smiles and cheer throughout the community.',
+  },
 ];
 
 const advisorMembers = [
