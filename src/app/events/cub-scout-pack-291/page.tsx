@@ -44,7 +44,7 @@ export default function CubScoutPack291() {
                 className="relative w-full rounded-sm overflow-hidden shadow-card-hover border border-ink/10"
               >
                 <Image
-                  src="/images/events/cub-scouts/flyer-dec-18.jpg"
+                  src="/images/events/cub-scouts/flyer-dec-20.jpg"
                   alt="Holiday Card-Making Event with Cub Scout Pack 291 flyer"
                   width={1024}
                   height={683}
@@ -73,7 +73,7 @@ export default function CubScoutPack291() {
                 >
                   <div>
                     <div className="text-xs tracking-widest uppercase text-ink/40 mb-0.5">When</div>
-                    <div className="font-accent text-xl text-rust">Friday, December 18, 2026</div>
+                    <div className="font-accent text-xl text-rust">Sunday, December 20, 2026</div>
                     <div className="text-sm text-ink/60">4:30 – 5:00 PM</div>
                   </div>
                 </motion.div>
@@ -104,7 +104,7 @@ export default function CubScoutPack291() {
                 </motion.div>
 
                 <motion.div variants={fadeUp}>
-                  <EventSignupForm event="Holiday Card-Making Event with Cub Scout Pack 291 (Friday, Dec 18, 2026)" />
+                  <EventSignupForm event="Holiday Card-Making Event with Cub Scout Pack 291 (Sunday, Dec 20, 2026)" />
                 </motion.div>
               </div>
             </div>

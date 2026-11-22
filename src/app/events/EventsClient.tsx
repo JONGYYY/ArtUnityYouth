@@ -251,7 +251,7 @@ export default function EventsClient({
               <Link href="/events/cub-scout-pack-291" className="block focus-visible:outline-none">
                 <div className="relative w-full aspect-[4/3] bg-parch overflow-hidden">
                   <SmartImage
-                    src="/images/events/cub-scouts/flyer-dec-18.jpg"
+                    src="/images/events/cub-scouts/flyer-dec-20.jpg"
                     alt="Holiday Card-Making Event with Cub Scout Pack 291"
                     placeholderText="Cub Scout Pack 291"
                     className="object-cover"
@@ -259,12 +259,12 @@ export default function EventsClient({
                     sizes="(max-width:768px) 100vw, 33vw"
                   />
                   <span className="absolute top-2 left-2 bg-teal text-cream font-body text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-sm">
-                    Dec 18
+                    Dec 20
                   </span>
                 </div>
                 <div className="pt-4 pb-1 px-1">
                   <h3 className="font-heading text-lg text-ink mb-1">Holiday Card-Making with Cub Scout Pack 291</h3>
-                  <p className="font-accent text-sm text-rust mb-1">Friday, December 18 · 4:30–5:00 PM</p>
+                  <p className="font-accent text-sm text-rust mb-1">Sunday, December 20 · 4:30–5:00 PM</p>
                   <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
                     Partner with Cub Scout Pack 291 to help ~25 K–5 scouts make handmade holiday cards
                     for senior centers and hospitals. A great leadership opportunity.
