@@ -93,7 +93,13 @@ export default function RonaldMcDonaldCardDelivery() {
                   <div className="bg-parch/60 border border-ink/10 rounded-sm px-5 py-4">
                     <div className="text-xs tracking-widest uppercase text-ink/40 mb-1">When</div>
                     <div className="font-accent text-lg text-rust leading-tight">Last Tuesday of every month</div>
+                    <div className="font-body text-base text-ink/80 leading-tight">6:00 – 7:00 PM</div>
                     <div className="font-body text-sm text-ink/60">Card delivery and a visit with the kids</div>
+                    <div className="mt-3 text-xs tracking-widest uppercase text-ink/40 mb-1">Upcoming dates</div>
+                    <ul className="font-body text-sm text-ink/80 space-y-0.5">
+                      <li>Tuesday, November 24, 2026</li>
+                      <li>Tuesday, December 29, 2026</li>
+                    </ul>
                   </div>
                   <div className="bg-parch/60 border border-ink/10 rounded-sm px-5 py-4">
                     <div className="text-xs tracking-widest uppercase text-ink/40 mb-1">Where</div>
@@ -117,7 +123,7 @@ export default function RonaldMcDonaldCardDelivery() {
                 </motion.div>
 
                 <motion.div variants={fadeUp}>
-                  <EventSignupForm event="Monthly Card Delivery & Visits — Ronald McDonald House (last Tuesday of every month)">
+                  <EventSignupForm event="Monthly Card Delivery & Visits — Ronald McDonald House (last Tuesday of every month, 6:00–7:00 PM)">
                     <p>Youth volunteers welcome — adult drivers especially needed!</p>
                   </EventSignupForm>
                 </motion.div>

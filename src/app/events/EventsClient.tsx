@@ -293,7 +293,8 @@ export default function EventsClient({
                 </div>
                 <div className="pt-4 pb-1 px-1">
                   <h3 className="font-heading text-lg text-ink mb-1">Monthly Card Delivery &amp; Visits · Ronald McDonald House</h3>
-                  <p className="font-accent text-sm text-rust mb-1">Last Tuesday of every month · Falls Church, VA</p>
+                  <p className="font-accent text-sm text-rust mb-1">Last Tuesday of every month · 6:00–7:00 PM</p>
+                  <p className="font-body text-xs font-semibold text-ink/70 mb-1">Next: Tue, Nov 24 &amp; Tue, Dec 29 · Falls Church, VA</p>
                   <p className="font-body text-xs text-ink/60 leading-relaxed line-clamp-2">
                     Help deliver handmade cards and spend time with children and families. Youth
                     volunteers welcome; adult drivers especially needed!
