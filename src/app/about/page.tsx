@@ -132,6 +132,12 @@ const ambassadorMembers = [
     image: '/images/team/nischita-bhaaradwaaj.jpg',
     bio: "Nischita is a student at Robert Frost Middle School. She loves Indian dance and enjoys putting puzzles together, with 1,000-piece puzzles becoming her newest hobby. Art is her favorite subject, and she enjoys drawing something every day, which helps her relax and get a good night's sleep. As an ArtUnity Youth Ambassador, Nischita loves spreading the word about ArtUnity Youth and inviting her friends to join her in making handmade cards. She hopes to inspire more young people to share their creativity and bring joy to others through art.",
   },
+  {
+    name: 'Emily Guo',
+    role: 'Youth Ambassador',
+    image: '/images/team/emily-guo.jpg',
+    bio: 'Emily Guo is a student at Tilden Middle School who loves art and enjoys expressing her creativity through drawing. Besides art, her favorite subject is math. She is also learning to play the violin. As an ArtUnity Youth Ambassador, Emily looks forward to sharing her love for art and encouraging other young people to get creative and participate in community art activities.',
+  },
 ];
 
 const advisorMembers = [
