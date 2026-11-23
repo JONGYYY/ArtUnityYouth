@@ -175,7 +175,7 @@ export default function Hero({ slides }: { slides: CarouselSlide[] }) {
             {/* Stats — 2x2 on small screens, 4 across from sm up */}
             <div className="grid grid-cols-2 sm:grid-cols-4 border border-ink/10 rounded-sm mb-8">
               {[
-                { number: '2,000+', label: 'People Impacted',    border: 'border-r border-b sm:border-b-0' },
+                { number: '3,000+', label: 'People Impacted',    border: 'border-r border-b sm:border-b-0' },
                 { number: '70+',    label: 'Art Events',         border: 'border-b sm:border-b-0 sm:border-r' },
                 { number: '150+',   label: 'Volunteers',         border: 'border-r' },
                 { number: '50+',    label: 'Community Partners', border: '' },
